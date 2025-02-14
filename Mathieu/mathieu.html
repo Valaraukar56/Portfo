@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="../sizing.css" type="text/css">
+    <link rel="stylesheet" href="styles.css" type="text/css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/LOGO twitch.jpg"><title>Portfolio</title>
+    <script src="script.js" defer></script>
+</head>
+
+
+<body>
+    <main>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
+        <!-- Section Projets -->
+        <div class="sidebar-section">
+            <h3>Projets</h3>
+            <ul class="sidebar-list">
+                <li><a href="BlindTest/indexbd.html" target="_blank">Blind Test</a></li>
+                <li><a href="Casse-brique/glace.html" target="_blank">Casse-Brique</a></li>
+                <li><a href="Shmup/index.html" target="_blank">Shmup</a></li>
+            </ul>
+        </div>
+        <a href="cv/indexcv.html" target="_blank">CV</a>
+    </div>
+
+
+        <div id="main">
+            <button class="openbtn" onclick="toggleNav()">&#9776;</button>
+        </div>
+        <div class="bigimg">
+            <img src="../assets/images/LogoPaysage.png" alt="">
+        </div>        <div class="about-me">
+            <h2>À propos de moi</h2>
+            <p>
+                Passionné par le développement web, je suis un créateur
+                motivé à toujours apprendre de nouvelles technologies. Mon portfolio
+                reflète mon parcours et mes compétences en HTML, CSS et JavaScript.
+            </p>
+        </div>  
+
+            
+        <div class="skills-section">
+            <p>Mes principales compétences </p>
+            <div class="logo">
+                <img class="html" src="../assets/images/HTML logo.png" alt="Logo HTML">
+                <img  class="css" src="../assets/images/css-3.png" alt="Logo CSS">
+                <img class="js" src="../assets/images/jslogo.png" alt="Logo JavaScript">
+            </div>
+        </div>
+            
+
+        <section id ="contact" class="contact-section">
+          <h2>Contactez-moi </h2>
+          <p>N'hésitez pas à me contacter via ce formulaire ou directement par email.</p>
+          <form class="contact-form" action="mathieu.piris@outlook.fr" method="POST" enctype="text/plain">
+              
+              <input type="text" id="name" name="name" placeholder="Nom et prénom *" required="">
+          
+              
+              <input type="email" id="email" name="email" placeholder="Adresse e-mail *" required="">
+          
+              
+              <textarea id="message" name="message" placeholder="Votre message *" rows="5" required=""></textarea>
+          
+              <button type="submit">Envoyer</button>
+          </form>
+        </section>
+    </main>
+</body>
+</html>

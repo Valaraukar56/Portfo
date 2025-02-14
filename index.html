@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfo</title>
+  <link rel="stylesheet" href="sizing.css">
+  <link rel="stylesheet" href="styles.css" type="text/css">
+  <style>
+    *{
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+
+      font-family: system-ui, sans-serif;
+      background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,45,247,1) 100%);
+      min-height: 100vh;
+    }
+
+    .img-garde {
+      min-height: 100vh;
+      padding: var(--size-10);
+
+      display: grid;
+      align-content: center;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--size-6);
+    }
+
+    .img-garde a {
+      position: relative;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .img-garde img {
+      width: 100%;
+      max-width: 200%;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.3s ease, filter 0.3s ease;
+      z-index: 0;
+    }
+
+    .img-garde a:hover img {
+      transform: scale(1.1);
+      filter: brightness(1.2);
+    }
+
+    /* Nouveau rectangle d'informations */
+    .info-rectangle {
+      position: absolute;
+      top: 85%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 250px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: var(--size-4);
+      border-radius: 8px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 10;
+    }
+    a:hover .info-rectangle {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <div class="img-garde">
+      <a href="Mathieu/mathieu.html" target="_blank">
+        <img src="assets/images/PhotoPort.jpg" alt="PIRIS Mathieu">
+      </a>
+      <a href="Tristan/tristan.html" target="_blank">
+        <img src="assets/images/PhotoPort.jpg" alt="PILLET Tristan">
+      </a>
+      <a href="Lucas/lucas.html" target="_blank">
+        <img src="assets/images/PhotoPort.jpg" alt="RIVEAULT Lucas">
+      </a>
+      <a href="Alessandro/alessandro.html" target="_blank">
+        <img src="assets/images/PhotoPort.jpg" alt="FORTUNATI Alessandro">
+      </a>
+      <a href="Lise/lise.html" target="_blank">
+        <img src="assets/images/PhotoPort.jpg" alt="THUILLIER Lise">
+      </a>
+    </div>    
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Sélectionne toutes les balises <a> contenant des images
+      const links = document.querySelectorAll('.img-garde a');
+
+      links.forEach((link) => {
+        const image = link.querySelector('img'); // L'image
+        const personName = image.alt; // Utilise l'attribut 'alt' pour définir le nom de la personne
+
+        // Créer un rectangle d'information
+        const infoRectangle = document.createElement('div');
+        infoRectangle.classList.add('info-rectangle'); // Ajoute la classe pour le style
+        infoRectangle.innerHTML = `
+          <h3>${personName}</h3>
+          <p>Voici un petit texte descriptif de la personne.</p>
+        `;
+        
+        // Ajouter le rectangle d'information dans le lien
+        link.appendChild(infoRectangle);
+      });
+    });
+  </script>
+</body>
+</html>

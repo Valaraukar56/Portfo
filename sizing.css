@@ -1,0 +1,19 @@
+:root{
+	--size-1: 0.25rem;
+	--size-2: 0.5rem;
+	--size-3: 0.75rem;
+	--size-4: 1rem;
+	--size-5: 1.5rem;
+	--size-6: 2rem;
+	--size-7: 3rem;
+	--size-8: 4rem;
+	--size-9: 6rem;
+	--size-10: 8rem;
+	--size-11: 12rem;
+	--size-12: 16rem;
+	--size-13: 24rem;
+	--size-14: 32rem;
+	--size-15: 40rem;
+	--size-16: 48rem;
+}
+/* Choisis une valeur en faisant un var(--size-"le chiffre que tu veux") */
