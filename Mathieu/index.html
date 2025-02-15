@@ -14,15 +14,17 @@
     <main>
 
     <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
+        <a href="#" class="closebtn" onclick="toggleNav()">&times;</a>
         <!-- Section Projets -->
         <div class="sidebar-section">
             <h3>Projets</h3>
-            <ul class="sidebar-list">
-                <li><a href="BlindTest/indexbd.html" target="_blank">Blind Test</a></li>
-                <li><a href="Casse-brique/glace.html" target="_blank">Casse-Brique</a></li>
-                <li><a href="Shmup/index.html" target="_blank">Shmup</a></li>
-            </ul>
+            <nav>
+                <ul class="sidebar-list">
+                    <li><a href="BlindTest/indexbd.html" target="_blank">Blind Test</a></li>
+                    <li><a href="Casse-brique/glace.html" target="_blank">Casse-Brique</a></li>
+                    <li><a href="Shmup/index.html" target="_blank">Shmup</a></li>
+                </ul>
+            </nav>
         </div>
         <a href="cv/indexcv.html" target="_blank">CV</a>
     </div>
@@ -70,5 +72,20 @@
           </form>
         </section>
     </main>
+    <script>
+        function toggleNav() {
+          let sidebar = document.querySelector(".sidebar");
+          let openbtn = document.querySelector(".openbtn");
+                
+          if (sidebar.style.width === "250px") {
+              sidebar.style.width = "0";
+              openbtn.style.display = "block"; // affiche le boutton
+          } else {
+              sidebar.style.width = "250px";
+              openbtn.style.display = "none"; // cache le boutton
+          }
+        }
+
+    </script>
 </body>
 </html>

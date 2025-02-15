@@ -1,18 +1,21 @@
 .sidebar {
     height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
     top: 0;
     left: 0;
     background-color: #111; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 50px; /* Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+    padding: var(--size-6);
+    transition: 0.25s ease-out; /* 0.5 second transition effect to slide in the sidebar */
+    transform: translate(-100%);
+
+    ul{
+        padding-left: var(--size-4);
+    }
 }
 
 .sidebar a {
-    padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
@@ -36,7 +39,6 @@
     color: #f7f3e7; /* Couleur du texte */
     font-size: 20px; /* Taille du texte */
     margin: 10px 0; /* Espacement autour du titre */
-    padding-left: 32px; /* Alignement avec les autres éléments */
 }
 
 
@@ -48,8 +50,6 @@
     color: #818181; /* Couleur par défaut des liens */
     text-decoration: none; /* Supprime le soulignement */
     font-size: 18px; /* Taille des liens */
-    padding: 8px 8px 8px 32px; /* Alignement et espacement */
-    display: block; /* Rend le lien cliquable sur toute sa largeur */
     transition: color 0.3s ease;
 }
 
