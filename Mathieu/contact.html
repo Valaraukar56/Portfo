@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../sizing.css" type="text/css">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/LOGO twitch.jpg"><title>Contact</title>
+    <link rel="stylesheet" href="../global.css">
+    <style>
+        body {
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            background-color: #222;
+        }
+
+        canvas {
+            display: block;
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+        } 
+
+        main {
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: var(--size-15);
+            height: 100vh; 
+        }
+         
+        #name,
+        #email,
+        #message{
+            border-radius: 1rem;
+            margin: var(--size-1);
+            padding: var(--size-1);
+            font-size: 1rem;
+            resize: none;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: left;
+            border-radius: 1rem;
+
+            button {
+                background-color: #007BFF;
+                color: #fff;
+                border: none;
+                padding: 10px 15px;
+                border-radius: 1rem;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+            button:hover{
+                background-color: #0056b3;
+            }
+        }
+
+        .contact-section {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+
+            h2 {
+                font-size: 24px;
+                color: white;
+            }
+            p{
+                color: white;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            .contact-section {
+                width: min(430px, 90%, 500px); 
+                padding: clamp(8px, 2vw, var(--size-3));
+            }
+
+            .text-section{
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div id="logoV">
+            <img src="/assets/images/Logo_V.png">
+            <h1><a href="../Mathieu/index.html">Mathieu Piris</a></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id ="contact" class="contact-section">
+            <h2>Contactez-moi </h2>
+            <p>N'hésitez pas à me contacter via ce formulaire ou directement par email.</p>
+            <form class="contact-form" action="mathieu.piris@outlook.fr" method="POST" enctype="text/plain">
+                <input type="text" id="name" name="name" placeholder="Nom et prénom *" required="">    
+                <input type="email" id="email" name="email" placeholder="Adresse e-mail *" required="">
+                <textarea id="message" name="message" placeholder="Votre message *" rows="5" required=""></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+    </main>
+
+    <canvas id="spider-web"></canvas>
+    <script>
+        const canvas = document.getElementById('spider-web'); // Corrigé l'ID
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const mouse = { x: null, y: null };
+
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = event.x;
+            mouse.y = event.y;
+        });
+
+        class Point {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.baseX = this.x;
+                this.baseY = this.y;
+                this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.shadowColor = this.color;
+                ctx.shadowBlur = 10;
+                ctx.fill(); 
+            }
+            update() {
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < 150) {
+                    this.x -= dx * 0.05;
+                    this.y -= dy * 0.05;
+                } else {
+                    this.x += (this.baseX - this.x) * 0.05;
+                    this.y += (this.baseY - this.y) * 0.05;
+                }
+                this.draw();
+            }
+        }
+
+        let points = [];
+        const gridSpacing = 50;
+
+        function createPoints() {
+            points = [];
+            for (let y = 0; y < canvas.height; y += gridSpacing) {
+                for (let x = 0; x < canvas.width; x += gridSpacing) {
+                    points.push(new Point(x, y));
+                }
+            }
+        }
+
+        function connectPoints() {
+            for (let i = 0; i < points.length; i++) {
+                for (let j = i + 1; j < points.length; j++) {
+                    const dx = points[i].x - points[j].x;
+                    const dy = points[i].y - points[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < gridSpacing) {
+                        ctx.beginPath();
+                        ctx.moveTo(points[i].x, points[i].y);
+                        ctx.lineTo(points[j].x, points[j].y);
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / gridSpacing})`; 
+                        ctx.lineWidth = 1.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            points.forEach((point) => point.update());
+            connectPoints();
+            requestAnimationFrame(animate);
+        }
+
+        createPoints();
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            createPoints(); 
+        });
+    </script>
+</body>
+</html>
