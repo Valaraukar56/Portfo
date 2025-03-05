@@ -1,26 +1,36 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <link rel="stylesheet" href="../sizing.css" type="text/css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/images/LOGO twitch.jpg">
+
+    <link rel="stylesheet" href="../sizing.css" type="text/css">
+
+    <!-- le css de tout le monde -->
     <link rel="stylesheet" href="../global.css">
+
+    <!-- le css global a ton truc -->
+    <link rel="stylesheet" href="/Mathieu/style.css">
     <title>Portfolio</title>
-
 <style>
-    main {
-        place-items: center;
-        padding: 3rem;
-        display: grid;
-        min-height: 80vh;
-    }
-
+    /* et le css propre a ta page */
     html, body{
+        display: flex;
+        flex-direction: column;
+
         max-width: 100vw;
         min-height: 100vh;
         background: url("../assets/images/FondLogo.png") no-repeat center center/cover;
-        z-index: -1; 
+    }
+
+    main {
+        flex-grow: 1;
+
+        display: grid;
+        place-items: center;
+
+        padding: var(--size-7);
     }
 
     picture {
@@ -58,7 +68,6 @@
     }
     
     #about-me {
-        position: relative;
         padding: var(--size-6);
         background-color: #222;
         color: #f7f3e7;
@@ -81,8 +90,8 @@
     }
 
 
-    
-    @media screen and (max-width: 768px) {
+    /* detail: c'est plus simple a lire comme ca */
+    @media screen and (width < 768px) {
         #about-me {
             max-width: 80vw;
         }
