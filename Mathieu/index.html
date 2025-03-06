@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/LOGO twitch.jpg">
+
+    <link rel="stylesheet" href="../sizing.css" type="text/css">
+
+    <!-- le css de tout le monde -->
+    <link rel="stylesheet" href="../global.css">
+
+    <!-- le css global a ton truc -->
+    <link rel="stylesheet" href="style.css">
+    <title>Portfolio</title>
+<style>
+    /* et le css propre a ta page */
+    html, body{
+        display: flex;
+        flex-direction: column;
+
+        max-width: 100vw;
+        min-height: 100vh;
+        
+        background: url("../assets/images/FondLogo.png") no-repeat center center/cover;
+    }
+
+    main {
+        flex-grow: 1;
+
+        display: grid;
+        place-items: center;
+
+        padding: var(--size-7);
+    }
+
+    picture {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        
+            backdrop-filter: blur(5px);
+        
+            mask-image: linear-gradient(
+                0deg, 
+                rgba(0,0,0,1) 0%, 
+                rgba(0,0,0,1) 10%, 
+                rgba(0,0,0,0) 30%, 
+                rgba(0,0,0,0) 40%, 
+                rgba(0,0,0,1) 60%, 
+                rgba(0,0,0,1) 100%);
+        }
+        
+        img {
+            width: inherit;
+            height: inherit;
+        }
+    }
+    
+    #about-me {
+        padding: var(--size-6);
+        background-color: #222;
+        color: #f7f3e7;
+        border-radius: var(--size-7);
+        box-shadow: 0 4px 10px rgba(29, 11, 11, 0.5);
+        width: 80ch;
+        z-index: 1;
+        
+        h1 {
+            margin: 0 0 10px; 
+            font-size: 24px; 
+            text-align: center;
+        }
+
+        p {
+            margin: 1.5rem auto;
+            font-size: 18px;
+            line-height: 1.5; 
+        }
+    }
+
+
+    /* detail: c'est plus simple a lire comme ca */
+    @media screen and (width < 768px) {
+        #about-me {
+            max-width: 80vw;
+        }
+    }
+</style>
+</head>
+
+<body>
+    <header id="header">
+        <div id="logoV">
+            <img src="../assets/images/Logo_V.png">
+            <h1><a href="../Mathieu/index.html">Mathieu Piris</a></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/Mathieu/index.html">Home</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="about-me">
+            <h1>👋 Hello there</h1>
+            <p>I'm Mathieu, a student in BTS at L'AFTEC Vannes</p>
+            <p>Everything you see has been developed by me. In the top right, you'll find my projects, whether completed or in progress, created as I continued to improve.</p>
+            <p>Feel free to reach out to me through the "Contact" section. Enjoy your visit here!</p>    <!-- Blabla je suis fort en ça je l'ai ai mis a contribution dans ça et ça  -->
+        </div> 
+        <picture></picture>
+    </main>
+</body>
+</html>

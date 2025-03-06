@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/LOGO twitch.jpg">
+    <link rel="stylesheet" href="../sizing.css" type="text/css">
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Skills</title>
+    <style>
+        *{
+            background-color: #222;
+            box-sizing: border-box;
+        }
+        body{
+            margin: 0;
+        }
+        main{
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            justify-content: center; 
+            gap: 40px; 
+
+            img {
+                width: 100px; 
+                height: auto;
+                transition: transform 0.3s;
+            }
+
+            img:hover{
+                transform: scale(1.1);
+            }
+        }
+
+        .skills-section {
+            /* margin -> padding: regle le debordement cause par le */
+            /* main > * { width: 100% } */
+            /* qui est dans le global css */
+            padding: var(--size-8);
+
+            p {
+                font-size: 24px; 
+                font-weight: bold; 
+                color: #f7f3e7;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div id="logoV">
+            <img src="../assets/images/Logo_V.png">
+            <h1><a href="../Mathieu/index.html">Mathieu Piris</a></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main> 
+        <div class="skills-section">
+            <p>Mes principales compétences </p>
+            <div class="logo">
+                <img class="html" src="../assets/images/HTML logo.png" alt="Logo HTML">
+                <img  class="css" src="../assets/images/css-3.png" alt="Logo CSS">
+                <img class="js" src="../assets/images/jslogo.png" alt="Logo JavaScript">
+            </div>
+        </div>
+    </main>
+</body>
+</html>

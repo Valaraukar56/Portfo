@@ -1,0 +1,48 @@
+/* inutile: autant le target avec "header"
+sauf si tu veux denoter que tu as plusieurs types de header.
+auquel cas ce serais plus pertinent d'utiliser:
+header.mobile
+header.desktop
+par exemple */
+#header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	font-weight: bold;
+	font-size: 20px;
+
+	padding: var(--size-5);
+	
+	nav,
+	h1{
+			z-index: 3;
+	}
+
+	a{
+			color: #f1f1f1;
+			text-decoration: none;
+	}
+	a:hover{
+			color: rgb(247, 104, 192);
+			transition: color 0.3s ease-in-out;
+	}
+	ul {
+		list-style-type: none;
+		display: flex;
+	}
+	li:not(:last-child) {
+		margin-right: 3rem;
+	}
+	
+}
+
+#logoV {
+	display: flex;
+	align-items: center;
+
+	img{
+			width: 100px;
+			z-index: 3;
+	}
+}
