@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alessandro Fortunati</title>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    
     <style>
         *{
             box-sizing: border-box;
@@ -43,10 +44,11 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            img {
-                width: 100%;
-                height: auto;
-                max-height: 90vh;
+
+            iframe {
+                width: 40vw;
+                height: 80vh; /* Définit la hauteur à 100% de la section parent */
+                max-height: 90vh; /* Assure qu'il ne dépasse pas l'écran */
                 display: block;
                 border-radius: 20px;
             }
@@ -84,7 +86,7 @@
         }
 
         .right-section {
-            width: 70%;
+            width: 80%;
             padding: 40px 20px;
             display: flex;
             flex-direction: column;
@@ -174,7 +176,7 @@
 <body>
     
         <div class="left-section">
-            <a href="../Alessandro/cv.html" target="_blank"><img src="../assets/images/CV.png" alt="CV Image"></a>
+            <iframe src="../assets/images/CV.pdf" alt="CV Image"></iframe>
             
             <div class="download-btn">
                 <a href="../assets/images/CV.png" download="">Télécharger mon CV</a>
