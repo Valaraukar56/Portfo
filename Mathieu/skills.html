@@ -1,253 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/LOGO twitch.jpg">
-    <link rel="stylesheet" href="../sizing.css" type="text/css">
-    <link rel="stylesheet" href="../global.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Skills</title>
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" type="image/x-icon" href="../assets/images/LOGO twitch.jpg">
+<link rel="stylesheet" href="../sizing.css" type="text/css">
+<link rel="stylesheet" href="../global.css">
+<link rel="stylesheet" href="style.css">
+<title>Skills</title>
+<style>
+  body {
+    margin: 0;
+    background-color: #222;
+  }
 
-        body {
-            margin: 0;
-        }
-        canvas {
-            display: block;
-            position: absolute; 
-            top: 0;
-            left: 0;
-            z-index: -1;
-            min-height: 100vh;
-            min-width: none;
-        }
-        .logo {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-        }
-        .logo img {
-            width: 100px;
-            height: auto;
-            transition: transform 0.3s;
-        }
-        .logo img:hover {
-            transform: scale(1.1);
-        }
-        .skills-section {
-            padding: var(--size-8);
-        }
-        .skills-section p {
-            font-size: 24px;
-            font-weight: bold;
-            color: #f7f3e7;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-    </style>
+  .logo {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+  }
+  .logo img {
+    width: 100px;
+    height: auto;
+    transition: transform 0.3s;
+  }
+  .logo img:hover {
+    transform: scale(1.1);
+  }
+  .skills-section {
+    padding: var(--size-8);
+  }
+  .skills-section p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f7f3e7;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+</style>
 </head>
-<canvas></canvas>
+
 <body>
-    <header id="header">
-        <div id="logoV">
-            <img src="../assets/images/Logo_V.png">
-            <h1><a href="../Mathieu/index.html">Mathieu Piris</a></h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="skills.html">Skills</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <div class="skills-section">
-            <p>Mes principales compétences</p>
-            <div class="logo">
-                <img src="../assets/images/HTML logo.png" alt="Logo HTML">
-                <img src="../assets/images/css-3.png" alt="Logo CSS">
-                <img src="../assets/images/jslogo.png" alt="Logo JavaScript">
-                <a href="https://github.com/Valaraukar56"><img src="../assets/images/github-mark-white.svg" alt="Logo Github"></a>
-            </div>
-        </div>
-        
-    </main>
-  </body>
-<script>
-// todo : idea, make the balls bigger when they have less squares
-
-const ctx = document.querySelector("canvas").getContext("2d");
-const main = document.querySelector("main");
-
-const PI = Math.PI;
-
-const BLOCK_SIZE = 50;
-
-let players = [];
-let board = [];
-let padding = { x: 0, y: 0 };
-
-function blockIndex(x, y) {
-  const colCount = Math.trunc(
-    ctx.canvas.width / BLOCK_SIZE
-  );
-
-  return (
-    Math.trunc(y / BLOCK_SIZE) * colCount +
-    Math.trunc(x / BLOCK_SIZE)
-  );
-}
-
-function createBoard() {
-  ctx.canvas.width = window.innerWidth; // Remplir toute la fenêtre
-  ctx.canvas.height = window.innerHeight; // Remplir toute la fenêtre
-
-  const width = ctx.canvas.width;
-  const height = ctx.canvas.height;
-
-  const colCount = Math.trunc(width / BLOCK_SIZE);
-  const rowCount = Math.trunc(height / BLOCK_SIZE);
-
-  board = new Array(colCount * rowCount);
-
-  for (let i = 0; i < board.length * 0.5; i++) {
-    board[i] = 0;
-  }
-  for (let i = board.length * 0.5; i < board.length; i++) {
-    board[i] = 1;
-  }
-
-  players = [
-    {
-      x: width * 0.5,
-      y: height * 0.45,
-      radius: BLOCK_SIZE * 0.5,
-      velocity: {
-        x: -2,
-        y: 2,
-      },
-      color: "rgb(4, 150, 255)",
-    },
-    {
-      x: width * 0.5,
-      y: height * 0.75,
-      radius: BLOCK_SIZE * 0.5,
-      velocity: {
-        x: 2,
-        y: -2,
-      },
-      color: "#E60A84",
-    },
-  ];
-}
-
-function draw() {
-  requestAnimationFrame(draw);
-
-  // Mouvements des joueurs
-  for (let i = 0; i < players.length; i++) {
-    players[i].x += players[i].velocity.x;
-    players[i].y += players[i].velocity.y;
-
-    // Collision avec les bords
-    if (
-      players[i].x - players[i].radius < 0 ||
-      players[i].x + players[i].radius > ctx.canvas.width
-    ) {
-      players[i].velocity.x *= -1;
-    }
-    if (
-      players[i].y - players[i].radius < 0 ||
-      players[i].y + players[i].radius > ctx.canvas.height
-    ) {
-      players[i].velocity.y *= -1;
-    }
-
-    const colCount = Math.trunc(ctx.canvas.width / BLOCK_SIZE);
-    const rowCount = Math.trunc(ctx.canvas.height / BLOCK_SIZE);
-
-    // Collision avec les blocs
-    if (
-      i !=
-      board[blockIndex(players[i].x + players[i].radius, players[i].y)]
-    ) {
-      players[i].velocity.x *= -1;
-      board[blockIndex(players[i].x + players[i].radius, players[i].y)] =
-        i;
-    }
-    if (
-      i !=
-      board[blockIndex(players[i].x - players[i].radius, players[i].y)]
-    ) {
-      players[i].velocity.x *= -1;
-      board[blockIndex(players[i].x - players[i].radius, players[i].y)] =
-        i;
-    }
-
-    if (
-      i !=
-      board[blockIndex(players[i].x, players[i].y + players[i].radius)]
-    ) {
-      players[i].velocity.y *= -1;
-      board[blockIndex(players[i].x, players[i].y + players[i].radius)] =
-        i;
-    }
-    if (
-      i !=
-      board[blockIndex(players[i].x, players[i].y - players[i].radius)]
-    ) {
-      players[i].velocity.y *= -1;
-      board[blockIndex(players[i].x, players[i].y - players[i].radius)] =
-        i;
-    }
-  }
-
-  // Dessin des blocs
-  for (let i = 0; i < board.length; i++) {
-    if (board[i] == 0) {
-      ctx.fillStyle = "rgb(4, 122, 160)";
-    } else {
-      ctx.fillStyle = "#E45A84";
-    }
-
-    const x = i % (ctx.canvas.width / BLOCK_SIZE);
-    const y = Math.trunc(i / (ctx.canvas.width / BLOCK_SIZE));
-
-    ctx.fillRect(
-      x * BLOCK_SIZE,
-      y * BLOCK_SIZE,
-      BLOCK_SIZE + 1,
-      BLOCK_SIZE
-    );
-  }
-
-  // Dessin des joueurs
-  for (let i = 0; i < players.length; i++) {
-    ctx.fillStyle = players[i].color;
-    ctx.beginPath();
-    ctx.ellipse(
-      players[i].x,
-      players[i].y,
-      players[i].radius,
-      players[i].radius,
-      0,
-      0,
-      2 * PI
-    );
-    ctx.fill();
-
-    ctx.beginPath();
-    ctx.ellipse(players[i].x, players[i].y, 3, 3, 0, 0, 2 * PI);
-    ctx.fill();
-  }
-}
-
-window.addEventListener("resize", createBoard);
-
-createBoard();
-requestAnimationFrame(draw);
-</script>
+  <header id="header">
+      <div id="logoV">
+        <img src="../assets/images/Logo_V.png">
+        <h1><a href="../Mathieu/index.html">Mathieu Piris</a></h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="skills.html">Skills</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+  </header>
+  <main>
+    <div class="skills-section">
+      <p>Mes principales compétences</p>
+      <div class="logo">
+        <img src="../assets/images/HTML logo.png" alt="Logo HTML">
+        <img src="../assets/images/css-3.png" alt="Logo CSS">
+        <img src="../assets/images/jslogo.png" alt="Logo JavaScript">
+        <a href="https://github.com/Valaraukar56"><img src="../assets/images/github-mark-white.svg" alt="Logo Github"></a>
+      </div>
+    </div>
+      
+  </main>
+</body>
 </html>
