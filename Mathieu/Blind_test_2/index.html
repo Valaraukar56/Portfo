@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blind Test Musical</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-foreground: #ffffff;
+            --secondary: #f3f4f6;
+            --secondary-foreground: #1f2937;
+            --muted: #f3f4f6;
+            --muted-foreground: #6b7280;
+            --card: #ffffff;
+            --card-foreground: #1f2937;
+            --border: #e5e7eb;
+            --input: #e5e7eb;
+            --ring: #6366f1;
+            --radius: 0.5rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #1e293b, #0f172a);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            color: var(--card-foreground);
+        }
+
+        .card {
+            background-color: var(--card);
+            border-radius: var(--radius);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 450px;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            opacity: 0.8;
+            font-size: 0.875rem;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-footer {
+            background-color: var(--muted);
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--muted-foreground);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge-outline {
+            border: 1px solid var(--border);
+        }
+
+        .badge-secondary {
+            background-color: var(--secondary);
+            color: var(--secondary-foreground);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .album-cover {
+            width: 128px;
+            height: 128px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--muted);
+        }
+
+        .album-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .music-icon {
+            width: 64px;
+            height: 64px;
+            color: var(--muted-foreground);
+        }
+
+        .progress-container {
+            margin-bottom: 1rem;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: var(--muted);
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+
+        .progress-value {
+            height: 100%;
+            background-color: var(--primary);
+            width: 0%;
+            transition: width 1s linear;
+        }
+
+        .input {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--input);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            margin-bottom: 1rem;
+        }
+
+        .input:focus {
+            border-color: var(--ring);
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .button {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem;
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.2s;
+        }
+
+        .button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .button-primary {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+        }
+
+        .button-primary:hover:not(:disabled) {
+            background-color: #4f46e5;
+        }
+
+        .button-outline {
+            background-color: transparent;
+            border: 1px solid var(--border);
+            color: var(--card-foreground);
+        }
+
+        .button-outline:hover:not(:disabled) {
+            background-color: var(--muted);
+        }
+
+        .button svg {
+            margin-right: 0.5rem;
+        }
+
+        .hint {
+            background-color: var(--muted);
+            padding: 0.5rem;
+            border-radius: var(--radius);
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .result {
+            padding: 1rem;
+            border-radius: var(--radius);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .result-correct {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .result-incorrect {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .song-info {
+            margin-bottom: 1rem;
+        }
+
+        .song-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .song-info span {
+            font-weight: normal;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="blind-test-card">
+        <div class="card-header">
+            <h2 class="card-title">Blind Test Musical</h2>
+            <p class="card-description">Devinez l'artiste ou le titre de la chanson</p>
+        </div>
+        
+        <div class="card-content" id="game-content">
+            <div class="stats">
+                <span class="badge badge-outline" id="song-counter">Chanson 1/5</span>
+                <span class="badge badge-secondary" id="score-display">Score: 0.0</span>
+            </div>
+            
+            <div class="album-cover" id="album-cover">
+                <svg class="music-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="8" cy="18" r="4"></circle>
+                    <path d="M12 18V2l7 4"></path>
+                </svg>
+            </div>
+            
+            <div id="guessing-section">
+                <div class="progress-container">
+                    <div class="progress-info">
+                        <span id="time-left">Temps restant: 30s</span>
+                        <span id="progress-percent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-value" id="progress-value"></div>
+                    </div>
+                </div>
+                
+                <input type="text" class="input" id="guess-input" placeholder="Entrez le titre ou l'artiste...">
+                
+                <div class="button-group">
+                    <button class="button button-primary" id="play-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        Écouter
+                    </button>
+                    <button class="button button-primary" id="validate-button" disabled>Valider</button>
+                </div>
+                
+                <div id="hints-container"></div>
+                
+                <button class="button button-outline" id="hint-button">Indice suivant</button>
+            </div>
+            
+            <div id="answer-section" class="hidden">
+                <div class="result" id="result-display"></div>
+                
+                <div class="song-info">
+                    <p><strong>Titre: </strong><span id="song-title"></span></p>
+                    <p><strong>Artiste: </strong><span id="song-artist"></span></p>
+                </div>
+                
+                <button class="button button-primary" id="next-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                        <line x1="19" y1="5" x2="19" y2="19"></line>
+                    </svg>
+                    Chanson suivante
+                </button>
+            </div>
+        </div>
+        
+        <div class="card-content hidden" id="game-over">
+            <h2 class="card-title" style="text-align: center; margin-bottom: 1rem;">Partie terminée!</h2>
+            <p style="text-align: center; font-size: 1.25rem; margin-bottom: 1.5rem;">Score final: <span id="final-score">0</span></p>
+            <button class="button button-primary" id="restart-button">Rejouer</button>
+        </div>
+        
+        <div class="card-footer">
+            <strong>Avertissement:</strong> <p>Baisse le son avant de jouer au cas où, bon jeu !</p>
+        </div>
+    </div>
+
+    <audio id="audio-player"></audio>
+
+    <script>
+        // Sample data for the blind test
+        const songs = [
+            {
+                id: 1,
+                title: "Bohemian Rhapsody",
+                artist: "Queen",
+                audioUrl: "../assets/son/Queen – Bohemian Rhapsody (Official Video Remastered).mp3", // Replace with actual URL
+                coverUrl: "../assets/cover/queen.jpg", // Replace with actual URL
+                hints: ["Released in 1975", "From the album 'A Night at the Opera'", "Freddie Mercury"]
+            },
+            {
+                id: 2,
+                title: "Billie Jean",
+                artist: "Michael Jackson",
+                audioUrl: "assets/son/Michael Jackson - Billie Jean (Official Video).mp3", // Replace with actual URL
+                coverUrl: "assets/cover/billie_jean.jpg", // Replace with actual URL
+                hints: ["Released in 1983", "From the album 'Thriller'", "King of Pop"]
+            },
+            {
+                id: 3,
+                title: "Imagine",
+                artist: "John Lennon",
+                audioUrl: "assets/son/Imagine (Ultimate Mix).mp3", // Replace with actual URL
+                coverUrl: "assets/cover/imagine.jpg", // Replace with actual URL
+                hints: ["Released in 1971", "From the album 'Imagine'", "Ex-Beatles member"]
+            },
+            {
+                id: 4,
+                title: "Like a Rolling Stone",
+                artist: "Bob Dylan",
+                audioUrl: "assets/son/Bob Dylan - Like a Rolling Stone (Official Audio).mp3", // Replace with actual URL
+                coverUrl: "assets/cover/bob_dylan.jpg", // Replace with actual URL
+                hints: ["Released in 1965", "From the album 'Highway 61 Revisited'", "Nobel Prize winner"]
+            },
+            {
+                id: 5,
+                title: "Smells Like Teen Spirit",
+                artist: "Nirvana",
+                audioUrl: "assets/son/Nirvana - Smells Like Teen Spirit (Lyrics).mp3", // Replace with actual URL
+                coverUrl: "assets/son/Nirvana - Smells Like Teen Spirit (Lyrics).mp3", // Replace with actual URL
+                hints: ["Released in 1991", "From the album 'Nevermind'", "Kurt Cobain"]
+            }
+        ];
+
+        // Game state
+        let currentSongIndex = 0;
+        let isPlaying = false;
+        let score = 0;
+        let showAnswer = false;
+        let hintIndex = 0;
+        let progress = 0;
+        let gameOver = false;
+        let timeLeft = 30;
+        let timer;
+
+        // DOM elements
+        const audioPlayer = document.getElementById('audio-player');
+        const playButton = document.getElementById('play-button');
+        const validateButton = document.getElementById('validate-button');
+        const nextButton = document.getElementById('next-button');
+        const hintButton = document.getElementById('hint-button');
+        const restartButton = document.getElementById('restart-button');
+        const guessInput = document.getElementById('guess-input');
+        const songCounter = document.getElementById('song-counter');
+        const scoreDisplay = document.getElementById('score-display');
+        const timeLeftDisplay = document.getElementById('time-left');
+        const progressPercent = document.getElementById('progress-percent');
+        const progressValue = document.getElementById('progress-value');
+        const hintsContainer = document.getElementById('hints-container');
+        const albumCover = document.getElementById('album-cover');
+        const resultDisplay = document.getElementById('result-display');
+        const songTitle = document.getElementById('song-title');
+        const songArtist = document.getElementById('song-artist');
+        const finalScore = document.getElementById('final-score');
+        const guessingSection = document.getElementById('guessing-section');
+        const answerSection = document.getElementById('answer-section');
+        const gameContent = document.getElementById('game-content');
+        const gameOverScreen = document.getElementById('game-over');
+
+        // Initialize the game
+        function initGame() {
+            currentSongIndex = 0;
+            score = 0;
+            gameOver = false;
+            updateSongCounter();
+            updateScoreDisplay();
+            loadCurrentSong();
+            showGameContent();
+        }
+
+        // Load the current song
+        function loadCurrentSong() {
+            const currentSong = songs[currentSongIndex];
+            audioPlayer.src = currentSong.audioUrl;
+            resetSongState();
+        }
+
+        // Reset the state for a new song
+        function resetSongState() {
+            isPlaying = false;
+            showAnswer = false;
+            hintIndex = 0;
+            progress = 0;
+            timeLeft = 30;
+            
+            // Reset UI
+            updatePlayButton();
+            guessInput.value = '';
+            validateButton.disabled = true;
+            progressValue.style.width = '0%';
+            timeLeftDisplay.textContent = `Temps restant: ${timeLeft}s`;
+            progressPercent.textContent = '0%';
+            
+            // Reset album cover
+            albumCover.innerHTML = `
+                <svg class="music-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="8" cy="18" r="4"></circle>
+                    <path d="M12 18V2l7 4"></path>
+                </svg>
+            `;
+            
+            // Clear hints
+            hintsContainer.innerHTML = '';
+            
+            // Show guessing section, hide answer section
+            guessingSection.classList.remove('hidden');
+            answerSection.classList.add('hidden');
+            
+            // Clear any existing timer
+            clearInterval(timer);
+        }
+
+        // Update the song counter
+        function updateSongCounter() {
+            songCounter.textContent = `Chanson ${currentSongIndex + 1}/${songs.length}`;
+        }
+
+        // Update the score display
+        function updateScoreDisplay() {
+            scoreDisplay.textContent = `Score: ${score.toFixed(1)}`;
+        }
+
+        // Toggle play/pause
+        function togglePlay() {
+            if (isPlaying) {
+                audioPlayer.pause();
+                isPlaying = false;
+                clearInterval(timer);
+            } else {
+                audioPlayer.play();
+                isPlaying = true;
+                startTimer();
+            }
+            updatePlayButton();
+        }
+
+        // Update the play button text and icon
+        function updatePlayButton() {
+            if (isPlaying) {
+                playButton.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="6" y="4" width="4" height="16"></rect>
+                        <rect x="14" y="4" width="4" height="16"></rect>
+                    </svg>
+                    Pause
+                `;
+            } else {
+                playButton.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    Écouter
+                `;
+            }
+        }
+
+        // Start the timer
+        function startTimer() {
+            clearInterval(timer);
+            timer = setInterval(() => {
+                timeLeft--;
+                progress = ((30 - timeLeft) / 30) * 100;
+                
+                timeLeftDisplay.textContent = `Temps restant: ${timeLeft}s`;
+                progressPercent.textContent = `${Math.floor(progress)}%`;
+                progressValue.style.width = `${progress}%`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    isPlaying = false;
+                    audioPlayer.pause();
+                    updatePlayButton();
+                }
+            }, 1000);
+        }
+
+        // Check the user's answer
+        function checkAnswer() {
+            const currentSong = songs[currentSongIndex];
+            const userGuess = guessInput.value.toLowerCase().trim();
+            const correctTitle = currentSong.title.toLowerCase();
+            const correctArtist = currentSong.artist.toLowerCase();
+            
+            let isCorrect = false;
+            
+            if (userGuess === correctTitle || userGuess === correctArtist || 
+                correctTitle.includes(userGuess) || correctArtist.includes(userGuess)) {
+                isCorrect = true;
+                score += Math.max(1, timeLeft / 10);
+                updateScoreDisplay();
+            }
+            
+            showAnswerSection(isCorrect);
+        }
+
+        // Show the answer section
+        function showAnswerSection(isCorrect) {
+            const currentSong = songs[currentSongIndex];
+            
+            // Stop audio and timer
+            audioPlayer.pause();
+            isPlaying = false;
+            clearInterval(timer);
+            
+            // Update UI
+            showAnswer = true;
+            guessingSection.classList.add('hidden');
+            answerSection.classList.remove('hidden');
+            
+            // Show result
+            if (isCorrect) {
+                resultDisplay.className = 'result result-correct';
+                resultDisplay.textContent = 'Bravo! Réponse correcte!';
+            } else {
+                resultDisplay.className = 'result result-incorrect';
+                resultDisplay.textContent = 'Dommage! Mauvaise réponse.';
+            }
+            
+            // Show song info
+            songTitle.textContent = currentSong.title;
+            songArtist.textContent = currentSong.artist;
+            
+            // Show album cover
+            albumCover.innerHTML = `<img src="${currentSong.coverUrl}" alt="${currentSong.title}">`;
+            
+            // Update next button text
+            if (currentSongIndex >= songs.length - 1) {
+                nextButton.textContent = 'Terminer';
+            } else {
+                nextButton.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                        <line x1="19" y1="5" x2="19" y2="19"></line>
+                    </svg>
+                    Chanson suivante
+                `;
+            }
+        }
+
+        // Show the next hint
+        function showNextHint() {
+            const currentSong = songs[currentSongIndex];
+            
+            if (hintIndex < currentSong.hints.length) {
+                const hintElement = document.createElement('div');
+                hintElement.className = 'hint';
+                hintElement.textContent = `Indice ${hintIndex + 1}: ${currentSong.hints[hintIndex]}`;
+                hintsContainer.appendChild(hintElement);
+                
+                hintIndex++;
+                
+                if (hintIndex >= currentSong.hints.length) {
+                    hintButton.disabled = true;
+                }
+            }
+        }
+
+        // Go to the next song
+        function nextSong() {
+            if (currentSongIndex < songs.length - 1) {
+                currentSongIndex++;
+                updateSongCounter();
+                loadCurrentSong();
+            } else {
+                endGame();
+            }
+        }
+
+        // End the game
+        function endGame() {
+            gameOver = true;
+            finalScore.textContent = score.toFixed(1);
+            gameContent.classList.add('hidden');
+            gameOverScreen.classList.remove('hidden');
+        }
+
+        // Show the game content (hide game over screen)
+        function showGameContent() {
+            gameContent.classList.remove('hidden');
+            gameOverScreen.classList.add('hidden');
+        }
+
+        // Event listeners
+        playButton.addEventListener('click', togglePlay);
+        
+        validateButton.addEventListener('click', checkAnswer);
+        
+        nextButton.addEventListener('click', nextSong);
+        
+        hintButton.addEventListener('click', showNextHint);
+        
+        restartButton.addEventListener('click', initGame);
+        
+        guessInput.addEventListener('input', () => {
+            validateButton.disabled = !guessInput.value.trim();
+        });
+        
+        guessInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && guessInput.value.trim()) {
+                checkAnswer();
+            }
+        });
+
+        // Initialize the game
+        initGame();
+    </script>
+</body>
+</html>
