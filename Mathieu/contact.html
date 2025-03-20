@@ -4,34 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/LOGO twitch.jpg"><title>Contact</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/LOGO twitch.jpg">
+    <title>Contact</title>
     <link rel="stylesheet" href="../sizing.css" type="text/css">
     <link rel="stylesheet" href="../global.css">
     <link rel="stylesheet" href="style.css">
     <style>
-      body {
-        overflow-x: hidden;
-        position: relative;
-        margin: 0;
-        background-color: #222;
-          
+      html, body {
+        width: 100%;
+        height: 100%;
       }
+      
+      body {
+        position: relative;
+        background-color: #222;
+      }
+      
       canvas {
         z-index: -1;
         display: block;
-        position: absolute; 
+        position: fixed; /* Changed from absolute to fixed */
         top: 0;
         left: 0;
         width: 100vw;
         height: 100vh;
       } 
+      
       main {
         z-index: 10;
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 50vh;
-        width: 100vw;
+        min-height: 50vh; /* Changed from height to min-height */
+        width: 100%;
+        padding: 20px 0;
+        position: relative; /* Added position relative */
       }
        
       .contact-section {
@@ -40,9 +47,10 @@
         border-radius: var(--size-3);
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
         background: #222;
-        width: 80%;
+        width: 70%;
         max-width: 1200px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.2), inset 0 -2px 5px rgba(255, 255, 255, 0.2);
+        margin-bottom: 20px; /* Added margin bottom */
       }
       .contact-section h2 {
         font-size: 32px;
@@ -109,7 +117,7 @@
           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.2), inset 0 -2px 5px rgba(255, 255, 255, 0.2);
           position: relative; /* Gardé position relative */
           color: white;
-          width: 80%;
+          width: 70%;
           max-width: 1200px;
           border-left: 4px solid #007BFF;
           transition: all 0.3s ease;
@@ -157,6 +165,13 @@
         min-width: 150px;
         text-align: center;
       }
+      
+      /* Ensure header is above canvas */
+      #header {
+        position: relative;
+        z-index: 10;
+      }
+      
       @media screen and (max-width: 768px) {
           main {
             padding: 20px 0; /* Ajout de padding vertical */
@@ -186,24 +201,24 @@
       }
     </style>
 </head>
-<header id="header">
-    <div id="logoV">
-        <img src="../assets/images/Logo_V.png">
-        <h1><a href="../Mathieu/index.html">Mathieu Piris</a></h1>
-    </div>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="skills.html">Skills</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-<canvas id="spider-web"></canvas>
 <body>
+    <header id="header">
+        <div id="logoV">
+            <img src="../assets/images/Logo_V.png">
+            <h1><a href="../Mathieu/index.html">Mathieu Piris</a></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <canvas id="spider-web"></canvas>
     <main>
-      <section id ="contact" class="contact-section">
+      <section class="contact-section">
           <h2>Contactez-moi </h2>
           <p>N'hésitez pas à me contacter via ce formulaire ou directement par email.</p>
           <form class="contact-form" action="https://formspree.io/f/mldjdlja" method="POST">
@@ -236,8 +251,15 @@
     <script>
         const canvas = document.getElementById("spider-web")
         const ctx = canvas.getContext("2d")
-        canvas.width = window.innerWidth
-        canvas.height = window.innerHeight
+        
+        // Set canvas size and update on resize
+        function resizeCanvas() {
+            canvas.width = window.innerWidth
+            canvas.height = window.innerHeight
+        }
+        
+        // Initial resize
+        resizeCanvas()
 
         // Create an autonomous moving rocket with random trajectory
         const rocket = {
@@ -408,8 +430,7 @@
         animate()
 
         window.addEventListener("resize", () => {
-          canvas.width = window.innerWidth
-          canvas.height = window.innerHeight
+          resizeCanvas()
         
           // Reset rocket position on resize
           rocket.x = canvas.width / 2
