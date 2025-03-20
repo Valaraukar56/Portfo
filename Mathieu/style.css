@@ -44,3 +44,22 @@ par exemple */
 			z-index: 3;
 	}
 }
+
+
+.language-switcher {
+	display: inline-block; /* Évite que ça prenne toute la largeur */
+	color: white; /* Couleur du texte */
+	cursor: pointer; /* Indique que c'est cliquable */
+	margin-left: 15px;
+	text-decoration: none; /* Enlève le soulignement si c'est un lien */
+	font-weight: bold; /* Optionnel : rend le texte plus visible */
+	background-color: #222;
+	border-radius: 20px;
+	padding: 5px 10px;
+}
+
+.language-switcher:hover {
+	color: rgb(247, 104, 192); /* Couleur du texte au survol */
+	transition: color 0.3s ease-in-out; /* Animation de la couleur */
+}
+

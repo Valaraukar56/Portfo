@@ -92,10 +92,14 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="skills.html">Skills</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="../index.html" data-i18n="nav.home">Accueil</a></li>
+                <li><a href="skills.html" data-i18n="nav.skills">Compétences</a></li>
+                <li><a href="projects.html" data-i18n="nav.projects">Projets</a></li>
+                <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+                <button class="language-switcher" id="languageSwitcher">
+                    <span class="language-icon">🌐</span>
+                    <span id="languageText">EN</span>
+                </button>
             </ul>
         </nav>
     </header>
@@ -156,7 +160,7 @@
         </div>
 
         <div class="container">
-            <h2>Casse-Brique</h2>
+            <h2 data-i18n="casse-brique">Casse-Brique</h2>
             <div class="image-wrapper">
                 <a href="../Mathieu/Casse-brique/glace.html" target="_blank"><img src="../assets/images/casse-b_screen.PNG" alt="Casse-Brique"></a>
             </div>
@@ -168,5 +172,6 @@
             </div>
         </div> 
     </main>
+    <script src="../Mathieu/js/language-switcher.js"></script>
 </body>
 </html>

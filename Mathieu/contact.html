@@ -208,24 +208,28 @@
             <h1><a href="../Mathieu/index.html">Mathieu Piris</a></h1>
         </div>
         <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="skills.html">Skills</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+          <ul>
+            <li><a href="../index.html" data-i18n="nav.home">Accueil</a></li>
+            <li><a href="skills.html" data-i18n="nav.skills">Compétences</a></li>
+            <li><a href="projects.html" data-i18n="nav.projects">Projets</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+            <button class="language-switcher" id="languageSwitcher">
+                <span class="language-icon">🌐</span>
+                <span id="languageText">EN</span>
+            </button>
+          </ul>
         </nav>
     </header>
     <canvas id="spider-web"></canvas>
     <main>
       <section class="contact-section">
-          <h2>Contactez-moi </h2>
-          <p>N'hésitez pas à me contacter via ce formulaire ou directement par email.</p>
+          <h2 data-i18n="contact.h2">Contactez-moi </h2>
+          <p data-i18n="contact.p">N'hésitez pas à me contacter via ce formulaire ou directement par email.</p>
           <form class="contact-form" action="https://formspree.io/f/mldjdlja" method="POST">
-            <input type="text" id="name" name="name" placeholder="Nom et prénom *" required>
-            <input type="email" id="email" name="email" placeholder="Adresse e-mail *" required>
-            <textarea id="message" name="message" placeholder="Votre message *" rows="5" required></textarea>
-            <button type="submit">Envoyer</button>
+            <input data-i18n-placeholder="contact.name_placeholder" type="text" id="name" name="name" placeholder="Nom et prénom *" required>
+            <input data-i18n-placeholder="contact.email_placeholder" type="email" id="email" name="email" placeholder="Adresse e-mail *" required>
+            <textarea data-i18n-placeholder="contact.message_placeholder" id="message" name="message" placeholder="Votre message *" rows="5" required></textarea>
+            <button data-i18n="contact.send" type="submit">Envoyer</button>
         </form>
       </section>
   
@@ -248,6 +252,7 @@
         </div>
       </div>
     </main>
+    <script src="../Mathieu/js/language-switcher.js"></script>
     <script>
         const canvas = document.getElementById("spider-web")
         const ctx = canvas.getContext("2d")
