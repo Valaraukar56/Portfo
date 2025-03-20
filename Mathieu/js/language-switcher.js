@@ -9,11 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
       "nav.contact": "Contact",
       "about.greeting": "👋 Bonjour",
       "about.intro":
-        'Je suis Mathieu, étudiant en BTS à L\'<strong><a href="https://www.aftec.fr/ecole-commerce-vannes">AFTEC</a></strong> Vannes',
+        'Je suis Mathieu, étudiant en BTS à L\'<strong><a href="https://www.aftec.fr/ecole-commerce-vannes" target="_blank">AFTEC</a></strong> Vannes',
       "about.portfolio":
         "Tout ce que vous voyez a été développé par moi. En haut à droite, vous trouverez mes <strong><a href=\"projects.html\">projets</a></strong>, qu'ils soient terminés ou en cours, créés au fur et à mesure que je continuais à m'améliorer.",
       "about.projectsLink": "projets",
-      "about.skills": "J'ai mis à profit mes compétences en JavaScript pour développer mon projet SHMUP",
+      "about.skills": "J'ai mis à profit mes compétences en JavaScript pour développer mon projet Shoot 'em up",
       "contact.h2": "Contactez-moi",
       "contact.p": "N'hésitez pas à me contacter via ce formulaire ou directement par email",
       "contact.name_placeholder": "Nom et prénom *",
@@ -30,11 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
       "nav.contact": "Contact",
       "about.greeting": "👋 Hello there",
       "about.intro":
-        'I\'m Mathieu, a student in BTS at <strong><a href="https://www.aftec.fr/ecole-commerce-vannes">AFTEC</a></strong> Vannes',
+        'I\'m Mathieu, a student in BTS at <strong><a href="https://www.aftec.fr/ecole-commerce-vannes" target="_blank">AFTEC</a></strong> Vannes',
       "about.portfolio":
         'Everything you see has been developed by me. In the top right, you\'ll find my <strong><a href="projects.html">projects</a></strong>, whether completed or in progress, created as I continued to improve.',
       "about.projectsLink": "projects",
-      "about.skills": "I leveraged my JavaScript skills to develop my SHMUP project",
+      "about.skills": "I leveraged my JavaScript skills to develop my Shoot 'em up project",
       "contact.h2": "Contact me",
       "contact.p": "Feel free to contact me via this form or directly by email",
       "contact.name_placeholder": "Name and first name *",
