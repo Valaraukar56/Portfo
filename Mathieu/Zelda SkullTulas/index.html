@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>SkullTula Checklist</title>
+		<link rel="stylesheet" href="styles.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=MedievalSharp&family=Roboto:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="icon" type="image/x-icon" href="Skull_or.webp" />
+		<link rel="stylesheet" href="styles.css" />
+	</head>
+	<body>
+		<header>
+			<h1 class="main-title">SkullTulas d'Or Checklist</h1>
+			<div class="progress-container">
+				<div class="progress-bar" id="totalProgress">
+					<div class="progress-fill"></div>
+				</div>
+				<div class="progress-text" id="progressText">0/100 Skulltulas</div>
+			</div>
+		</header>
+
+		<main>
+			<div class="tabs">
+				<button class="tab-btn active" data-tab="enfant">Link Enfant</button>
+				<button class="tab-btn" data-tab="adulte">Link Adulte</button>
+				<button class="tab-btn" data-tab="temple-enfant">Temples Enfant</button>
+				<button class="tab-btn" data-tab="temple-adulte">Temples Adulte</button>
+				<button class="tab-btn" data-tab="haricot">Haricots Magiques</button>
+			</div>
+
+			<div class="tab-content active" id="enfant">
+				<h2 class="section-title">
+					Link Enfant
+					<span class="subtitle">(faut qu'il fasse nuit)</span>
+				</h2>
+				<p class="reminder">N'oublie pas les trous d'haricot magique</p>
+
+				<div class="location-container">
+					<section class="location" data-location="plaine-hyrule">
+						<div class="location-header">
+							<h3>Plaine d'Hyrule</h3>
+							<span class="location-progress">0/2</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-plaine-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Boomerang nécessaire]</span>
+										En sortant du village Cocorico, tourne à droite et pose une bombe près
+										de l'arbre
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-plaine-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Boomerang nécessaire]</span>
+										Cherche un cercle de pierres avant l'entrée de la Vallée Gerudo, pose
+										une bombe au milieu, saute, puis utilise le Feu de Din pour brûler les
+										toiles.
+									</span>
+								</label>
+							</li>
+						</ul>
+						<p class="note">
+							Note : Les deux SkullTulas d'or ci-dessus sont encore présentes pour Link
+							Adulte.
+						</p>
+					</section>
+
+					<section class="location" data-location="foret-kokiri">
+						<div class="location-header">
+							<h3>Forêt Kokiri</h3>
+							<span class="location-progress">0/1</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-kokiri-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Boomerang nécessaire]</span>
+										Derrière la maison près du passage menant à la Plaine d'Hyrule.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="place-marche">
+						<div class="location-header">
+							<h3>Place du Marché</h3>
+							<span class="location-progress">0/1</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-marche-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans une caisse dans la maison du gardien juste avant d'arriver à la
+										Place du Marché.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="chateau-hyrule">
+						<div class="location-header">
+							<h3>Château d'Hyrule</h3>
+							<span class="location-progress">0/2</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-chateau-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans le premier arbre que tu vois en entrant dans les abords du
+										château (fonce dessus et appuie sur A pour faire une roulade).
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-chateau-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Après avoir passé les gardes à l'extérieur, saute dans l'eau, nage
+										jusqu'au coin devant toi à droite, sors et approche-toi du grand
+										arbre. Joue le Chant des Tempêtes, descends dans le trou et fais
+										exploser les murs.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<!-- Autres sections pour Link Enfant -->
+					<section class="location" data-location="ranch-lon-lon">
+						<div class="location-header">
+							<h3>Ranch Lon Lon</h3>
+							<span class="location-progress">0/4</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-ranch-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Boomerang nécessaire]</span>
+										Sur le mur de la maison de Talon tout en haut.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-ranch-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans un arbre à gauche après la maison de Talon, cours et fais une
+										roulade contre le tronc.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-ranch-3" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Derrière la cabane de l'enclos (hors de l'enclos).
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-ranch-4" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Boomerang nécessaire]</span>
+										Sur le mur extérieur du ranch, à droite de la petite maison en pierre
+										(sud-ouest de la carte).
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<!-- Ajoutez les autres sections de Link Enfant ici -->
+					<section class="location" data-location="village-cocorico">
+						<div class="location-header">
+							<h3>Village Cocorico</h3>
+							<span class="location-progress">0/5</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-cocorico-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans un arbre près de l'entrée, fais une roulade pour la faire tomber.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-cocorico-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Sur un mur de briques au milieu du village.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-cocorico-3" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Sur la maison près du Chemin du Péril.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-cocorico-4" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Sur le mur de la maison des Skulltulas.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-cocorico-5" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Sur l'échelle de la grande tour, utilise le Lance-Pierres depuis la
+										plate-forme en-dessus, puis grimpe à l'échelle pour récupérer le Bon.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="cimetiere-cocorico">
+						<div class="location-header">
+							<h3>Cimetière Cocorico</h3>
+							<span class="location-progress">0/1</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-cimetiere-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Boomerang nécessaire]</span>
+										Sur le mur au fond à droite.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="chemin-peril">
+						<div class="location-header">
+							<h3>Chemin du péril</h3>
+							<span class="location-progress">0/1</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-chemin-peril-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Boomerang nécessaire]</span>
+										Dans une caverne derrière un mur à faire exploser, pas loin du début
+										du chemin à droite.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="cratere-peril">
+						<div class="location-header">
+							<h3>Cratère du Péril</h3>
+							<span class="location-progress">0/1</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-cratere-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Depuis le sommet de la montagne, entre dans le cratère et brise la
+										caisse.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="village-goron">
+						<div class="location-header">
+							<h3>Village Goron</h3>
+							<span class="location-progress">0/1</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-goron-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Bombes nécessaires]</span>
+										En entrant, va à gauche, fais exploser une des trois pierres brunes et
+										prends le passage au fond. Fais exploser les pierres brunes pour
+										trouver une caisse à percuter au fond de la salle.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="fleuve-zora">
+						<div class="location-header">
+							<h3>Fleuve Zora</h3>
+							<span class="location-progress">0/2</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-fleuve-zora-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans un arbre près de l'entrée, fais une roulade contre son tronc.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-fleuve-zora-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Sur l'échelle près de l'entrée du Domaine Zora.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="fontaine-zora">
+						<div class="location-header">
+							<h3>Fontaine Zora</h3>
+							<span class="location-progress">0/2</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-fontaine-zora-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans un arbre sur la petite île au sud-est de la carte.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-fontaine-zora-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Boomerang nécessaire]</span>
+										Sur un mur près de la grosse branche dans l'eau.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="lac-hylia">
+						<div class="location-header">
+							<h3>Lac Hylia</h3>
+							<span class="location-progress">0/2</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-lac-hylia-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Sur la petite île aux deux piliers au milieu du lac.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-lac-hylia-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Boomerang nécessaire]</span>
+										Sur un mur du laboratoire.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="vallee-gerudo">
+						<div class="location-header">
+							<h3>Vallée Gerudo</h3>
+							<span class="location-progress">0/1</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="enfant-vallee-gerudo-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Boomerang nécessaire]</span>
+										Sur la droite en passant sur la planche.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+				</div>
+			</div>
+
+			<div class="tab-content" id="adulte">
+				<h2 class="section-title">
+					Link Adulte
+					<span class="subtitle">(faut qu'il fasse nuit)</span>
+				</h2>
+
+				<div class="location-container">
+					<section class="location" data-location="foret-kokiri-adulte">
+						<div class="location-header">
+							<h3>Forêt Kokiri</h3>
+							<span class="location-progress">0/1</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-kokiri-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Derrière la cabane des jumelles (non loin du chemin menant à l'Arbre
+										Mojo).
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="bois-perdus">
+						<div class="location-header">
+							<h3>Bois Perdus</h3>
+							<span class="location-progress">0/2</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-bois-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Si tu as planté un Haricot Magique, va à droite, gauche, droite,
+										gauche, gauche et monte sur le haricot.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-bois-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans le Bosquet Sacré, sur le mur à droite juste avant le grand
+										escalier. Si tu connais le Chant de l'Epouvantail, joue-le avant
+										d'entrer dans le labyrinthe. Grâce à Pierre, tu éviteras les Géants.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<!-- Ajoutez les autres sections de Link Adulte ici -->
+					<section class="location" data-location="chemin-peril-adulte">
+						<div class="location-header">
+							<h3>Chemin du Péril</h3>
+							<span class="location-progress">0/2</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-chemin-peril-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Masse des Titans nécessaire]</span>
+										Va sur la gauche juste avant l'entrée du Village Goron et détruis le
+										rocher avec la Masse.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-chemin-peril-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Masse des Titans nécessaire]</span>
+										Prends le chemin qui mène au sommet de la montagne et détruis le
+										troisième gros rocher sur le tronçon où des pierres tombaient du ciel
+										autrefois.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="village-goron-adulte">
+						<div class="location-header">
+							<h3>Village Goron</h3>
+							<span class="location-progress">0/1</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-goron-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Grappin nécessaire]</span>
+										Regarde la petite plate-forme suspendue au centre du village, la
+										Skulltula d'Or est derrière la stèle. Avance sur une des cordes qui
+										tient cette plate-forme et tire sur la Skulltula.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="fleuve-zora-adulte">
+						<div class="location-header">
+							<h3>Fleuve Zora</h3>
+							<span class="location-progress">0/2</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-fleuve-zora-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Si tu as planté un Haricot Magique, monte dessus, saute vers le cercle
+										de pierres, puis regarde en haut sur le mur.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-fleuve-zora-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Super Grappin nécessaire]</span>
+										Va sur le pont qui mène au Domaine Zora et regarde en haut à gauche.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="domaine-zora-adulte">
+						<div class="location-header">
+							<h3>Domaine Zora</h3>
+							<span class="location-progress">0/1</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-domaine-zora-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">En haut de la chute gelée.</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="fontaine-zora-adulte">
+						<div class="location-header">
+							<h3>Fontaine Zora</h3>
+							<span class="location-progress">0/1</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-fontaine-zora-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Gantelets d'Argent nécessaire]</span>
+										Va sur l'île où se trouve la Fontaine Royale des Fées et soulève le
+										gros rocher. Descends et utilise le monocle pour voir les Skulltulas.
+										La Skulltula d'Or se trouve juste avant la sortie.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="lac-hylia-adulte">
+						<div class="location-header">
+							<h3>Lac Hylia</h3>
+							<span class="location-progress">0/2</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-lac-hylia-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Super Grappin nécessaire]</span>
+										Va sur la plaque de téléportation. Utilise le Grappin pour viser le
+										haut du tronc coupé pour atterrir sur la branche.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-lac-hylia-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Bottes de Plomb nécessaires]</span>
+										Descends au fond du bassin dans le Laboratoire du Lac et brise la
+										caisse avec une attaque en roulade.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="village-cocorico-adulte">
+						<div class="location-header">
+							<h3>Village Cocorico</h3>
+							<span class="location-progress">0/1</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-cocorico-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Super Grappin nécessaire]</span>
+										Va devant la première maison d'Impa (en hauteur à droite), utilise le
+										Grappin pour monter sur le toit d'en face, puis sur le toit de la
+										maison d'Impa et regarde sur la paroi rocheuse.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="vallee-gerudo-adulte">
+						<div class="location-header">
+							<h3>Vallée Gerudo</h3>
+							<span class="location-progress">0/2</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-vallee-gerudo-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Derrière la tente du charpentier, contre le mur.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-vallee-gerudo-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Sur l'arche de pierre après le pont, en face de la tente du
+										charpentier.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="forteresse-gerudo">
+						<div class="location-header">
+							<h3>Forteresse Gerudo</h3>
+							<span class="location-progress">0/2</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-forteresse-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Sur la cible nord de l'Archerie Montée.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-forteresse-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Au milieu du mur est (d'après la carte) de la forteresse.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="desert-hante">
+						<div class="location-header">
+							<h3>Désert Hanté</h3>
+							<span class="location-progress">0/1</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-desert-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans l'édifice en pierres où tu as trouvé le Guide Spectral.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="colosse-desert">
+						<div class="location-header">
+							<h3>Colosse du Désert</h3>
+							<span class="location-progress">0/2</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-colosse-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Au sud de la carte, sur un des arbres près de l'étang asséché / la
+										Fontaine des Fées.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-colosse-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Monte sur le Haricot Magique et regarde au haut d'un grand rocher.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="chateau-ganondorf">
+						<div class="location-header">
+							<h3>Château d'Hyrule - Château de Ganondorf</h3>
+							<span class="location-progress">0/1</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="adulte-chateau-ganon-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Suis le chemin à droite, passe sous l'arche de pierre et retourne-toi.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+				</div>
+			</div>
+
+			<div class="tab-content" id="temple-enfant">
+				<h2 class="section-title">Temples Enfant</h2>
+
+				<div class="location-container">
+					<section class="location" data-location="arbre-mojo">
+						<div class="location-header">
+							<h3>Arbre Mojo</h3>
+							<span class="location-progress">0/4</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-enfant-mojo-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Au 3ème étage, dans une salle qui a une alcôve à gauche.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-enfant-mojo-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Saute dans le trou à l'entrée, elle est sur des lianes. Utilise le
+										Lance-Pierres pour la toucher, puis grimpe aux lianes.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-enfant-mojo-3" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Même endroit sur la grille. (Tu peux récupérer le bon avec le
+										Boomerang ou en sautant de la falaise où il y a la torche).
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-enfant-mojo-4" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Boomerang nécessaire]</span>
+										Même endroit, prends le passage étroit à l'ouest, puis va au nord-est,
+										fais brûler la toile si c'est pas déjà fait, puis fais sauter le mur
+										au fond et ouvre la porte.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+					<section class="location" data-location="caverne-dodongo">
+						<div class="location-header">
+							<h3>Caverne de Dodongo</h3>
+							<span class="location-progress">0/5</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-enfant-dodongo-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										En entrant, va à droite, ouvre la porte au fond, fais exploser le mur
+										à droite (environ au milieu de la salle) en tuant un lézard juste
+										devant (ou avec une bombe) et ouvre la porte.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-enfant-dodongo-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Chant de l'Epouvantail nécessaire]</span>
+										A l'âge adulte, même endroit, juste un peu avant. Regarde en haut à
+										gauche, joue le Chant de l'Epouvantail et utilise le Grappin sur
+										Pierre.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-enfant-dodongo-3" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										En entrant, va à gauche au fond (nord-ouest de la carte), monte le
+										grand escalier (où il y a les deux rangées de choux-pêteurs) et
+										regarde sur la toile près de la porte suivante. Utilise le
+										Lance-Pierres pour la toucher, puis grimpe aux lianes
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-enfant-dodongo-4" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Super Grappin nécessaire]</span>
+										A l'âge adulte, même endroit, place-toi juste en haut des marches,
+										regarde bien en haut dans l'alcôve et utilise le Super Grappin.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-enfant-dodongo-5" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										En entrant, va tout droit dans la gueule du monstre, puis dans la
+										salle où tu dois déplacer des caisses, il y a une porte à faire
+										exploser. Entre et trouve-la derrière la statue.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="ventre-de-jabu-jabu">
+						<div class="location-header">
+							<h3>Ventre de Jabu-Jabu</h3>
+							<span class="location-progress">0/4</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-enfant-jabu-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Boomerang nécessaire]</span>
+										Sur les lianes de la salle où il y a un bouton qui fait monter le
+										niveau de l'eau.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-enfant-jabu-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans la salle où tu arrives après avoir sauté dans le trou à gauche
+										(l'entrée du donjon étant derrière toi).
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-enfant-jabu-3" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">Même endroit, juste à côté.</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-enfant-jabu-4" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Sur des lianes dans la salle juste avant celle du boss.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+				</div>
+			</div>
+			<div class="tab-content" id="temple-adulte">
+				<h2 class="section-title">Temples Adulte</h2>
+
+				<div class="location-container">
+					<section class="location" data-location="temple-foret">
+						<div class="location-header">
+							<h3>Temple de la Forêt</h3>
+							<span class="location-progress">0/5</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-adulte-foret-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										A l'entrée, dans la cour, sur le mur de droite.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-adulte-foret-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans la grande salle, à droite de la porte faisant face à l'entrée.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-adulte-foret-3" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans la salle "verte" est, sur le mur de l'île (sous le balcon).
+										Utilise le Grappin sur le coffre depuis le bord de la rivière ou saute
+										du balcon accessible depuis la salle quadrillée.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-adulte-foret-4" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans la salle "verte" ouest. Depuis le balcon, saute sur l'arche (avec
+										les petits coeurs) et regarde sur le mur.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-adulte-foret-5" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans la salle rotative avant le boss, dans l'alcôve avec le petit
+										coffre.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="puit">
+						<div class="location-header">
+							<h3>Puit</h3>
+							<span class="location-progress">0/3</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-adulte-puit-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<p>
+											Depuis la salle principale, prends le couloir de gauche et utilise le
+											Monocle de Vérité pour trouver une entrée cachée dans le mur de
+											droite.
+										</p>
+										<p>
+											Entre, prends la clé dans le coffre, sors et tourne à gauche. Va tout
+											droit, tourne à gauche au bout du couloir et utilise le Monocle pour
+											trouver une autre entrée à gauche.
+										</p>
+										<p>
+											Entre, prends la clé dans un autre coffre, sors et continue à gauche.
+										</p>
+										<p>Sur la droite, tu vois une cage avec un monstre.</p>
+										<p>
+											Traverse le mur juste en face de cette cage, va à l'autre bout de la
+											salle en évitant le trou au milieu et traverse le mur.
+										</p>
+										<p>
+											Suis le couloir en face, approche-toi de la grille, saute, passe sous
+											la grille, monte au grillage et ouvre la porte. Vérifie que tu portes
+											bien le Bouclier Hylien, puis allume un bâton Mojo et allume la
+											torche qui se trouve au fond à gauche (depuis la porte).
+										</p>
+										<p>
+											Prends la petite clé dans le cercueil, puis sors, grimpe au grillage
+											et traverse le mur devant toi.
+										</p>
+										Ouvre la porte verrouillée à gauche, détruis la plante carnivore et la
+										Skulltulas d'Or.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-adulte-puit-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<p>
+											Ressors, va à gauche, évite le trou et ouvre l'autre porte
+											verrouillée.
+										</p>
+										<p>
+											Débarrasse-toi des chauves-souris,
+											<strong>attention au trou</strong>
+											, puis à l'aide du Monocle, marche sur la corniche pour trouver la
+											Skulltula d'Or.
+										</p>
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-adulte-puit-3" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<p>
+											Ressors, traverse le mur de gauche, puis va à gauche. (Si tu tombes,
+											joue le Chant du Soleil pour profiter d'une fée jaune.)
+										</p>
+										<p>Evite le trou juste devant le portrait et tourne à droite.</p>
+										<p>
+											Suis le passage étroit, déverrouille la porte et utilise le Monocle
+											pour voir les trous.
+										</p>
+										<p>
+											Détruis les chauves-souris et la Sentinelle avec une bombe (le coffre
+											contient un bouclier Mojo si tu as perdu le tien),puis ouvre la porte
+											suivante, frappe le "mangeur de bouclier" sans relâche, puis élimine
+											la dernière SkullTula d'Or.
+										</p>
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="temple-du-feu">
+						<div class="location-header">
+							<h3>Temple du feu</h3>
+							<span class="location-progress">0/5</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-du-feu-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Depuis l'entrée, monte le grand escalier, entre à droite, puis va vers
+										la porte sur ta gauche. Joue le Chant du Temps pour faire tomber le
+										bloc, puis ouvre la porte en dessus et sois prêt à te défendre contre
+										les dalles volantes !
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-du-feu-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans la salle labyrinthe aux nombreux rochers roulants, depuis la
+										porte au niveau du sol, longe le mur de gauche. Quand tu entends la
+										Skulltula d'Or, fais exploser le mur.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-du-feu-3" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans cette même salle, mais depuis la porte au niveau des
+										plates-formes, joue le Chant de l'Epouvantail. Utilise le Grappin pour
+										aller vers lui (très en hauteur et à droite), tourne-toi, puis utilise
+										le Grappin pour aller sur la plate-forme plus haute (un ascenseur),
+										ouvre la porte plus loin, monte au grillage et regarde devant toi.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-du-feu-4" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Depuis le dernier endroit, grimpe au grillage, ouvre la porte
+										suivante, avance vers le bord et trouves-en une autre sur le mur de
+										gauche (utilise le Grappin).
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-du-feu-5" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Masse des Titans nécessaire]</span>
+										Depuis l'entrée, va à droite, ouvre la porte (où était la statue),
+										élimine les ennemis, la Skulltula d'Or est dans la salle suivante.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="caverne-polaire">
+						<div class="location-header">
+							<h3>Caverne Polaire</h3>
+							<span class="location-progress">0/3</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="caverne-polaire-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans la salle avec les pales, brise les stalagmites à gauche, la
+										Skulltula d'Or est derrière.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="caverne-polaire-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Depuis la salle aux pales, va à droite, puis regarde près du Quart de
+										Coeur (salle de la Boussole).
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="caverne-polaire-3" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans la salle avec le bloc à pousser, regarde à gauche en entrant.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+
+					<section class="location" data-location="temple-de-l'eau">
+						<div class="location-header">
+							<h3>
+								Temple de l'eau
+								<br />
+								<span class="note">bon courage</span>
+							</h3>
+							<span class="location-progress">0/5</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-de-l'eau-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Sur le mur à droite dans la salle aux plates-formes qui descendent,
+										utilise le Super Grappin.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-de-l'eau-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans la rivière souterraine, sur la paroi gauche avant d'atteindre le
+										rebord (utilise les Bottes de Plomb).
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-de-l'eau-3" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Au niveau le plus bas, prends le couloir sud, pose une bombe où le sol
+										est bosselé, puis saute, avance, remonte, marche sur le bouton et
+										utilise le Grappin sur la cible. Approche-toi de la grille, puis
+										utilise l'Attaque Cyclone pour atteindre le diamant et lever la
+										grille.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-de-l'eau-4" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans la tour centrale, tout en haut, utilise le Super Grappin.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-de-l'eau-5" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Derrière une chute d'eau, dans le couloir précédant la Clé d'Or (avec
+										les rochers).
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+					<section class="location" data-location="temple-de-l'ombre">
+						<div class="location-header">
+							<h3>Temple de l'ombre</h3>
+							<span class="location-progress">0/5</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-de-l'ombre-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans la salle aux guillotines, depuis la plate-forme avec le Stalfos,
+										tourne à gauche, puis à l'aide du Monocle de Vérité, saute sur les
+										plates-formes et ouvre la porte. Utilise le Monocle pour voir les
+										lames au milieu de la salle, puis élimine le Pudding avec des flèches,
+										ainsi que les trois chauves-souris (fais le tour de la salle pour les
+										faire venir). Ouvre la porte suivante et élimine la Skulltula d'Or.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-de-l'ombre-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans la salle aux "marteaux-piqueurs", dans une cellule à gauche.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-de-l'ombre-3" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans la salle au crâne géant, derrière le crâne.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-de-l'ombre-4" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Chant de l'Epouvantail nécessaire]</span>
+										la salle au bateau, monte sur la plate-forme à côté du bateau, puis
+										joue le Chant de l'Epouvantail et utilise le Grappin sur lui.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-de-l'ombre-5" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans la salle aux trois crânes géants (après la traversée sur le
+										bateau, va à droite, traverse le labyrinthe invisible pour ouvrir la
+										porte en face), derrière les crânes.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+					<section class="location" data-location="temple-de-l'esprit">
+						<div class="location-header">
+							<h3>Temple de l'Esprit</h3>
+							<span class="location-progress">0/5</span>
+						</div>
+						<ul class="skulltula-list">
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-de-l'esprit-1" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<strong>En tant que Link enfant</strong>
+										, après le premier passage étroit, prends la porte à droite et regarde
+										sur le grillage à droite.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-de-l'esprit-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<strong>En tant que Link enfant</strong>
+										, après le deuxième passage étroit, ouvre la porte, monte au mur à
+										droite, puis regarde derrière toi.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-de-l'esprit-3" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										En tant que Link enfant, après la salle où tu as tiré le soleil dans
+										la lumière, retourne-toi dans l'escalier et regarde au-dessus de la
+										porte.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-de-l'esprit-4" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<strong>En tant que Link adulte</strong>
+										, dans la salle aux rochers roulants, va devant le bloc bleu et joue
+										le Chant du Temps.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="temple-de-l'esprit-5" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Chant de l'Epouvantail nécessaire]</span>
+										En tant que Link adulte, dans la salle avec la statue géante, monte
+										les escaliers de gauche (d'après la carte), regarde vers le nord et
+										joue le Chant de l'Epouvantail.
+									</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+				</div>
+			</div>
+			<div class="tab-content" id="haricot">
+				<h2 class="section-title">Haricots Magiques</h2>
+
+				<div class="location-container">
+					<section class="location" data-location="haricots-magiques">
+						<ul class="skulltula-list">
+							<label class="checkbox-container">
+								<p>
+									<strong>
+										Celui à côté du vendeur d'haricot magique (pas à faire).
+									</strong>
+								</p>
+							</label>
+
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="haricot-2" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										A droite du magasin dans la Forêt Kokiri.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="haricot-3" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans le Bois Perdus, va 2 fois à gauche.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="haricot-4" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans le Bois Perdus, va à droite, gauche, gauche, droite et 2 fois a
+										gauche.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="haricot-5" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans le Cimetière Cocorico, sur la gauche.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="haricot-6" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">Près du Laboratoire du Lac Hylia</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="haricot-7" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Dans la Vallée Gerudo, descends avec la poule sur la plate-forme à
+										droite du pont.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="haricot-8" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										<span class="item-required">[Boléro du feu]</span>
+										Téléporte toi au Cratère du Péril, le carré de terre est tout près.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="haricot-9" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">
+										Téléporte-toi dans le Colosse du Désert, le carré de terre est près de
+										l'entrée du Temple de l'Esprit.
+									</span>
+								</label>
+							</li>
+							<li>
+								<label class="checkbox-container">
+									<input type="checkbox" data-id="haricot-10" />
+									<span class="checkmark"></span>
+									<span class="skulltula-text">A l'entrée de la Caverne Dodongo.</span>
+								</label>
+							</li>
+						</ul>
+					</section>
+				</div>
+			</div>
+		</main>
+
+		<footer>
+			<div class="footer-content">
+				<p>Checklist des SkullTulas pour The Legend of Zelda: Ocarina of Time</p>
+				<button id="resetBtn" class="reset-btn">
+					Réinitialiser la progression
+				</button>
+			</div>
+		</footer>
+
+		<script src="script.js"></script>
+	</body>
+</html>
