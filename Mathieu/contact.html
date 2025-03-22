@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,6 +16,7 @@
 		<link rel="stylesheet" href="../sizing.css" type="text/css" />
 		<link rel="stylesheet" href="../global.css" />
 		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="sidebar.css" />
 		<style>
 			html,
 			body {
@@ -47,6 +48,12 @@
 				width: 100%;
 				padding: 20px 0;
 				position: relative; /* Added position relative */
+				margin-top: 80px; /* Ajout d'une marge pour éviter que le contenu soit sous le header */
+			}
+
+			a {
+				text-decoration: none;
+				color: white;
 			}
 
 			.contact-section {
@@ -140,7 +147,8 @@
 				transform: translateY(
 					-5px
 				); /* Modifié pour n'avoir que le mouvement vertical */
-				box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 10px 10px rgba(0, 0, 0, 0.3),
+				box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4),
+					0 10px 10px rgba(0, 0, 0, 0.3),
 					inset 0 -2px 5px rgba(255, 255, 255, 0.2);
 			}
 			.contact-info-item {
@@ -178,22 +186,20 @@
 				text-align: center;
 			}
 
-			/* Ensure header is above canvas */
-			#header {
-				position: relative;
-				z-index: 10;
-			}
-
 			@media screen and (max-width: 768px) {
 				main {
-					padding: 20px 0; /* Ajout de padding vertical */
-					max-width: 90vw;
+					padding: 20px 10px; /* Ajout de padding horizontal */
+					max-width: 100%;
+					margin-top: 20px; /* Réduire la marge sur mobile */
 				}
 
+				.contact-section,
 				.text-section {
-					max-width: 90vw;
+					width: 90%;
+					padding: 20px;
 				}
 			}
+
 			@media screen and (max-width: 480px) {
 				.contact-info-item {
 					min-width: 100px;
@@ -214,9 +220,18 @@
 		</style>
 	</head>
 	<body>
+		<div class="menu-toggle-container">
+			<button class="menu-toggle" id="menuToggle">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+		</div>
+		<div class="overlay" id="overlay"></div>
+
 		<header id="header">
 			<div id="logoV">
-				<img src="../assets/images/Logo_V.png" />
+				<img src="../assets/images/Logo_V.png" alt="Logo V" />
 				<h1><a href="../Mathieu/index.html">Mathieu Piris</a></h1>
 			</div>
 			<nav>
@@ -232,12 +247,14 @@
 				</ul>
 			</nav>
 		</header>
+
 		<canvas id="spider-web"></canvas>
 		<main>
 			<section class="contact-section">
 				<h2 data-i18n="contact.h2">Contactez-moi</h2>
 				<p data-i18n="contact.p">
-					N'hésitez pas à me contacter via ce formulaire ou directement par email.
+					N'hésitez pas à me contacter via ce formulaire ou directement par
+					email.
 				</p>
 				<form
 					class="contact-form"
@@ -277,21 +294,27 @@
 					<i class="fa-solid fa-user contact-icon"></i>
 					<span class="contact-value">Mathieu Piris</span>
 				</div>
-				<div class="contact-info-item">
+				<a
+					class="contact-info-item"
+					href="https://www.google.com/maps/place/Vannes/@47.6576857,-2.7896505,13z/data=!3m1!4b1!4m6!3m5!1s0x48101e84c37de291:0xb9f358307b233d13!8m2!3d47.6586166!4d-2.7599022!16zL20vMDM1YzN4?hl=fr&entry=ttu&g_ep=EgoyMDI1MDMxOS4yIKXMDSoASAFQAw%3D%3D"
+				>
 					<i class="fa-solid fa-location-dot contact-icon"></i>
 					<span class="contact-value">Vannes, France</span>
-				</div>
+				</a>
 				<div class="contact-info-item">
 					<i class="fa-solid fa-phone contact-icon"></i>
 					<span class="contact-value">06 65 90 04 79</span>
 				</div>
-				<div class="contact-info-item">
+				<a class="contact-info-item" href="mailto:mathieu.piris@outlook.fr">
 					<i class="fa-solid fa-envelope contact-icon"></i>
-					<span class="contact-value">mathieu.piris@outlook.fr</span>
-				</div>
+					<span class="contact-value" href="mailto:mathieu.piris@outlook.fr">
+						mathieu.piris@outlook.fr
+					</span>
+				</a>
 			</div>
 		</main>
 		<script src="../Mathieu/js/language-switcher.js"></script>
+		<script src="../Mathieu/sidebar.js"></script>
 		<script>
 			const canvas = document.getElementById("spider-web");
 			const ctx = canvas.getContext("2d");
@@ -454,7 +477,9 @@
 							ctx.beginPath();
 							ctx.moveTo(points[i].x, points[i].y);
 							ctx.lineTo(points[j].x, points[j].y);
-							ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / gridSpacing})`;
+							ctx.strokeStyle = `rgba(255, 255, 255, ${
+								1 - distance / gridSpacing
+							})`;
 							ctx.lineWidth = 1.5;
 							ctx.stroke();
 						}

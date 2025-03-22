@@ -11,6 +11,7 @@
 		<link rel="stylesheet" href="../sizing.css" type="text/css" />
 		<link rel="stylesheet" href="../global.css" />
 		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="sidebar.css" />
 		<title>Skills</title>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
 		<style>
@@ -19,6 +20,7 @@
 				background-color: transparent;
 				position: relative;
 				overflow: hidden;
+				background-color: black;
 			}
 
 			#game-container {
@@ -82,7 +84,7 @@
 				position: fixed;
 				bottom: 20px;
 				left: 20px;
-				z-index: 100;
+				z-index: 5;
 				background-color: rgba(255, 255, 255, 0.7);
 				border-radius: 10px;
 				padding: 10px 15px;
@@ -110,6 +112,17 @@
 				font-weight: bold;
 				color: #2d3748;
 			}
+
+			/* Réduire la taille des logos sur mobile */
+			@media (max-width: 768px) {
+				.logo {
+					gap: 20px;
+				}
+
+				.logo img {
+					width: 60px;
+				}
+			}
 		</style>
 	</head>
 
@@ -125,8 +138,12 @@
 				<nav>
 					<ul>
 						<li><a href="../index.html" data-i18n="nav.home">Accueil</a></li>
-						<li><a href="skills.html" data-i18n="nav.skills">Compétences</a></li>
-						<li><a href="projects.html" data-i18n="nav.projects">Projets</a></li>
+						<li>
+							<a href="skills.html" data-i18n="nav.skills">Compétences</a>
+						</li>
+						<li>
+							<a href="projects.html" data-i18n="nav.projects">Projets</a>
+						</li>
 						<li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
 						<button class="language-switcher" id="languageSwitcher">
 							<span class="language-icon">🌐</span>
@@ -135,7 +152,15 @@
 					</ul>
 				</nav>
 			</header>
-
+			<div class="menu-toggle-container">
+				<button class="menu-toggle" id="menuToggle">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+			</div>
+			<div class="overlay" id="overlay"></div>
+			<!-- ça ferme la sidebar en cliquant sur le fond -->
 			<main>
 				<div class="skills-section">
 					<p data-i18n="skill">Mes principales compétences</p>
@@ -144,7 +169,10 @@
 						<img src="../assets/images/css-3.png" alt="Logo CSS" />
 						<img src="../assets/images/jslogo.png" alt="Logo JavaScript" />
 						<a href="https://github.com/Valaraukar56">
-							<img src="../assets/images/github-mark-white.svg" alt="Logo Github" />
+							<img
+								src="../assets/images/github-mark-white.svg"
+								alt="Logo Github"
+							/>
 						</a>
 					</div>
 				</div>
@@ -163,6 +191,7 @@
 			</div>
 		</div>
 		<script src="../Mathieu/js/language-switcher.js"></script>
+		<script src="sidebar.js"></script>
 		<script>
 			// Game variables
 			const BLOCK_SIZE = 70;

@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="../global.css" />
 		<link rel="stylesheet" href="style.css" />
 		<link rel="stylesheet" href="animation.css" type="text/css" />
+		<link rel="stylesheet" href="sidebar.css" />
 		<title>Projects</title>
 		<style>
 			main {
@@ -107,6 +108,16 @@
 				</ul>
 			</nav>
 		</header>
+		<div class="menu-toggle-container">
+			<button class="menu-toggle" id="menuToggle">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+		</div>
+		<div class="overlay" id="overlay"></div>
+		<!-- ça ferme la sidebar en cliquant sur le fond -->
+
 		<div class="background">
 			<span></span>
 			<span></span>
@@ -179,7 +190,10 @@
 				<h2>Blind-Test lvl 2</h2>
 				<div class="image-wrapper">
 					<a href="../Mathieu/Blind_test_2/index.html" target="_blank">
-						<img src="../assets/images/blind-test_lvl_2.png" alt="Blind-Test lvl 2" />
+						<img
+							src="../assets/images/blind-test_lvl_2.png"
+							alt="Blind-Test lvl 2"
+						/>
 					</a>
 				</div>
 			</div>
@@ -196,5 +210,6 @@
 			</div>
 		</main>
 		<script src="../Mathieu/js/language-switcher.js"></script>
+		<script src="../Mathieu/sidebar.js"></script>
 	</body>
 </html>
