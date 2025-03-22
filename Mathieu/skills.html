@@ -1,396 +1,462 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" type="image/x-icon" href="../assets/images/LOGO twitch.jpg">
-  <link rel="stylesheet" href="../sizing.css" type="text/css">
-  <link rel="stylesheet" href="../global.css">
-  <link rel="stylesheet" href="style.css">
-  <title>Skills</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
-  <style>
-    body {
-      margin: 0;
-      background-color: transparent;
-      position: relative;
-      overflow: hidden;
-    }
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="shortcut icon"
+			type="image/x-icon"
+			href="../assets/images/LOGO twitch.jpg"
+		/>
+		<link rel="stylesheet" href="../sizing.css" type="text/css" />
+		<link rel="stylesheet" href="../global.css" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Skills</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+		<style>
+			body {
+				margin: 0;
+				background-color: transparent;
+				position: relative;
+				overflow: hidden;
+			}
 
-    #game-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
+			#game-container {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: -1;
+			}
 
-    #content {
-      position: relative;
-      z-index: 10;
-      min-height: 100vh;
-    }
+			#content {
+				position: relative;
+				z-index: 10;
+				min-height: 100vh;
+			}
 
-    header {
-      background-color: rgba(0, 0, 0, 0.534);
-      padding: 15px 30px;
-      backdrop-filter: blur(5px);
-      border-radius: var(--size-3);
-    }
+			header {
+				background-color: rgba(0, 0, 0, 0.534);
+				padding: 15px 30px;
+				backdrop-filter: blur(5px);
+				border-radius: var(--size-3);
+			}
 
-    .logo {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 40px;
-    }
-    
-    .logo img {
-      width: 100px;
-      height: auto;
-      transition: transform 0.3s;
-      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
-    }
-    
-    .logo img:hover {
-      transform: scale(1.1);
-    }
-    
-    .skills-section {
-      padding: var(--size-8);
-      background-color: rgba(34, 34, 34, 0.7);
-      border-radius: var(--size-3);
-      backdrop-filter: blur(5px);
-      margin: 40px auto;
-      max-width: 800px;
-    }
-    
-    .skills-section p {
-      font-size: 24px;
-      font-weight: bold;
-      color: #f7f3e7;
-      margin-bottom: 20px;
-      text-align: center;
-    }
+			.logo {
+				display: flex;
+				justify-content: center;
+				gap: 40px;
+				margin-top: 40px;
+			}
 
-    #scoreboard {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      z-index: 100;
-      background-color: rgba(255, 255, 255, 0.7);
-      border-radius: 10px;
-      padding: 10px 15px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(5px);
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+			.logo img {
+				width: 100px;
+				height: auto;
+				transition: transform 0.3s;
+				filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+			}
 
-    .score-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+			.logo img:hover {
+				transform: scale(1.1);
+			}
 
-    .score-dot {
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-    }
+			.skills-section {
+				padding: var(--size-8);
+				background-color: rgba(34, 34, 34, 0.7);
+				border-radius: var(--size-3);
+				backdrop-filter: blur(5px);
+				margin: 40px auto;
+				max-width: 800px;
+			}
 
-    .score-value {
-      font-size: 18px;
-      font-weight: bold;
-      color: #2D3748;
-    }
-  </style>
-</head>
+			.skills-section p {
+				font-size: 24px;
+				font-weight: bold;
+				color: #f7f3e7;
+				margin-bottom: 20px;
+				text-align: center;
+			}
 
-<body>
-  <div id="game-container"></div>
-  
-  <div id="content">
-    <header id="header">
-      <div id="logoV">
-        <img src="../assets/images/Logo_V.png">
-        <h1><a href="../Mathieu/index.html">Mathieu Piris</a></h1>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="../index.html" data-i18n="nav.home">Accueil</a></li>
-          <li><a href="skills.html" data-i18n="nav.skills">Compétences</a></li>
-          <li><a href="projects.html" data-i18n="nav.projects">Projets</a></li>
-          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
-          <button class="language-switcher" id="languageSwitcher">
-              <span class="language-icon">🌐</span>
-              <span id="languageText">EN</span>
-          </button>
-      </ul>
-      </nav>
-    </header>
-    
-    <main>
-      <div class="skills-section">
-        <p data-i18n="skill">Mes principales compétences</p>
-        <div class="logo">
-          <img src="../assets/images/HTML logo.png" alt="Logo HTML">
-          <img src="../assets/images/css-3.png" alt="Logo CSS">
-          <img src="../assets/images/jslogo.png" alt="Logo JavaScript">
-          <a href="https://github.com/Valaraukar56"><img src="../assets/images/github-mark-white.svg" alt="Logo Github"></a>
-        </div>
-      </div>
-    </main>
-  </div>
+			#scoreboard {
+				position: fixed;
+				bottom: 20px;
+				left: 20px;
+				z-index: 100;
+				background-color: rgba(255, 255, 255, 0.7);
+				border-radius: 10px;
+				padding: 10px 15px;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+				backdrop-filter: blur(5px);
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+			}
 
-  <!-- Scoreboard HTML element -->
-  <div id="scoreboard">
-    <div class="score-item">
-      <div class="score-dot" id="pink-dot"></div>
-      <div class="score-value" id="pink-score">0</div>
-    </div>
-    <div class="score-item">
-      <div class="score-dot" id="blue-dot"></div>
-      <div class="score-value" id="blue-score">0</div>
-    </div>
-  </div>
-  <script src="../Mathieu/js/language-switcher.js"></script>
-  <script>
-    // Game variables
-    const BLOCK_SIZE = 70
-    const MIN_PADDING = 0
-    let players = []
-    let board = []
-    let padding = { x: 0, y: 0 }
-    
-    // Colors
-    const COLORS = {
-      pink: {
-        light: "#FFD6EC",
-        medium: "#FF9ED2",
-        dark: "#FF5CAA",
-        player: "#FF318C"
-      },
-      blue: {
-        light: "#D6E5FF",
-        medium: "#A1C6FF",
-        dark: "#4A90E2",
-        player: "#2E5EAA"
-      },
-      text: "#2D3748",
-      scoreBackground: "rgba(255, 255, 255, 0.7)"
-    }
-    
-    function setup() {
-      // Create canvas inside the game container
-      let canvas = createCanvas(windowWidth, windowHeight);
-      canvas.parent('game-container');
-      createBoard();
-      
-      // Set up scoreboard colors
-      document.getElementById('pink-dot').style.backgroundColor = COLORS.pink.player;
-      document.getElementById('blue-dot').style.backgroundColor = COLORS.blue.player;
-    }
-    
-    function draw() {
-      // Clear background with a subtle gradient
-      background(250, 250, 252);
-      
-      // Update player positions
-      for (let i = 0; i < players.length; i++) {
-        players[i].x += players[i].velocity.x
-        players[i].y += players[i].velocity.y
-    
-        // Bounce off walls
-        if (players[i].x - players[i].radius < padding.x || players[i].x + players[i].radius > width - padding.x) {
-          players[i].velocity.x *= -1
-        }
-        if (players[i].y - players[i].radius < padding.y || players[i].y + players[i].radius > height - padding.y) {
-          players[i].velocity.y *= -1
-        }
-    
-        // Check collisions with blocks and convert them
-        const rightBlockIdx = safeBlockIndex(players[i].x + players[i].radius, players[i].y)
-        const leftBlockIdx = safeBlockIndex(players[i].x - players[i].radius, players[i].y)
-        const bottomBlockIdx = safeBlockIndex(players[i].x, players[i].y + players[i].radius)
-        const topBlockIdx = safeBlockIndex(players[i].x, players[i].y - players[i].radius)
-        
-        if (rightBlockIdx >= 0 && rightBlockIdx < board.length && i != board[rightBlockIdx]) {
-          players[i].velocity.x *= -1
-          board[rightBlockIdx] = i
-        }
-        if (leftBlockIdx >= 0 && leftBlockIdx < board.length && i != board[leftBlockIdx]) {
-          players[i].velocity.x *= -1
-          board[leftBlockIdx] = i
-        }
-        if (bottomBlockIdx >= 0 && bottomBlockIdx < board.length && i != board[bottomBlockIdx]) {
-          players[i].velocity.y *= -1
-          board[bottomBlockIdx] = i
-        }
-        if (topBlockIdx >= 0 && topBlockIdx < board.length && i != board[topBlockIdx]) {
-          players[i].velocity.y *= -1
-          board[topBlockIdx] = i
-        }
-      }
-    
-      // Draw blocks with subtle shadow effect
-      for (let i = 0; i < board.length; i++) {
-        const colCount = Math.trunc((width - padding.x * 2) / BLOCK_SIZE)
-        const x = i % colCount
-        const y = Math.floor(i / colCount)
-        
-        const blockX = x * BLOCK_SIZE + padding.x
-        const blockY = y * BLOCK_SIZE + padding.y
-        
-        // Draw subtle shadow
-        fill(0, 0, 0, 10)
-        rect(blockX + 2, blockY + 2, BLOCK_SIZE + 1, BLOCK_SIZE, 4)
-        
-        // Draw block with color based on owner
-        if (board[i] == 0) {
-          // Pink gradient effect
-          const gradientColor = lerpColor(
-            color(COLORS.pink.light), 
-            color(COLORS.pink.medium), 
-            noise(x * 0.1, y * 0.1, frameCount * 0.01)
-          )
-          fill(gradientColor)
-        } else {
-          // Blue gradient effect
-          const gradientColor = lerpColor(
-            color(COLORS.blue.dark), 
-            color(COLORS.blue.medium), 
-            noise(x * 0.1, y * 0.1, frameCount * 0.01)
-          )
-          fill(gradientColor)
-        }
-        
-        // Draw block with rounded corners
-        rect(blockX, blockY, BLOCK_SIZE + 1, BLOCK_SIZE, 4)
-      }
-    
-      // Draw players with glow effect
-      drawingContext.shadowBlur = 15;
-      for (let i = 0; i < players.length; i++) {
-        if (i === 0) {
-          drawingContext.shadowColor = COLORS.pink.dark;
-          fill(COLORS.pink.player)
-        } else {
-          drawingContext.shadowColor = COLORS.blue.dark;
-          fill(COLORS.blue.player)
-        }
-        
-        ellipse(players[i].x, players[i].y, players[i].radius * 2, players[i].radius * 2)
-      }
-      drawingContext.shadowBlur = 0;
-      
-      // Update scoreboard
-      updateScoreboard();
-    }
-    
-    function updateScoreboard() {
-      // Count blocks by color
-      let pinkCount = board.filter(b => b === 0).length;
-      let blueCount = board.filter(b => b === 1).length;
-      
-      // Update HTML elements
-      document.getElementById('pink-score').textContent = pinkCount;
-      document.getElementById('blue-score').textContent = blueCount;
-    }
-    
-    function safeBlockIndex(x, y) {
-      // Check if coordinates are within the playable area
-      if (x < padding.x || x >= width - padding.x || 
-          y < padding.y || y >= height - padding.y) {
-        return -1;
-      }
-      
-      const colCount = Math.trunc((width - padding.x * 2) / BLOCK_SIZE)
-      const col = Math.floor((x - padding.x) / BLOCK_SIZE)
-      const row = Math.floor((y - padding.y) / BLOCK_SIZE)
-      
-      if (col < 0 || row < 0 || col >= colCount || 
-          row >= Math.trunc((height - padding.y * 2) / BLOCK_SIZE)) {
-        return -1;
-      }
-      
-      return row * colCount + col;
-    }
-    
-    // Helper function to get random position within a range
-    function randomPosition(min, max) {
-      return Math.random() * (max - min) + min;
-    }
-    
-    function createBoard() {
-      padding = {
-        x: (width % BLOCK_SIZE) * 0.5 + MIN_PADDING,
-        y: (height % BLOCK_SIZE) * 0.5 + MIN_PADDING,
-      }
-    
-      const colCount = Math.trunc((width - padding.x * 2) / BLOCK_SIZE)
-      const rowCount = Math.trunc((height - padding.y * 2) / BLOCK_SIZE)
-    
-      board = new Array(colCount * rowCount)
-      
-      // Randomize the board pattern instead of just splitting it in half
-      for (let i = 0; i < board.length; i++) {
-        const x = i % colCount;
-        const y = Math.floor(i / colCount);
-        
-        // Create a diagonal split pattern
-        if (y < rowCount / 2) {
-          board[i] = 0; // Pink in top half
-        } else {
-          board[i] = 1; // Blue in bottom half
-        }
-      }
-    
-      // Create players with random positions in their respective territories
-      const safeMargin = BLOCK_SIZE * 2; // Keep away from edges
-      
-      // Player 1 (Pink) - random position in top half
-      const player1X = randomPosition(padding.x + safeMargin, width - padding.x - safeMargin);
-      const player1Y = randomPosition(padding.y + safeMargin, height / 2 - safeMargin);
-      
-      // Player 2 (Blue) - random position in bottom half
-      const player2X = randomPosition(padding.x + safeMargin, width - padding.x - safeMargin);
-      const player2Y = randomPosition(height / 2 + safeMargin, height - padding.y - safeMargin);
-      
-      players = [
-        {
-          x: player1X,
-          y: player1Y,
-          radius: BLOCK_SIZE * 0.5,
-          velocity: {
-            x: -2,
-            y: 2,
-          },
-          color: COLORS.pink.player,
-        },
-        {
-          x: player2X,
-          y: player2Y,
-          radius: BLOCK_SIZE * 0.5,
-          velocity: {
-            x: 2,
-            y: -2,
-          },
-          color: COLORS.blue.player,
-        },
-      ]
-      
-      // Initial scoreboard update
-      updateScoreboard();
-    }
-    
-    function windowResized() {
-      resizeCanvas(windowWidth, windowHeight);
-      createBoard();
-    }
-  </script>
-</body>
+			.score-item {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+			}
+
+			.score-dot {
+				width: 15px;
+				height: 15px;
+				border-radius: 50%;
+			}
+
+			.score-value {
+				font-size: 18px;
+				font-weight: bold;
+				color: #2d3748;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="game-container"></div>
+
+		<div id="content">
+			<header id="header">
+				<div id="logoV">
+					<img src="../assets/images/Logo_V.png" />
+					<h1><a href="../Mathieu/index.html">Mathieu Piris</a></h1>
+				</div>
+				<nav>
+					<ul>
+						<li><a href="../index.html" data-i18n="nav.home">Accueil</a></li>
+						<li><a href="skills.html" data-i18n="nav.skills">Compétences</a></li>
+						<li><a href="projects.html" data-i18n="nav.projects">Projets</a></li>
+						<li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+						<button class="language-switcher" id="languageSwitcher">
+							<span class="language-icon">🌐</span>
+							<span id="languageText">EN</span>
+						</button>
+					</ul>
+				</nav>
+			</header>
+
+			<main>
+				<div class="skills-section">
+					<p data-i18n="skill">Mes principales compétences</p>
+					<div class="logo">
+						<img src="../assets/images/HTML logo.png" alt="Logo HTML" />
+						<img src="../assets/images/css-3.png" alt="Logo CSS" />
+						<img src="../assets/images/jslogo.png" alt="Logo JavaScript" />
+						<a href="https://github.com/Valaraukar56">
+							<img src="../assets/images/github-mark-white.svg" alt="Logo Github" />
+						</a>
+					</div>
+				</div>
+			</main>
+		</div>
+
+		<!-- Scoreboard HTML element -->
+		<div id="scoreboard">
+			<div class="score-item">
+				<div class="score-dot" id="pink-dot"></div>
+				<div class="score-value" id="pink-score">0</div>
+			</div>
+			<div class="score-item">
+				<div class="score-dot" id="blue-dot"></div>
+				<div class="score-value" id="blue-score">0</div>
+			</div>
+		</div>
+		<script src="../Mathieu/js/language-switcher.js"></script>
+		<script>
+			// Game variables
+			const BLOCK_SIZE = 70;
+			const MIN_PADDING = 0;
+			let players = [];
+			let board = [];
+			let padding = { x: 0, y: 0 };
+
+			// Colors
+			const COLORS = {
+				pink: {
+					light: "#FFD6EC",
+					medium: "#FF9ED2",
+					dark: "#FF5CAA",
+					player: "#FF318C",
+				},
+				blue: {
+					light: "#D6E5FF",
+					medium: "#A1C6FF",
+					dark: "#4A90E2",
+					player: "#2E5EAA",
+				},
+				text: "#2D3748",
+				scoreBackground: "rgba(255, 255, 255, 0.7)",
+			};
+
+			function setup() {
+				// Create canvas inside the game container
+				let canvas = createCanvas(windowWidth, windowHeight);
+				canvas.parent("game-container");
+				createBoard();
+
+				// Set up scoreboard colors
+				document.getElementById("pink-dot").style.backgroundColor =
+					COLORS.pink.player;
+				document.getElementById("blue-dot").style.backgroundColor =
+					COLORS.blue.player;
+			}
+
+			function draw() {
+				// Clear background with a subtle gradient
+				background(250, 250, 252);
+
+				// Update player positions
+				for (let i = 0; i < players.length; i++) {
+					players[i].x += players[i].velocity.x;
+					players[i].y += players[i].velocity.y;
+
+					// Bounce off walls
+					if (
+						players[i].x - players[i].radius < padding.x ||
+						players[i].x + players[i].radius > width - padding.x
+					) {
+						players[i].velocity.x *= -1;
+					}
+					if (
+						players[i].y - players[i].radius < padding.y ||
+						players[i].y + players[i].radius > height - padding.y
+					) {
+						players[i].velocity.y *= -1;
+					}
+
+					// Check collisions with blocks and convert them
+					const rightBlockIdx = safeBlockIndex(
+						players[i].x + players[i].radius,
+						players[i].y
+					);
+					const leftBlockIdx = safeBlockIndex(
+						players[i].x - players[i].radius,
+						players[i].y
+					);
+					const bottomBlockIdx = safeBlockIndex(
+						players[i].x,
+						players[i].y + players[i].radius
+					);
+					const topBlockIdx = safeBlockIndex(
+						players[i].x,
+						players[i].y - players[i].radius
+					);
+
+					if (
+						rightBlockIdx >= 0 &&
+						rightBlockIdx < board.length &&
+						i != board[rightBlockIdx]
+					) {
+						players[i].velocity.x *= -1;
+						board[rightBlockIdx] = i;
+					}
+					if (
+						leftBlockIdx >= 0 &&
+						leftBlockIdx < board.length &&
+						i != board[leftBlockIdx]
+					) {
+						players[i].velocity.x *= -1;
+						board[leftBlockIdx] = i;
+					}
+					if (
+						bottomBlockIdx >= 0 &&
+						bottomBlockIdx < board.length &&
+						i != board[bottomBlockIdx]
+					) {
+						players[i].velocity.y *= -1;
+						board[bottomBlockIdx] = i;
+					}
+					if (
+						topBlockIdx >= 0 &&
+						topBlockIdx < board.length &&
+						i != board[topBlockIdx]
+					) {
+						players[i].velocity.y *= -1;
+						board[topBlockIdx] = i;
+					}
+				}
+
+				// Draw blocks with subtle shadow effect
+				for (let i = 0; i < board.length; i++) {
+					const colCount = Math.trunc((width - padding.x * 2) / BLOCK_SIZE);
+					const x = i % colCount;
+					const y = Math.floor(i / colCount);
+
+					const blockX = x * BLOCK_SIZE + padding.x;
+					const blockY = y * BLOCK_SIZE + padding.y;
+
+					// Draw subtle shadow
+					fill(0, 0, 0, 10);
+					rect(blockX + 2, blockY + 2, BLOCK_SIZE + 1, BLOCK_SIZE, 4);
+
+					// Draw block with color based on owner
+					if (board[i] == 0) {
+						// Pink gradient effect
+						const gradientColor = lerpColor(
+							color(COLORS.pink.light),
+							color(COLORS.pink.medium),
+							noise(x * 0.1, y * 0.1, frameCount * 0.01)
+						);
+						fill(gradientColor);
+					} else {
+						// Blue gradient effect
+						const gradientColor = lerpColor(
+							color(COLORS.blue.dark),
+							color(COLORS.blue.medium),
+							noise(x * 0.1, y * 0.1, frameCount * 0.01)
+						);
+						fill(gradientColor);
+					}
+
+					// Draw block with rounded corners
+					rect(blockX, blockY, BLOCK_SIZE + 1, BLOCK_SIZE, 4);
+				}
+
+				// Draw players with glow effect
+				drawingContext.shadowBlur = 15;
+				for (let i = 0; i < players.length; i++) {
+					if (i === 0) {
+						drawingContext.shadowColor = COLORS.pink.dark;
+						fill(COLORS.pink.player);
+					} else {
+						drawingContext.shadowColor = COLORS.blue.dark;
+						fill(COLORS.blue.player);
+					}
+
+					ellipse(
+						players[i].x,
+						players[i].y,
+						players[i].radius * 2,
+						players[i].radius * 2
+					);
+				}
+				drawingContext.shadowBlur = 0;
+
+				// Update scoreboard
+				updateScoreboard();
+			}
+
+			function updateScoreboard() {
+				// Count blocks by color
+				let pinkCount = board.filter((b) => b === 0).length;
+				let blueCount = board.filter((b) => b === 1).length;
+
+				// Update HTML elements
+				document.getElementById("pink-score").textContent = pinkCount;
+				document.getElementById("blue-score").textContent = blueCount;
+			}
+
+			function safeBlockIndex(x, y) {
+				// Check if coordinates are within the playable area
+				if (
+					x < padding.x ||
+					x >= width - padding.x ||
+					y < padding.y ||
+					y >= height - padding.y
+				) {
+					return -1;
+				}
+
+				const colCount = Math.trunc((width - padding.x * 2) / BLOCK_SIZE);
+				const col = Math.floor((x - padding.x) / BLOCK_SIZE);
+				const row = Math.floor((y - padding.y) / BLOCK_SIZE);
+
+				if (
+					col < 0 ||
+					row < 0 ||
+					col >= colCount ||
+					row >= Math.trunc((height - padding.y * 2) / BLOCK_SIZE)
+				) {
+					return -1;
+				}
+
+				return row * colCount + col;
+			}
+
+			// Helper function to get random position within a range
+			function randomPosition(min, max) {
+				return Math.random() * (max - min) + min;
+			}
+
+			function createBoard() {
+				padding = {
+					x: (width % BLOCK_SIZE) * 0.5 + MIN_PADDING,
+					y: (height % BLOCK_SIZE) * 0.5 + MIN_PADDING,
+				};
+
+				const colCount = Math.trunc((width - padding.x * 2) / BLOCK_SIZE);
+				const rowCount = Math.trunc((height - padding.y * 2) / BLOCK_SIZE);
+
+				board = new Array(colCount * rowCount);
+
+				// Randomize the board pattern instead of just splitting it in half
+				for (let i = 0; i < board.length; i++) {
+					const x = i % colCount;
+					const y = Math.floor(i / colCount);
+
+					// Create a diagonal split pattern
+					if (y < rowCount / 2) {
+						board[i] = 0; // Pink in top half
+					} else {
+						board[i] = 1; // Blue in bottom half
+					}
+				}
+
+				// Create players with random positions in their respective territories
+				const safeMargin = BLOCK_SIZE * 2; // Keep away from edges
+
+				// Player 1 (Pink) - random position in top half
+				const player1X = randomPosition(
+					padding.x + safeMargin,
+					width - padding.x - safeMargin
+				);
+				const player1Y = randomPosition(
+					padding.y + safeMargin,
+					height / 2 - safeMargin
+				);
+
+				// Player 2 (Blue) - random position in bottom half
+				const player2X = randomPosition(
+					padding.x + safeMargin,
+					width - padding.x - safeMargin
+				);
+				const player2Y = randomPosition(
+					height / 2 + safeMargin,
+					height - padding.y - safeMargin
+				);
+
+				players = [
+					{
+						x: player1X,
+						y: player1Y,
+						radius: BLOCK_SIZE * 0.5,
+						velocity: {
+							x: -2,
+							y: 2,
+						},
+						color: COLORS.pink.player,
+					},
+					{
+						x: player2X,
+						y: player2Y,
+						radius: BLOCK_SIZE * 0.5,
+						velocity: {
+							x: 2,
+							y: -2,
+						},
+						color: COLORS.blue.player,
+					},
+				];
+
+				// Initial scoreboard update
+				updateScoreboard();
+			}
+
+			function windowResized() {
+				resizeCanvas(windowWidth, windowHeight);
+				createBoard();
+			}
+		</script>
+	</body>
 </html>
-

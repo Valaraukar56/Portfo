@@ -1,130 +1,153 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/LOGO twitch.jpg">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link
+			rel="shortcut icon"
+			type="image/x-icon"
+			href="../assets/images/LOGO twitch.jpg"
+		/>
 
-    <link rel="stylesheet" href="../sizing.css" type="text/css">
-    <link rel="stylesheet" href="../global.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Portfolio</title>
-    <style>
-        html, body{
-            display: flex;
-            flex-direction: column;
-            max-width: 100vw;
-            min-height: 100vh;
-            background: url("../assets/images/FondLogo.png") no-repeat center center/cover;
-        }
+		<link rel="stylesheet" href="../sizing.css" type="text/css" />
+		<link rel="stylesheet" href="../global.css" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Portfolio</title>
+		<style>
+			html,
+			body {
+				display: flex;
+				flex-direction: column;
+				max-width: 100vw;
+				min-height: 100vh;
+				background: url("../assets/images/FondLogo.png") no-repeat center
+					center/cover;
+			}
 
-        main {
-            flex-grow: 1;
-            display: grid;
-            place-items: center;
-            padding: var(--size-7);
-        }
+			main {
+				flex-grow: 1;
+				display: grid;
+				place-items: center;
+				padding: var(--size-7);
+			}
 
-        picture {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            
-            &::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-            
-                backdrop-filter: blur(5px);
-            
-                mask-image: linear-gradient(
-                    0deg, 
-                    rgba(0,0,0,1) 0%, 
-                    rgba(0,0,0,1) 10%, 
-                    rgba(0,0,0,0) 30%, 
-                    rgba(0,0,0,0) 40%, 
-                    rgba(0,0,0,1) 60%, 
-                    rgba(0,0,0,1) 100%);
-            }
-            
-            img {
-                width: inherit;
-                height: inherit;
-            }
-        }
-        
-        #about-me {
-            padding: var(--size-6);
-            background-color: #222;
-            color: #f7f3e7;
-            border-radius: var(--size-7);
-            box-shadow: 0 4px 10px rgba(29, 11, 11, 0.5);
-            width: 80ch;
-            z-index: 1;
-            
-            h1 {
-                margin: 0 0 10px; 
-                font-size: 24px; 
-                text-align: center;
-            }
+			picture {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				z-index: 0;
 
-            p {
-                margin: 1.5rem auto;
-                font-size: 18px;
-                line-height: 1.5; 
-            }
-        }
-        a{
-            color: rgb(4, 122, 160);
-            text-decoration: none;
-        }
+				&::after {
+					content: "";
+					position: absolute;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
 
-        /* detail: c'est plus simple a lire comme ca */
-        @media screen and (width < 768px) {
-            #about-me {
-                max-width: 80vw;
-            }
-        }
-    </style>
-</head>
+					backdrop-filter: blur(5px);
 
-<body>
-    <header id="header">
-        <div id="logoV">
-            <img src="../assets/images/Logo_V.png">
-            <h1><a href="../Mathieu/index.html">Mathieu Piris</a></h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="../index.html" data-i18n="nav.home">Accueil</a></li>
-                <li><a href="skills.html" data-i18n="nav.skills">Compétences</a></li>
-                <li><a href="projects.html" data-i18n="nav.projects">Projets</a></li>
-                <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
-                <button class="language-switcher" id="languageSwitcher">
-                    <span class="language-icon">🌐</span>
-                    <span id="languageText">EN</span>
-                </button>
-            </ul>
+					mask-image: linear-gradient(
+						0deg,
+						rgba(0, 0, 0, 1) 0%,
+						rgba(0, 0, 0, 1) 10%,
+						rgba(0, 0, 0, 0) 30%,
+						rgba(0, 0, 0, 0) 40%,
+						rgba(0, 0, 0, 1) 60%,
+						rgba(0, 0, 0, 1) 100%
+					);
+				}
 
-        </nav>
-    </header>
+				img {
+					width: inherit;
+					height: inherit;
+				}
+			}
 
-    <main>
-        <div id="about-me">
-            <!-- La juste en dessous j'ai rajouter le data-i18n ="" pour que ça sois lier au js  -->
-            <h1 data-i18n="about.greeting">👋 Bonjour</h1> 
-            <p data-i18n="about.intro">Je suis Mathieu, étudiant en BTS à L'<strong><a href="https://www.aftec.fr/ecole-commerce-vannes">AFTEC</a></strong> Vannes</p>
-            <p data-i18n="about.portfolio">Tout ce que vous voyez a été développé par moi. En haut à droite, vous trouverez mes <strong><a href="projects.html" data-i18n="about.projectsLink">projets</a></strong>, qu'ils soient terminés ou en cours, créés au fur et à mesure que je continuais à m'améliorer.</p>
-            <p data-i18n="about.skills">J'ai mis à profit mes compétences en JavaScript pour développer mon projet Shoot 'em up</p>
-        </div> 
-        <picture></picture>
-    </main>
-    <script src="../Mathieu/js/language-switcher.js"></script>
+			#about-me {
+				padding: var(--size-6);
+				background-color: #222;
+				color: #f7f3e7;
+				border-radius: var(--size-7);
+				box-shadow: 0 4px 10px rgba(29, 11, 11, 0.5);
+				width: 80ch;
+				z-index: 1;
+
+				h1 {
+					margin: 0 0 10px;
+					font-size: 24px;
+					text-align: center;
+				}
+
+				p {
+					margin: 1.5rem auto;
+					font-size: 18px;
+					line-height: 1.5;
+				}
+			}
+			a {
+				color: rgb(4, 122, 160);
+				text-decoration: none;
+			}
+
+			/* detail: c'est plus simple a lire comme ca */
+			@media screen and (width < 768px) {
+				#about-me {
+					max-width: 80vw;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<header id="header">
+			<div id="logoV">
+				<img src="../assets/images/Logo_V.png" />
+				<h1><a href="../Mathieu/index.html">Mathieu Piris</a></h1>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="../index.html" data-i18n="nav.home">Accueil</a></li>
+					<li><a href="skills.html" data-i18n="nav.skills">Compétences</a></li>
+					<li><a href="projects.html" data-i18n="nav.projects">Projets</a></li>
+					<li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+					<button class="language-switcher" id="languageSwitcher">
+						<span class="language-icon">🌐</span>
+						<span id="languageText">EN</span>
+					</button>
+				</ul>
+			</nav>
+		</header>
+
+		<main>
+			<div id="about-me">
+				<!-- La juste en dessous j'ai rajouter le data-i18n ="" pour que ça sois lier au js  -->
+				<h1 data-i18n="about.greeting">👋 Bonjour</h1>
+				<p data-i18n="about.intro">
+					Je suis Mathieu, étudiant en BTS à L'
+					<strong>
+						<a href="https://www.aftec.fr/ecole-commerce-vannes">AFTEC</a>
+					</strong>
+					Vannes
+				</p>
+				<p data-i18n="about.portfolio">
+					Tout ce que vous voyez a été développé par moi. En haut à droite, vous
+					trouverez mes
+					<strong>
+						<a href="projects.html" data-i18n="about.projectsLink">projets</a>
+					</strong>
+					, qu'ils soient terminés ou en cours, créés au fur et à mesure que je
+					continuais à m'améliorer.
+				</p>
+				<p data-i18n="about.skills">
+					J'ai mis à profit mes compétences en JavaScript pour développer mon
+					projet Shoot 'em up
+				</p>
+			</div>
+			<picture></picture>
+		</main>
+		<script src="../Mathieu/js/language-switcher.js"></script>
+	</body>
 </html>
-

@@ -1,449 +1,492 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/images/LOGO twitch.jpg">
-    <title>Contact</title>
-    <link rel="stylesheet" href="../sizing.css" type="text/css">
-    <link rel="stylesheet" href="../global.css">
-    <link rel="stylesheet" href="style.css">
-    <style>
-      html, body {
-        width: 100%;
-        height: 100%;
-      }
-      
-      body {
-        position: relative;
-        background-color: #222;
-      }
-      
-      canvas {
-        z-index: -1;
-        display: block;
-        position: fixed; /* Changed from absolute to fixed */
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-      } 
-      
-      main {
-        z-index: 10;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 50vh; /* Changed from height to min-height */
-        width: 100%;
-        padding: 20px 0;
-        position: relative; /* Added position relative */
-      }
-       
-      .contact-section {
-        text-align: center;
-        padding: 40px;
-        border-radius: var(--size-3);
-        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
-        background: #222;
-        width: 70%;
-        max-width: 1200px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.2), inset 0 -2px 5px rgba(255, 255, 255, 0.2);
-        margin-bottom: 20px; /* Added margin bottom */
-      }
-      .contact-section h2 {
-        font-size: 32px;
-        color: white;
-        margin-bottom: 20px;
-      }
-      .contact-section p {
-        color: white;
-        font-size: 18px;
-        margin-bottom: 30px;
-      }
-      #name,
-      #email,
-      #message {
-        border-radius: var(--size-3);
-        margin: var(--size-2);
-        padding: var(--size-3);
-        font-size: 1.1rem;
-        resize: none;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.9);
-        border: 1px solid #007bff;
-        transition: all 0.3s ease;
-      }
-      #name:focus,
-      #email:focus,
-      #message:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
-        background-color: white;
-      }
-      .contact-form {
-        max-width: 800px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        text-align: left;
-        border-radius: 1rem;
-      }
-      .contact-form button {
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        padding: 15px 25px;
-        border-radius: var(--size-3);
-        font-size: 18px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        align-self: center;
-        margin-top: 10px;
-        width: 200px;
-      }
-      .contact-form button:hover {
-        background-color: #0056b3;
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      }
-      .text-section {
-          margin: var(--size-1);
-          padding: var(--size-4);
-          background: #222;
-          border-radius: var(--size-3);
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.2), inset 0 -2px 5px rgba(255, 255, 255, 0.2);
-          position: relative; /* Gardé position relative */
-          color: white;
-          width: 70%;
-          max-width: 1200px;
-          border-left: 4px solid #007BFF;
-          transition: all 0.3s ease;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-around;
-          flex-wrap: wrap;
-      }
-      .text-section:hover {
-        transform: translateY(-5px); /* Modifié pour n'avoir que le mouvement vertical */
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 10px 10px rgba(0, 0, 0, 0.3), inset 0 -2px 5px rgba(255, 255, 255, 0.2);
-      }
-      .contact-info-item {
-        padding: var(--size-2);
-        margin-bottom: var(--size-2);
-        border-right: 1px solid rgb(0, 0, 0);
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        min-width: 150px;
-        text-align: center;
-      }
-      .contact-info-item:last-child {
-        border-right: none;
-      }
-      .contact-icon {
-          font-size: 1.8rem;
-          margin-bottom: 10px;
-          color: #e45a84;
-          transition: transform 0.3s ease;
-      }
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		/>
+		<link
+			rel="shortcut icon"
+			type="image/x-icon"
+			href="../assets/images/LOGO twitch.jpg"
+		/>
+		<title>Contact</title>
+		<link rel="stylesheet" href="../sizing.css" type="text/css" />
+		<link rel="stylesheet" href="../global.css" />
+		<link rel="stylesheet" href="style.css" />
+		<style>
+			html,
+			body {
+				width: 100%;
+				height: 100%;
+			}
 
-      .contact-info-item:hover .contact-icon {
-        transform: scale(1.2);
-      }
+			body {
+				position: relative;
+				background-color: #222;
+			}
 
-      
-      .contact-info-item {
-        border-right: 1px solid #007BFF;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        flex: 1;
-        min-width: 150px;
-        text-align: center;
-      }
-      
-      /* Ensure header is above canvas */
-      #header {
-        position: relative;
-        z-index: 10;
-      }
-      
-      @media screen and (max-width: 768px) {
-          main {
-            padding: 20px 0; /* Ajout de padding vertical */
-            max-width: 90vw;
-          }
+			canvas {
+				z-index: -1;
+				display: block;
+				position: fixed; /* Changed from absolute to fixed */
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+			}
 
-          .text-section {
-              max-width: 90vw;
-          }
-      }
-      @media screen and (max-width: 480px) {
-          .contact-info-item {
-              min-width: 100px;
-              border-right: none;
-              border-bottom: 1px solid #007BFF;
-              width: 100%;
-          }
-          
-          .contact-info-item:last-child {
-              border-bottom: none;
-          }
-          
-          .text-section {
-              flex-direction: column;
-              padding: 15px;
-          }
-      }
-    </style>
-</head>
-<body>
-    <header id="header">
-        <div id="logoV">
-            <img src="../assets/images/Logo_V.png">
-            <h1><a href="../Mathieu/index.html">Mathieu Piris</a></h1>
-        </div>
-        <nav>
-          <ul>
-            <li><a href="../index.html" data-i18n="nav.home">Accueil</a></li>
-            <li><a href="skills.html" data-i18n="nav.skills">Compétences</a></li>
-            <li><a href="projects.html" data-i18n="nav.projects">Projets</a></li>
-            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
-            <button class="language-switcher" id="languageSwitcher">
-                <span class="language-icon">🌐</span>
-                <span id="languageText">EN</span>
-            </button>
-          </ul>
-        </nav>
-    </header>
-    <canvas id="spider-web"></canvas>
-    <main>
-      <section class="contact-section">
-          <h2 data-i18n="contact.h2">Contactez-moi </h2>
-          <p data-i18n="contact.p">N'hésitez pas à me contacter via ce formulaire ou directement par email.</p>
-          <form class="contact-form" action="https://formspree.io/f/mldjdlja" method="POST">
-            <input data-i18n-placeholder="contact.name_placeholder" type="text" id="name" name="name" placeholder="Nom et prénom *" required>
-            <input data-i18n-placeholder="contact.email_placeholder" type="email" id="email" name="email" placeholder="Adresse e-mail *" required>
-            <textarea data-i18n-placeholder="contact.message_placeholder" id="message" name="message" placeholder="Votre message *" rows="5" required></textarea>
-            <button data-i18n="contact.send" type="submit">Envoyer</button>
-        </form>
-      </section>
-  
-      <div class="text-section">
-        <div class="contact-info-item">
-          <i class="fa-solid fa-user contact-icon"></i>
-          <span class="contact-value">Mathieu Piris</span>
-        </div>
-        <div class="contact-info-item">
-          <i class="fa-solid fa-location-dot contact-icon"></i>
-          <span class="contact-value">Vannes, France</span>
-        </div>
-        <div class="contact-info-item">
-          <i class="fa-solid fa-phone contact-icon"></i>
-          <span class="contact-value">06 65 90 04 79</span>
-        </div>
-        <div class="contact-info-item">
-          <i class="fa-solid fa-envelope contact-icon"></i>
-          <span class="contact-value">mathieu.piris@outlook.fr</span>
-        </div>
-      </div>
-    </main>
-    <script src="../Mathieu/js/language-switcher.js"></script>
-    <script>
-        const canvas = document.getElementById("spider-web")
-        const ctx = canvas.getContext("2d")
-        
-        // Set canvas size and update on resize
-        function resizeCanvas() {
-            canvas.width = window.innerWidth
-            canvas.height = window.innerHeight
-        }
-        
-        // Initial resize
-        resizeCanvas()
+			main {
+				z-index: 10;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				min-height: 50vh; /* Changed from height to min-height */
+				width: 100%;
+				padding: 20px 0;
+				position: relative; /* Added position relative */
+			}
 
-        // Create an autonomous moving rocket with random trajectory
-        const rocket = {
-          x: canvas.width / 2,
-          y: canvas.height / 2,
-          angle: Math.random() * Math.PI * 2, // Random initial angle in radians
-          speed: 3, // Constant speed
-          length: 20, // Rocket length
-          width: 10, // Rocket width
-          color: "#e45a84",
-          trailLength: 15, // Length of the rocket trail
-          directionChangeTimer: 0, // Timer for random direction changes
-          directionChangeInterval: 50, // Frames between possible direction changes
-        
-          update() {
-            // Move the rocket at constant speed in the current direction
-            this.x += Math.cos(this.angle) * this.speed
-            this.y += Math.sin(this.angle) * this.speed
-        
-            // Bounce off walls with proper angle reflection
-            if (this.x <= this.length || this.x >= canvas.width - this.length) {
-              this.angle = Math.PI - this.angle
-            }
-            if (this.y <= this.length || this.y >= canvas.height - this.length) {
-              this.angle = -this.angle
-            }
-        
-            // Random trajectory changes
-            this.directionChangeTimer++
-            if (this.directionChangeTimer >= this.directionChangeInterval) {
-              // Reset timer
-              this.directionChangeTimer = 0
-            
-              // 30% chance to change direction
-              if (Math.random() < 0.3) {
-                // Change angle by a small random amount (-0.5 to 0.5 radians)
-                this.angle += (Math.random() - 0.5) * 1
-              }
-            }
-        
-            // Draw the rocket
-            this.draw()
-          },
-      
-          draw() {
-            // Save the current context state
-            ctx.save()
-        
-            // Translate to rocket position and rotate to rocket angle
-            ctx.translate(this.x, this.y)
-            ctx.rotate(this.angle)
-        
-            // Draw rocket body (triangle)
-            ctx.beginPath()
-            ctx.moveTo(this.length / 2, 0)
-            ctx.lineTo(-this.length / 2, this.width / 2)
-            ctx.lineTo(-this.length / 2, -this.width / 2)
-            ctx.closePath()
-            ctx.fillStyle = this.color
-            ctx.fill()
-        
-            // Draw rocket trail/flame
-            ctx.beginPath()
-            ctx.moveTo(-this.length / 2, 0)
-            ctx.lineTo(-this.length / 2 - this.trailLength, this.width / 3)
-            ctx.lineTo(-this.length / 2 - this.trailLength * 1.5, 0)
-            ctx.lineTo(-this.length / 2 - this.trailLength, -this.width / 3)
-            ctx.closePath()
-        
-            // Create gradient for flame
-            const gradient = ctx.createLinearGradient(-this.length / 2, 0, -this.length / 2 - this.trailLength * 1.5, 0)
-            gradient.addColorStop(0, "#FFF")
-            gradient.addColorStop(0.3, "#FFA500")
-            gradient.addColorStop(1, "#FF4500")
-        
-            ctx.fillStyle = gradient
-            ctx.shadowColor = "#FF4500"
-            ctx.shadowBlur = 10
-            ctx.fill()
-        
-            // Restore the context
-            ctx.restore()
-          },
-        }
+			.contact-section {
+				text-align: center;
+				padding: 40px;
+				border-radius: var(--size-3);
+				box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+				background: #222;
+				width: 70%;
+				max-width: 1200px;
+				box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.2),
+					inset 0 -2px 5px rgba(255, 255, 255, 0.2);
+				margin-bottom: 20px; /* Added margin bottom */
+			}
+			.contact-section h2 {
+				font-size: 32px;
+				color: white;
+				margin-bottom: 20px;
+			}
+			.contact-section p {
+				color: white;
+				font-size: 18px;
+				margin-bottom: 30px;
+			}
+			#name,
+			#email,
+			#message {
+				border-radius: var(--size-3);
+				margin: var(--size-2);
+				padding: var(--size-3);
+				font-size: 1.1rem;
+				resize: none;
+				width: 100%;
+				background-color: rgba(255, 255, 255, 0.9);
+				border: 1px solid #007bff;
+				transition: all 0.3s ease;
+			}
+			#name:focus,
+			#email:focus,
+			#message:focus {
+				outline: none;
+				box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+				background-color: white;
+			}
+			.contact-form {
+				max-width: 800px;
+				margin: 0 auto;
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+				text-align: left;
+				border-radius: 1rem;
+			}
+			.contact-form button {
+				background-color: #007bff;
+				color: #fff;
+				border: none;
+				padding: 15px 25px;
+				border-radius: var(--size-3);
+				font-size: 18px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				align-self: center;
+				margin-top: 10px;
+				width: 200px;
+			}
+			.contact-form button:hover {
+				background-color: #0056b3;
+				transform: translateY(-2px);
+				box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+			}
+			.text-section {
+				margin: var(--size-1);
+				padding: var(--size-4);
+				background: #222;
+				border-radius: var(--size-3);
+				box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 6px 6px rgba(0, 0, 0, 0.2),
+					inset 0 -2px 5px rgba(255, 255, 255, 0.2);
+				position: relative; /* Gardé position relative */
+				color: white;
+				width: 70%;
+				max-width: 1200px;
+				border-left: 4px solid #007bff;
+				transition: all 0.3s ease;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-around;
+				flex-wrap: wrap;
+			}
+			.text-section:hover {
+				transform: translateY(
+					-5px
+				); /* Modifié pour n'avoir que le mouvement vertical */
+				box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 10px 10px rgba(0, 0, 0, 0.3),
+					inset 0 -2px 5px rgba(255, 255, 255, 0.2);
+			}
+			.contact-info-item {
+				padding: var(--size-2);
+				margin-bottom: var(--size-2);
+				border-right: 1px solid rgb(0, 0, 0);
+				display: flex;
+				flex-direction: column;
+				flex: 1;
+				min-width: 150px;
+				text-align: center;
+			}
+			.contact-info-item:last-child {
+				border-right: none;
+			}
+			.contact-icon {
+				font-size: 1.8rem;
+				margin-bottom: 10px;
+				color: #e45a84;
+				transition: transform 0.3s ease;
+			}
 
-        class Point {
-          constructor(x, y) {
-            this.x = x
-            this.y = y
-            this.baseX = this.x
-            this.baseY = this.y
-            this.color = `hsl(${Math.random() * 360}, 100%, 50%)`
-          }
-      
-          draw() {
-            ctx.beginPath()
-            ctx.arc(this.x, this.y, 3, 0, Math.PI * 2)
-            ctx.fillStyle = this.color
-            ctx.shadowColor = this.color
-            ctx.shadowBlur = 10
-            ctx.fill()
-          }
-      
-          update() {
-            // Calculate distance from rocket
-            const dx = rocket.x - this.x
-            const dy = rocket.y - this.y
-            const distance = Math.sqrt(dx * dx + dy * dy)
-        
-            // Push points away from rocket
-            if (distance < 150) {
-              this.x -= dx * 0.05
-              this.y -= dy * 0.05
-            } else {
-              // Return to original position
-              this.x += (this.baseX - this.x) * 0.05
-              this.y += (this.baseY - this.y) * 0.05
-            }
-        
-            this.draw()
-          }
-        }
+			.contact-info-item:hover .contact-icon {
+				transform: scale(1.2);
+			}
 
-        let points = []
-        const gridSpacing = 50
+			.contact-info-item {
+				border-right: 1px solid #007bff;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				flex: 1;
+				min-width: 150px;
+				text-align: center;
+			}
 
-        function createPoints() {
-          points = []
-          for (let y = 0; y < canvas.height; y += gridSpacing) {
-            for (let x = 0; x < canvas.width; x += gridSpacing) {
-              points.push(new Point(x, y))
-            }
-          }
-        }
+			/* Ensure header is above canvas */
+			#header {
+				position: relative;
+				z-index: 10;
+			}
 
-        function connectPoints() {
-          for (let i = 0; i < points.length; i++) {
-            for (let j = i + 1; j < points.length; j++) {
-              const dx = points[i].x - points[j].x
-              const dy = points[i].y - points[j].y
-              const distance = Math.sqrt(dx * dx + dy * dy)
-              if (distance < gridSpacing) {
-                ctx.beginPath()
-                ctx.moveTo(points[i].x, points[i].y)
-                ctx.lineTo(points[j].x, points[j].y)
-                ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / gridSpacing})`
-                ctx.lineWidth = 1.5
-                ctx.stroke()
-              }
-            }
-          }
-        }
+			@media screen and (max-width: 768px) {
+				main {
+					padding: 20px 0; /* Ajout de padding vertical */
+					max-width: 90vw;
+				}
 
-        function animate() {
-          ctx.clearRect(0, 0, canvas.width, canvas.height)
-        
-          // Update and draw the rocket
-          rocket.update()
-        
-          // Update and draw the grid points
-          points.forEach((point) => point.update())
-          connectPoints()
-        
-          requestAnimationFrame(animate)
-        }
+				.text-section {
+					max-width: 90vw;
+				}
+			}
+			@media screen and (max-width: 480px) {
+				.contact-info-item {
+					min-width: 100px;
+					border-right: none;
+					border-bottom: 1px solid #007bff;
+					width: 100%;
+				}
 
-        createPoints()
-        animate()
+				.contact-info-item:last-child {
+					border-bottom: none;
+				}
 
-        window.addEventListener("resize", () => {
-          resizeCanvas()
-        
-          // Reset rocket position on resize
-          rocket.x = canvas.width / 2
-          rocket.y = canvas.height / 2
-        
-          createPoints()
-        })
-    </script>
-</body>
+				.text-section {
+					flex-direction: column;
+					padding: 15px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<header id="header">
+			<div id="logoV">
+				<img src="../assets/images/Logo_V.png" />
+				<h1><a href="../Mathieu/index.html">Mathieu Piris</a></h1>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="../index.html" data-i18n="nav.home">Accueil</a></li>
+					<li><a href="skills.html" data-i18n="nav.skills">Compétences</a></li>
+					<li><a href="projects.html" data-i18n="nav.projects">Projets</a></li>
+					<li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+					<button class="language-switcher" id="languageSwitcher">
+						<span class="language-icon">🌐</span>
+						<span id="languageText">EN</span>
+					</button>
+				</ul>
+			</nav>
+		</header>
+		<canvas id="spider-web"></canvas>
+		<main>
+			<section class="contact-section">
+				<h2 data-i18n="contact.h2">Contactez-moi</h2>
+				<p data-i18n="contact.p">
+					N'hésitez pas à me contacter via ce formulaire ou directement par email.
+				</p>
+				<form
+					class="contact-form"
+					action="https://formspree.io/f/mldjdlja"
+					method="POST"
+				>
+					<input
+						data-i18n-placeholder="contact.name_placeholder"
+						type="text"
+						id="name"
+						name="name"
+						placeholder="Nom et prénom *"
+						required
+					/>
+					<input
+						data-i18n-placeholder="contact.email_placeholder"
+						type="email"
+						id="email"
+						name="email"
+						placeholder="Adresse e-mail *"
+						required
+					/>
+					<textarea
+						data-i18n-placeholder="contact.message_placeholder"
+						id="message"
+						name="message"
+						placeholder="Votre message *"
+						rows="5"
+						required
+					></textarea>
+					<button data-i18n="contact.send" type="submit">Envoyer</button>
+				</form>
+			</section>
+
+			<div class="text-section">
+				<div class="contact-info-item">
+					<i class="fa-solid fa-user contact-icon"></i>
+					<span class="contact-value">Mathieu Piris</span>
+				</div>
+				<div class="contact-info-item">
+					<i class="fa-solid fa-location-dot contact-icon"></i>
+					<span class="contact-value">Vannes, France</span>
+				</div>
+				<div class="contact-info-item">
+					<i class="fa-solid fa-phone contact-icon"></i>
+					<span class="contact-value">06 65 90 04 79</span>
+				</div>
+				<div class="contact-info-item">
+					<i class="fa-solid fa-envelope contact-icon"></i>
+					<span class="contact-value">mathieu.piris@outlook.fr</span>
+				</div>
+			</div>
+		</main>
+		<script src="../Mathieu/js/language-switcher.js"></script>
+		<script>
+			const canvas = document.getElementById("spider-web");
+			const ctx = canvas.getContext("2d");
+
+			// Set canvas size and update on resize
+			function resizeCanvas() {
+				canvas.width = window.innerWidth;
+				canvas.height = window.innerHeight;
+			}
+
+			// Initial resize
+			resizeCanvas();
+
+			// Create an autonomous moving rocket with random trajectory
+			const rocket = {
+				x: canvas.width / 2,
+				y: canvas.height / 2,
+				angle: Math.random() * Math.PI * 2, // Random initial angle in radians
+				speed: 3, // Constant speed
+				length: 20, // Rocket length
+				width: 10, // Rocket width
+				color: "#e45a84",
+				trailLength: 15, // Length of the rocket trail
+				directionChangeTimer: 0, // Timer for random direction changes
+				directionChangeInterval: 50, // Frames between possible direction changes
+
+				update() {
+					// Move the rocket at constant speed in the current direction
+					this.x += Math.cos(this.angle) * this.speed;
+					this.y += Math.sin(this.angle) * this.speed;
+
+					// Bounce off walls with proper angle reflection
+					if (this.x <= this.length || this.x >= canvas.width - this.length) {
+						this.angle = Math.PI - this.angle;
+					}
+					if (this.y <= this.length || this.y >= canvas.height - this.length) {
+						this.angle = -this.angle;
+					}
+
+					// Random trajectory changes
+					this.directionChangeTimer++;
+					if (this.directionChangeTimer >= this.directionChangeInterval) {
+						// Reset timer
+						this.directionChangeTimer = 0;
+
+						// 30% chance to change direction
+						if (Math.random() < 0.3) {
+							// Change angle by a small random amount (-0.5 to 0.5 radians)
+							this.angle += (Math.random() - 0.5) * 1;
+						}
+					}
+
+					// Draw the rocket
+					this.draw();
+				},
+
+				draw() {
+					// Save the current context state
+					ctx.save();
+
+					// Translate to rocket position and rotate to rocket angle
+					ctx.translate(this.x, this.y);
+					ctx.rotate(this.angle);
+
+					// Draw rocket body (triangle)
+					ctx.beginPath();
+					ctx.moveTo(this.length / 2, 0);
+					ctx.lineTo(-this.length / 2, this.width / 2);
+					ctx.lineTo(-this.length / 2, -this.width / 2);
+					ctx.closePath();
+					ctx.fillStyle = this.color;
+					ctx.fill();
+
+					// Draw rocket trail/flame
+					ctx.beginPath();
+					ctx.moveTo(-this.length / 2, 0);
+					ctx.lineTo(-this.length / 2 - this.trailLength, this.width / 3);
+					ctx.lineTo(-this.length / 2 - this.trailLength * 1.5, 0);
+					ctx.lineTo(-this.length / 2 - this.trailLength, -this.width / 3);
+					ctx.closePath();
+
+					// Create gradient for flame
+					const gradient = ctx.createLinearGradient(
+						-this.length / 2,
+						0,
+						-this.length / 2 - this.trailLength * 1.5,
+						0
+					);
+					gradient.addColorStop(0, "#FFF");
+					gradient.addColorStop(0.3, "#FFA500");
+					gradient.addColorStop(1, "#FF4500");
+
+					ctx.fillStyle = gradient;
+					ctx.shadowColor = "#FF4500";
+					ctx.shadowBlur = 10;
+					ctx.fill();
+
+					// Restore the context
+					ctx.restore();
+				},
+			};
+
+			class Point {
+				constructor(x, y) {
+					this.x = x;
+					this.y = y;
+					this.baseX = this.x;
+					this.baseY = this.y;
+					this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+				}
+
+				draw() {
+					ctx.beginPath();
+					ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+					ctx.fillStyle = this.color;
+					ctx.shadowColor = this.color;
+					ctx.shadowBlur = 10;
+					ctx.fill();
+				}
+
+				update() {
+					// Calculate distance from rocket
+					const dx = rocket.x - this.x;
+					const dy = rocket.y - this.y;
+					const distance = Math.sqrt(dx * dx + dy * dy);
+
+					// Push points away from rocket
+					if (distance < 150) {
+						this.x -= dx * 0.05;
+						this.y -= dy * 0.05;
+					} else {
+						// Return to original position
+						this.x += (this.baseX - this.x) * 0.05;
+						this.y += (this.baseY - this.y) * 0.05;
+					}
+
+					this.draw();
+				}
+			}
+
+			let points = [];
+			const gridSpacing = 50;
+
+			function createPoints() {
+				points = [];
+				for (let y = 0; y < canvas.height; y += gridSpacing) {
+					for (let x = 0; x < canvas.width; x += gridSpacing) {
+						points.push(new Point(x, y));
+					}
+				}
+			}
+
+			function connectPoints() {
+				for (let i = 0; i < points.length; i++) {
+					for (let j = i + 1; j < points.length; j++) {
+						const dx = points[i].x - points[j].x;
+						const dy = points[i].y - points[j].y;
+						const distance = Math.sqrt(dx * dx + dy * dy);
+						if (distance < gridSpacing) {
+							ctx.beginPath();
+							ctx.moveTo(points[i].x, points[i].y);
+							ctx.lineTo(points[j].x, points[j].y);
+							ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / gridSpacing})`;
+							ctx.lineWidth = 1.5;
+							ctx.stroke();
+						}
+					}
+				}
+			}
+
+			function animate() {
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+				// Update and draw the rocket
+				rocket.update();
+
+				// Update and draw the grid points
+				points.forEach((point) => point.update());
+				connectPoints();
+
+				requestAnimationFrame(animate);
+			}
+
+			createPoints();
+			animate();
+
+			window.addEventListener("resize", () => {
+				resizeCanvas();
+
+				// Reset rocket position on resize
+				rocket.x = canvas.width / 2;
+				rocket.y = canvas.height / 2;
+
+				createPoints();
+			});
+		</script>
+	</body>
 </html>
-

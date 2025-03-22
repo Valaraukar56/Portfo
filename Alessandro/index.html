@@ -2,223 +2,240 @@
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alessandro Fortunati</title>
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    
-    <style>
-        *{
-            box-sizing: border-box;
-        }
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Alessandro Fortunati</title>
+		<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
-        body {
-            background: url("../assets/images/fond.png") no-repeat center center/cover;
-        }
+		<style>
+			* {
+				box-sizing: border-box;
+			}
 
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+			body {
+				background: url("../assets/images/fond.png") no-repeat center
+					center/cover;
+			}
 
-        .container {
-            display: flex;
-            width: 50%;
-            max-width: 1800px;
-            max-height: 90vh;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 20px;
-        }
+			body {
+				font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+					Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+					sans-serif;
+				margin: 0;
+				padding: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+			}
 
-        .left-section {
-            width: 50%;
-            height: 100%;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+			.container {
+				display: flex;
+				width: 50%;
+				max-width: 1800px;
+				max-height: 90vh;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+				border-radius: 20px;
+			}
 
-            iframe {
-                width: 40vw;
-                height: 80vh; /* Définit la hauteur à 100% de la section parent */
-                max-height: 90vh; /* Assure qu'il ne dépasse pas l'écran */
-                display: block;
-                border-radius: 20px;
-            }
-        }
+			.left-section {
+				width: 50%;
+				height: 100%;
+				padding: 20px;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
 
+				iframe {
+					width: 40vw;
+					height: 80vh; /* Définit la hauteur à 100% de la section parent */
+					max-height: 90vh; /* Assure qu'il ne dépasse pas l'écran */
+					display: block;
+					border-radius: 20px;
+				}
+			}
 
+			.download-btn {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+				gap: 5px;
+				margin-top: 15px;
 
-        .download-btn {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 5px;
-            margin-top: 15px;
+				a {
+					display: inline-block;
+					padding: 10px 20px;
+					font-weight: bold;
+					font-size: 18px;
+					text-decoration: none;
+					color: #00ffff;
+					background: #222;
+					border-radius: 10px;
+					transition: all 0.3s ease-in-out;
+					box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+				}
+				a:hover {
+					color: #222;
+					background: #00ffff;
+					box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+					transform: scale(1.1);
+				}
+			}
 
-            a {
-                display: inline-block;
-                padding: 10px 20px;
-                font-weight: bold;
-                font-size: 18px;
-                text-decoration: none;
-                color: #00ffff; 
-                background: #222;
-                border-radius: 10px;
-                transition: all 0.3s ease-in-out;
-                box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-            }
-            a:hover {
-                color: #222;
-                background: #00ffff;
-                box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
-                transform: scale(1.1);
-            }
-        }
+			.right-section {
+				width: 80%;
+				padding: 40px 20px;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				color: #ddd;
+				background-color: #222;
+				overflow-y: auto;
+				max-height: 100vh;
+				border-radius: 20px;
 
-        .right-section {
-            width: 80%;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #ddd;
-            background-color: #222;
-            overflow-y: auto;
-            max-height: 100vh;
-            border-radius: 20px;
+				img {
+					transition: transform 0.3s;
+				}
+				img:hover {
+					transform: scale(1.1);
+				}
+			}
 
-            img {
-                transition: transform 0.3s;
-            }
-            img:hover {
-                transform: scale(1.1);
-            }
-        }
+			h1 {
+				margin-bottom: 15px;
+			}
 
-        h1 {
-            margin-bottom: 15px;
-        }
+			p {
+				font-size: 16px;
+				line-height: 1.5;
+				margin-bottom: 10px;
+			}
 
-        p {
-            font-size: 16px;
-            line-height: 1.5;
-            margin-bottom: 10px;
-        }
+			strong {
+				color: aqua;
+			}
 
-        strong {
-            color: aqua;
-        }
+			.right-section .text {
+				text-align: center;
+				max-width: 90%;
+				margin-bottom: 20px;
+			}
 
-        .right-section .text {
-            text-align: center;
-            max-width: 90%;
-            margin-bottom: 20px;
-        }
+			.certifications {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 20px;
+				width: 100%;
+			}
 
-        .certifications {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            width: 100%;
-        }
+			.certif img {
+				max-width: 100%;
+				height: auto;
+				border-radius: 5px;
+			}
 
-        .certif img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
+			.photo-profil img {
+				width: 200px;
+				height: 200px;
+				border-radius: 50%;
+				object-fit: cover;
+				margin-top: 20px;
+				border: #f9f9f9 5px solid;
+			}
 
-        .photo-profil img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-top: 20px;
-            border: #f9f9f9 5px solid;
-        }
+			@media (max-width: 768px) {
+				.right-section {
+					width: 100%;
+					padding: 30px 15px;
+				}
+				.left-section,
+				.right-section {
+					width: 100%;
+					border-right: none;
+				}
+			}
 
-        @media (max-width: 768px) {
-            .right-section {
-                width: 100%;
-                padding: 30px 15px;
-            }
-            .left-section, .right-section {
-                width: 100%;
-                border-right: none;
-            }
-        }
+			.text {
+				margin-bottom: 20px;
+				p {
+					font-size: 16px;
+					margin-bottom: 10px;
+				}
+				h1 {
+					text-align: center;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="left-section">
+			<iframe src="../assets/images/CV.pdf" alt="CV Image"></iframe>
 
-        .text {
-            margin-bottom: 20px;
-            p {
-                font-size: 16px;
-                margin-bottom: 10px;
-            }
-            h1 {
-                text-align: center;
-            }
+			<div class="download-btn">
+				<a href="../assets/images/CV.png" download="">Télécharger mon CV</a>
+			</div>
+		</div>
 
-        }
-
-
-    </style>
-</head>
-<body>
-    
-        <div class="left-section">
-            <iframe src="../assets/images/CV.pdf" alt="CV Image"></iframe>
-            
-            <div class="download-btn">
-                <a href="../assets/images/CV.png" download="">Télécharger mon CV</a>
-            </div>
-        </div>
-
-        <div class="container"> 
-        <div class="right-section">
-            <div class="text">
-                <h1>👋 Bonjour</h1>
-                <p>
-                    Bonjour, je suis <strong>Alessandro Fortunati</strong>, étudiant en informatique en <strong>BTS SIO option SISR</strong>. Passionné par la cybersécurité,
-                    je souhaite devenir pentester. Mon objectif est d'obtenir un diplôme d'ingénieur pour exercer ce métier,
-                    en testant et évaluant la sécurité des systèmes informatiques grâce à ma curiosité et mon esprit d'analyse.
-                </p>
-                <p>
-                    À terme, je souhaite devenir pentester,
-                    un professionnel spécialisé dans la sécurité informatique qui teste et évalue la sécurité des systèmes informatiques.
-                </p>
-                <p>
-                    Ce portfolio présente mes projets et expériences,
-                    illustrant mon engagement dans le domaine de la cybersécurité.
-                </p>
-            </div>
-            <div class="certifications">
-                <div class="certif">
-                    <a href="certif1.html" target="_blank"><img src="../assets/images/beginner.png" alt="Certification 1"></a>
-                </div>
-                <div class="certif">
-                    <a href="certif2.html" target="_blank"><img src="../assets/images/intro.png" alt="Certification 2"></a>
-                </div>
-                <div class="certif">
-                    <a href="certif3.html" target="_blank"><img src="../assets/images/mooc.png" alt="Certification 3"></a>
-                </div>
-                <div class="certif">
-                    <a href="certif4.html" target="_blank"><img src="../assets/images/pre_security.png" alt="Certification 4"></a>
-                </div>
-            </div>
-            <div class="photo-profil">
-                <a href="https://tryhackme.com/p/Azuless" target="_blank"><img src="../assets/images/TryHackMe.png" alt="Photo de profil"></a>
-            </div>
-        </div>
-    </div>
-</body>
+		<div class="container">
+			<div class="right-section">
+				<div class="text">
+					<h1>👋 Bonjour</h1>
+					<p>
+						Bonjour, je suis
+						<strong>Alessandro Fortunati</strong>
+						, étudiant en informatique en
+						<strong>BTS SIO option SISR</strong>
+						. Passionné par la cybersécurité, je souhaite devenir pentester. Mon
+						objectif est d'obtenir un diplôme d'ingénieur pour exercer ce
+						métier, en testant et évaluant la sécurité des systèmes
+						informatiques grâce à ma curiosité et mon esprit d'analyse.
+					</p>
+					<p>
+						À terme, je souhaite devenir pentester, un professionnel spécialisé
+						dans la sécurité informatique qui teste et évalue la sécurité des
+						systèmes informatiques.
+					</p>
+					<p>
+						Ce portfolio présente mes projets et expériences, illustrant mon
+						engagement dans le domaine de la cybersécurité.
+					</p>
+				</div>
+				<div class="certifications">
+					<div class="certif">
+						<a href="certif1.html" target="_blank">
+							<img src="../assets/images/beginner.png" alt="Certification 1" />
+						</a>
+					</div>
+					<div class="certif">
+						<a href="certif2.html" target="_blank">
+							<img src="../assets/images/intro.png" alt="Certification 2" />
+						</a>
+					</div>
+					<div class="certif">
+						<a href="certif3.html" target="_blank">
+							<img src="../assets/images/mooc.png" alt="Certification 3" />
+						</a>
+					</div>
+					<div class="certif">
+						<a href="certif4.html" target="_blank">
+							<img
+								src="../assets/images/pre_security.png"
+								alt="Certification 4"
+							/>
+						</a>
+					</div>
+				</div>
+				<div class="photo-profil">
+					<a href="https://tryhackme.com/p/Azuless" target="_blank">
+						<img src="../assets/images/TryHackMe.png" alt="Photo de profil" />
+					</a>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>

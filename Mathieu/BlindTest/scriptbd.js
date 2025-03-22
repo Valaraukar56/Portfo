@@ -22,49 +22,49 @@ const goodAnswers = document.querySelectorAll(".good");
 const badAnswers = document.querySelectorAll(".bad");
 
 for (let i = 0; i < goodAnswers.length; i++) {
-  goodAnswers[i].addEventListener("click", (ev) => {
-    ev.target.style.backgroundColor = "green";
-  });
+	goodAnswers[i].addEventListener("click", (ev) => {
+		ev.target.style.backgroundColor = "green";
+	});
 }
 
 for (let i = 0; i < badAnswers.length; i++) {
-  badAnswers[i].addEventListener("click", (ev) => {
-    ev.target.style.backgroundColor = "red";
-  });
+	badAnswers[i].addEventListener("click", (ev) => {
+		ev.target.style.backgroundColor = "red";
+	});
 }
 
 showResponses1.addEventListener("click", () => {
-  responses1.style.visibility = "visible";
+	responses1.style.visibility = "visible";
 });
 
 showResponses2.addEventListener("click", () => {
-  responses2.style.visibility = "visible";
+	responses2.style.visibility = "visible";
 });
 
 showResponses3.addEventListener("click", () => {
-  responses3.style.visibility = "visible";
+	responses3.style.visibility = "visible";
 });
 
 showResponses4.addEventListener("click", () => {
-  responses4.style.visibility = "visible";
+	responses4.style.visibility = "visible";
 });
 
 showResponses5.addEventListener("click", () => {
-  responses5.style.visibility = "visible";
+	responses5.style.visibility = "visible";
 });
 
 showResponses6.addEventListener("click", () => {
-  responses6.style.visibility = "visible";
+	responses6.style.visibility = "visible";
 });
 
 showResponses7.addEventListener("click", () => {
-  responses7.style.visibility = "visible";
+	responses7.style.visibility = "visible";
 });
 
 showResponses8.addEventListener("click", () => {
-  responses8.style.visibility = "visible";
+	responses8.style.visibility = "visible";
 });
 
 showResponses9.addEventListener("click", () => {
-  responses9.style.visibility = "visible";
+	responses9.style.visibility = "visible";
 });
