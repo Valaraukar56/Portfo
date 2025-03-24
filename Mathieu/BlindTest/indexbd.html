@@ -1,16 +1,260 @@
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<link rel="stylesheet" href="stylesbd.css" type="text/css" />
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<title>Blind Test</title>
-		<script src="scriptbd.js" defer></script>
+
 		<link
 			rel="shortcut icon"
 			type="image/x-icon"
 			href="../images/LOGO twitch.jpg"
 		/>
+		<style>
+			button {
+				border-radius: 10px;
+			}
+
+			p {
+				margin: 0;
+			}
+
+			input {
+				background-color: black;
+				color: white;
+				display: block;
+				margin: auto;
+			}
+
+			a:hover {
+				color: black;
+				background-color: hotpink;
+			}
+
+			em {
+				font-size: 17px;
+			}
+
+			ol,
+			ul {
+				list-style: none;
+			}
+
+			a {
+				text-decoration: none;
+				color: rgb(255, 0, 221);
+			}
+
+			h1 {
+				text-align: center;
+				color: rgb(169, 174, 182);
+				border: 2px solid black;
+				width: 50%;
+				margin-left: 25%;
+				border-radius: 10px;
+				background-color: rgb(0, 0, 0);
+			}
+
+			article {
+				padding: 10px;
+				margin: 10px;
+				text-align: center;
+			}
+
+			main {
+				display: flex;
+				justify-content: center;
+			}
+
+			body {
+				font-size: 20px;
+				background-size: cover;
+				margin-top: 1%;
+				background: #0f0c29;
+				background: -webkit-linear-gradient(
+					to right,
+					#24243e,
+					#302b63,
+					#0f0c29
+				);
+				background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+			}
+
+			.taille {
+				font-size: 40px;
+			}
+
+			.left {
+				height: auto;
+				margin: auto;
+				color: rgb(0, 0, 0);
+				border-radius: 40px;
+				background: radial-gradient(
+					circle,
+					rgba(238, 174, 202, 1) 0%,
+					rgba(148, 187, 233, 1) 100%
+				);
+			}
+
+			.middle {
+				height: auto;
+				margin: auto;
+				color: rgb(0, 0, 0);
+				border-radius: 40px;
+				background: radial-gradient(
+					circle,
+					rgba(238, 174, 202, 1) 0%,
+					rgba(148, 187, 233, 1) 100%
+				);
+			}
+
+			.right {
+				height: auto;
+				margin: auto;
+				color: rgb(0, 0, 0);
+				border-radius: 40px;
+				background: radial-gradient(
+					circle,
+					rgba(238, 174, 202, 1) 0%,
+					rgba(148, 187, 233, 1) 100%
+				);
+			}
+
+			#responses1,
+			#responses2,
+			#responses3,
+			#responses4,
+			#responses5,
+			#responses6,
+			#responses7,
+			#responses8,
+			#responses9 {
+				visibility: hidden;
+			}
+
+			#show-responses1,
+			#show-responses2,
+			#show-responses3,
+			#show-responses4,
+			#show-responses5,
+			#show-responses6,
+			#show-responses7,
+			#show-responses8,
+			#show-responses9 {
+				visibility: visible;
+				font-size: 20px;
+			}
+			/* Ajout des styles responsive */
+			@media screen and (max-width: 1200px) {
+				main {
+					flex-direction: column;
+					align-items: center;
+				}
+
+				.left,
+				.middle,
+				.right {
+					width: 80%;
+					margin-bottom: 30px;
+				}
+
+				h1 {
+					width: 70%;
+					margin-left: 15%;
+				}
+			}
+
+			@media screen and (max-width: 768px) {
+				body {
+					font-size: 16px;
+				}
+
+				.taille {
+					font-size: 30px;
+				}
+
+				h1 {
+					width: 90%;
+					margin-left: 5%;
+					font-size: 24px;
+				}
+
+				.left,
+				.middle,
+				.right {
+					width: 90%;
+					padding: 10px;
+				}
+
+				audio {
+					width: 100%;
+				}
+
+				button {
+					margin: 5px;
+					padding: 8px;
+					font-size: 14px;
+				}
+
+				#show-responses1,
+				#show-responses2,
+				#show-responses3,
+				#show-responses4,
+				#show-responses5,
+				#show-responses6,
+				#show-responses7,
+				#show-responses8,
+				#show-responses9 {
+					font-size: 16px;
+					margin: 10px auto;
+					padding: 8px 15px;
+				}
+
+				ol li {
+					margin-bottom: 15px;
+				}
+
+				ol li div {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+				}
+
+				ol li div button {
+					margin: 5px 0;
+					width: 80%;
+				}
+			}
+
+			@media screen and (max-width: 480px) {
+				body {
+					font-size: 14px;
+				}
+
+				.taille {
+					font-size: 24px;
+				}
+
+				h1 {
+					font-size: 20px;
+				}
+
+				em {
+					font-size: 14px;
+				}
+
+				.left,
+				.middle,
+				.right {
+					width: 95%;
+					padding: 8px;
+				}
+
+				button {
+					font-size: 12px;
+				}
+			}
+		</style>
 	</head>
 
 	<body>
@@ -481,4 +725,76 @@
 			</article>
 		</main>
 	</body>
+	<script>
+		const responses1 = document.querySelector("#responses1");
+		const responses2 = document.querySelector("#responses2");
+		const responses3 = document.querySelector("#responses3");
+		const responses4 = document.querySelector("#responses4");
+		const responses5 = document.querySelector("#responses5");
+		const responses6 = document.querySelector("#responses6");
+		const responses7 = document.querySelector("#responses7");
+		const responses8 = document.querySelector("#responses8");
+		const responses9 = document.querySelector("#responses9");
+
+		const showResponses1 = document.querySelector("#show-responses1");
+		const showResponses2 = document.querySelector("#show-responses2");
+		const showResponses3 = document.querySelector("#show-responses3");
+		const showResponses4 = document.querySelector("#show-responses4");
+		const showResponses5 = document.querySelector("#show-responses5");
+		const showResponses6 = document.querySelector("#show-responses6");
+		const showResponses7 = document.querySelector("#show-responses7");
+		const showResponses8 = document.querySelector("#show-responses8");
+		const showResponses9 = document.querySelector("#show-responses9");
+
+		const goodAnswers = document.querySelectorAll(".good");
+		const badAnswers = document.querySelectorAll(".bad");
+
+		for (let i = 0; i < goodAnswers.length; i++) {
+			goodAnswers[i].addEventListener("click", (ev) => {
+				ev.target.style.backgroundColor = "green";
+			});
+		}
+
+		for (let i = 0; i < badAnswers.length; i++) {
+			badAnswers[i].addEventListener("click", (ev) => {
+				ev.target.style.backgroundColor = "red";
+			});
+		}
+
+		showResponses1.addEventListener("click", () => {
+			responses1.style.visibility = "visible";
+		});
+
+		showResponses2.addEventListener("click", () => {
+			responses2.style.visibility = "visible";
+		});
+
+		showResponses3.addEventListener("click", () => {
+			responses3.style.visibility = "visible";
+		});
+
+		showResponses4.addEventListener("click", () => {
+			responses4.style.visibility = "visible";
+		});
+
+		showResponses5.addEventListener("click", () => {
+			responses5.style.visibility = "visible";
+		});
+
+		showResponses6.addEventListener("click", () => {
+			responses6.style.visibility = "visible";
+		});
+
+		showResponses7.addEventListener("click", () => {
+			responses7.style.visibility = "visible";
+		});
+
+		showResponses8.addEventListener("click", () => {
+			responses8.style.visibility = "visible";
+		});
+
+		showResponses9.addEventListener("click", () => {
+			responses9.style.visibility = "visible";
+		});
+	</script>
 </html>
