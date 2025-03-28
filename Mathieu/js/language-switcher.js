@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			"about.intro":
 				'Je suis Mathieu, étudiant en BTS à L\'<strong><a href="https://www.aftec.fr/ecole-commerce-vannes" target="_blank">AFTEC</a></strong> Vannes',
 			"about.portfolio":
-				"Tout ce que vous voyez a été développé par moi. En haut à droite, vous trouverez mes <strong><a href=\"projects.html\">projets</a></strong>, qu'ils soient terminés ou en cours, créés au fur et à mesure que je continuais à m'améliorer.",
+				"Ce portfolio est une réalisation personnelle. En haut à droite, vous trouverez mes <strong><a href=\"projects.html\">projets</a></strong>, qu'ils soient terminés ou en cours, créés au fur et à mesure que je continuais à m'améliorer.",
 			"about.projectsLink": "projets",
 			"about.skills":
 				"J'ai mis à profit mes compétences en JavaScript pour développer mon projet Shoot 'em up",
@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			"contact.message_placeholder": "Message *",
 			"contact.send": "Envoyer",
 			skill: "Mes principales compétences",
+			secondary_skill: "Compétences secondaires",
 			"casse-brique": "Casse-brique",
 			"projet-shmup":
 				"Développé en juin 2024, ce projet est mon premier jeu JavaScript de grande envergure. Il s'agit d'un shoot 'em up classique où le joueur doit éliminer des ennemis tout en esquivant leurs attaques.<br/> <em>Pas jouable sur téléphone</em>",
@@ -45,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			"about.intro":
 				'I\'m Mathieu, a student in BTS at <strong><a href="https://www.aftec.fr/ecole-commerce-vannes" target="_blank">AFTEC</a></strong> Vannes',
 			"about.portfolio":
-				'Everything you see has been developed by me. In the top right, you\'ll find my <strong><a href="projects.html">projects</a></strong>, whether completed or in progress, created as I continued to improve.',
+				'This portfolio is a personal achievement. In the top right, you\'ll find my <strong><a href="projects.html">projects</a></strong>, whether completed or in progress, created as I continued to improve.',
 			"about.projectsLink": "projects",
 			"about.skills":
 				"I leveraged my JavaScript skills to develop my Shoot 'em up project",
@@ -56,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			"contact.message_placeholder": "Message *",
 			"contact.send": "Send",
 			skill: "My main skills",
+			secondary_skill: "Secondary skills",
 			"casse-brique": "Brick breaker",
 			"projet-shmup":
 				"Developed in June 2024, this project is my first large-scale JavaScript game. It is a classic shoot 'em up where the player must eliminate enemies while dodging their attacks.<br/> <em>Not playable on mobile.</em>",

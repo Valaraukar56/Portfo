@@ -45,7 +45,7 @@
 }
 
 /* Media query pour mobile */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
 	.menu-toggle-container {
 		display: block;
 	}

@@ -19,7 +19,7 @@
 				margin: 0;
 				background-color: transparent;
 				position: relative;
-				overflow: hidden;
+				/* overflow: hidden; */
 				background-color: black;
 			}
 
@@ -45,21 +45,26 @@
 				border-radius: var(--size-3);
 			}
 
-			.logo {
+			.logo,
+			.logo_secondaire {
 				display: flex;
 				justify-content: center;
+				flex-wrap: wrap;
 				gap: 40px;
 				margin-top: 40px;
 			}
 
-			.logo img {
+			.logo img,
+			.logo_secondaire img {
 				width: 100px;
-				height: auto;
+				height: 100px;
+				object-fit: contain; /* Cette propriété est essentielle pour maintenir les proportions */
 				transition: transform 0.3s;
 				filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
 			}
 
-			.logo img:hover {
+			.logo img:hover,
+			.logo_secondaire img:hover {
 				transform: scale(1.1);
 			}
 
@@ -70,14 +75,14 @@
 				backdrop-filter: blur(5px);
 				margin: 40px auto;
 				max-width: 800px;
-			}
 
-			.skills-section p {
-				font-size: 24px;
-				font-weight: bold;
-				color: #f7f3e7;
-				margin-bottom: 20px;
-				text-align: center;
+				p {
+					font-size: 24px;
+					font-weight: bold;
+					color: #f7f3e7;
+					margin-bottom: 20px;
+					text-align: center;
+				}
 			}
 
 			#scoreboard {
@@ -112,19 +117,19 @@
 				font-weight: bold;
 				color: #2d3748;
 			}
-
+			.menu-toggle span {
+				background-color: grey;
+			}
 			/* Réduire la taille des logos sur mobile */
 			@media (max-width: 768px) {
-				.logo {
+				.logo,
+				.logo_secondaire {
 					gap: 20px;
+					img {
+						width: 60px;
+						height: 60px;
+					}
 				}
-
-				.logo img {
-					width: 60px;
-				}
-			}
-			.menu-toggle span {
-				background-color: gey;
 			}
 		</style>
 	</head>
@@ -174,6 +179,15 @@
 						<a href="https://github.com/Valaraukar56">
 							<img src="../assets/images/github-mark-white.svg" alt="Logo Github" />
 						</a>
+					</div>
+				</div>
+				<div class="skills-section">
+					<p data-i18n="secondary_skill">Mes compétences secondaires</p>
+					<div class="logo_secondaire">
+						<img src="../assets/images/Tux.png" alt="Logo Linux" />
+						<img src="../assets/images/Windows.svg.png" alt="Logo Windows" />
+						<img src="../assets/images/Java_Logo.svg.png" alt="Logo Java" />
+						<img src="../assets/images/serveur-sql.png" alt="SQL" />
 					</div>
 				</div>
 			</main>
