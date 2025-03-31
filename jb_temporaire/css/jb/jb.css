@@ -1,0 +1,311 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.slider {
+    width: 100%;
+    height: 90vh;
+    position: relative;
+}
+
+.Slider-backg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(50%);
+}
+
+.contenu-slider {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 45px;
+    text-align: center;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.5em;
+}
+
+.section {
+    padding: 50px 20px;
+}
+
+.noir {
+    background: black;
+    color: #FFF;
+}
+
+.section-content {
+    max-width: 1280px;
+    margin: auto;
+}
+
+.cont1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+}
+
+.moi, .text {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.w25 {
+    width: 23%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#zoom .w25.skill {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease; /* Ajout d'une transition pour une animation fluide */
+    
+}
+
+#zoom .w25.skill:hover {
+    transform: scale(1.4); /* Agrandissement de 5% au survol */
+}
+
+#zoom .skill img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    transition: transform 0.3s ease; /* Ajout d'une transition pour l'image également */
+}
+
+#zoom .w25.skill:hover img {
+    transform: scale(1.3); /* Agrandissement de l'image de 10% au survol */
+}
+
+.skill {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skill img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.skill h3 {
+    color: black;
+}
+
+.CV {
+    background: black;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.CV img {
+    width: 50%;
+    max-width: 90%;
+    height: auto;
+}
+
+.download-link {
+    display: block;
+    color: white;
+    text-decoration: underline;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 1024px) {
+    .w25 {
+        width: 45%;
+    }
+    h1 {
+        font-size: 3rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cont1 {
+        flex-direction: column;
+        align-items: center;
+    }
+    .w25 {
+        width: 80%;
+    }
+    h1 {
+        font-size: 2.5rem;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .w25 {
+        width: 100%;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    .CV img {
+        width: 50%;
+        max-width: 100%;
+    }
+}
+
+/* Arrière-plan flou lors de l'affichage du cookie banner */
+/* Overlay pour le reste de la page (sans flou) */
+.cookie-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    background: rgba(0, 0, 0, 0.4); /* Assurez-vous d'avoir une couleur de fond si nécessaire */
+}
+
+/* Arrière-plan flou sur le contenu principal */
+.content-container {
+    position: relative; /* Nécessaire pour le positionnement absolu de l'overlay */
+    width: 100%;
+    height: 100%;
+    /* Suppression du flou par défaut */
+}
+
+/* Arrière-plan flou lors de l'affichage du cookie banner */
+.cookie-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px); /* Ajout de cette ligne pour le flou */
+    background: rgba(0, 0, 0, 0.4);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 9998; /* Assurez-vous qu'il est inférieur au z-index du banner */
+}
+
+/* Conteneur du cookie banner */
+.cookie-banner {
+    position: fixed;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, bottom 0.3s ease-in-out;
+    z-index: 9999; /* Assurez-vous qu'il est supérieur au z-index de l'overlay */
+}
+
+/* Bouton */
+.cookie-banner button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+    pointer-events: auto; /* Ajout de cette ligne */
+}
+
+/* Affichage du cookie banner */
+.show-cookie {
+    visibility: visible !important;
+    opacity: 1 !important;
+    bottom: 25% !important;
+}
+
+/* Flou uniquement lorsque le cookie n'est pas accepté */
+.content-container.show-cookie {
+    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.language-switcher {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.language-switcher button {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: black solid;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 5px;
+    display: flex; /* Ajout de flexbox pour aligner l'image et le texte */
+    align-items: center; /* Alignement vertical au centre */
+}
+
+.flag-icon {
+    width: 2em; /* Largeur de l'image égale à la taille de la police */
+    height: 2em; /* Hauteur de l'image égale à la taille de la police */
+    margin-right: 5px; /* Ajout d'un espace entre l'image et le texte */
+}

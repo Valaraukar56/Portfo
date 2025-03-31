@@ -1,0 +1,152 @@
+        /* style.css */
+        /* Explication du code CSS : */
+
+        /*
+            - Le code CSS définit le style d'une page web.
+            - `body` : Style général du corps de la page.
+            - `.content` : Conteneur principal du contenu, divisé en deux parties (gauche et droite).
+            - `.left` : Partie gauche du contenu, contenant du texte.
+            - `.right` : Partie droite du contenu, contenant une image.
+            - `.container` et `.frame` : Utilisés pour la mise en page (si nécessaires).
+            - Les media queries (`@media`) permettent d'adapter le style pour différentes tailles d'écran.
+            - `box-sizing: border-box;` inclut le padding et les bordures dans la largeur et la hauteur d'un élément.
+            - `object-fit: cover;` permet à l'image de couvrir tout le conteneur, même si elle doit être rognée.
+        */
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #7f7f7f;
+            margin: 0;
+            z-index: 1; /* Assure que le contenu est au-dessus d'autres éléments potentiels */
+        }
+
+        .content {
+            height: 45vh; /* Hauteur de la section principale, ajustable si nécessaire */
+            display: flex;
+            flex-direction: column; /* Utilisation de flexbox en colonne pour la responsivité */
+            background-color: white;
+            border: solid black 2px;
+        }
+
+        @media (min-width: 768px) { /* Media query pour les écrans plus larges (tablettes et plus) */
+            .content {
+                flex-direction: row; /* Retour à une disposition en ligne pour les grands écrans */
+            }
+            .left {
+                width: 70%; /* Largeur de la partie gauche sur les grands écrans */
+            }
+            .right {
+                width: 30%; /* Largeur de la partie droite sur les grands écrans */
+            }
+        }
+
+        .left {
+            width: 100%; /* Occupe toute la largeur par défaut (sur les petits écrans) */
+            height: 100%;
+            background-color: rgb(219, 218, 218);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box; /* Permet d'inclure le padding dans la largeur totale */
+        }
+
+        .left h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2em; /* Taille de police adaptée */
+        }
+
+        .left p {
+            text-align: center;
+            font-size: 1.2em; /* Taille de police adaptée */
+            line-height: 1.5; /* Améliore la lisibilité */
+        }
+
+        .right {
+            width: 30%; /* Occupe toute la largeur par défaut (sur les petits écrans) */
+            height: 100%;
+        }
+
+        .right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* L'image remplit tout le conteneur */
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+            overflow: hidden; /* Empêche le contenu de dépasser */
+            background-color: rgb(52, 51, 52);
+            height: 54.5vh;
+        }
+
+        .container > .frame {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            padding: 0;
+        }
+
+
+        
+        /* Media queries pour la responsivité */
+        @media (max-width: 768px) { /* Tablettes et écrans plus petits */
+            .content {
+                height: auto; /* Laisse la hauteur s'ajuster au contenu */
+                flex-direction: column; /* Empile les éléments verticalement */
+            }
+
+            .left {
+                width: 100%;
+                height: auto; /* Ajuste la hauteur en fonction du contenu */
+                padding: 15px;
+            }
+
+            .left h1 {
+                font-size: 1.6em;
+            }
+
+            .left p {
+                font-size: 1em;
+            }
+
+            .right {
+                width: 100%;
+                height: 300px; /* Hauteur fixe de l'image sur petits écrans, ajustable si nécessaire */
+            }
+
+            /* Ajustement de la grille pour `.square` et `.square2` si utilisés */
+            .square {
+                width: 48%; /* Deux colonnes */
+                padding-bottom: 48%;
+            }
+            .square2 {
+                width: 48%; /* Deux colonnes */
+                padding-bottom: 48%;
+            }
+        }
+
+        @media (max-width: 480px) { /* Écrans de téléphone */
+            .left h1 {
+                font-size: 1.4em;
+            }
+
+            .left p {
+                font-size: 0.9em;
+            }
+
+            /* Ajustement de la grille pour `.square` et `.square2` si utilisés */
+            .square {
+                width: 98%; /* Une colonne */
+                padding-bottom: 98%;
+            }
+            .square2 {
+                width: 98%; /* Une colonne */
+                padding-bottom: 98%;
+            }
+        }
