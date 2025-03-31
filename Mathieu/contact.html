@@ -147,8 +147,7 @@
 				transform: translateY(
 					-5px
 				); /* Modifié pour n'avoir que le mouvement vertical */
-				box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4),
-					0 10px 10px rgba(0, 0, 0, 0.3),
+				box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), 0 10px 10px rgba(0, 0, 0, 0.3),
 					inset 0 -2px 5px rgba(255, 255, 255, 0.2);
 			}
 			.contact-info-item {
@@ -253,8 +252,7 @@
 			<section class="contact-section">
 				<h2 data-i18n="contact.h2">Contactez-moi</h2>
 				<p data-i18n="contact.p">
-					N'hésitez pas à me contacter via ce formulaire ou directement par
-					email.
+					N'hésitez pas à me contacter via ce formulaire ou directement par email.
 				</p>
 				<form
 					class="contact-form"
@@ -301,10 +299,10 @@
 					<i class="fa-solid fa-location-dot contact-icon"></i>
 					<span class="contact-value">Vannes, France</span>
 				</a>
-				<div class="contact-info-item">
+				<a class="contact-info-item" href="tel:+33665900479">
 					<i class="fa-solid fa-phone contact-icon"></i>
 					<span class="contact-value">06 65 90 04 79</span>
-				</div>
+				</a>
 				<a class="contact-info-item" href="mailto:mathieu.piris@outlook.fr">
 					<i class="fa-solid fa-envelope contact-icon"></i>
 					<span class="contact-value" href="mailto:mathieu.piris@outlook.fr">
@@ -477,9 +475,7 @@
 							ctx.beginPath();
 							ctx.moveTo(points[i].x, points[i].y);
 							ctx.lineTo(points[j].x, points[j].y);
-							ctx.strokeStyle = `rgba(255, 255, 255, ${
-								1 - distance / gridSpacing
-							})`;
+							ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / gridSpacing})`;
 							ctx.lineWidth = 1.5;
 							ctx.stroke();
 						}
