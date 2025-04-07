@@ -1,14 +1,12 @@
-# Livre de recette
-
 ## Sommaire
 
 - [Livre de recette](#livre-de-recette)
-	- [Sommaire](#sommaire)
-	- [Crêpes Magiques 🥞](#crêpes-magiques-)
-	- [Pâtes ultimes 🍝](#pâtes-ultimes-)
-	- [Grilled Cheese Suprême 🧀 ](#grilled-cheese-suprême--)
-	- [Riz sauté flemme-style 🍚](#riz-sauté-flemme-style-)
-	- [Cookies Express 🍪](#cookies-express-)
+  - [Sommaire](#sommaire)
+  - [Crêpes Magiques 🥞](#crêpes-magiques-)
+  - [Pâtes ultimes 🍝](#pâtes-ultimes-)
+  - [Grilled Cheese Suprême 🧀](#grilled-cheese-supreme)
+  - [Riz sauté flemme-style 🍚](#riz-sauté-flemme-style)
+  - [Cookies Express 🍪](#cookies-express)
 
 ---
 
@@ -56,7 +54,7 @@
 
 ---
 
-## Grilled Cheese Suprême 🧀 <a id="grilled-cheese"></a>
+## Grilled Cheese Suprême 🧀
 
 **Ingrédients:**
 
