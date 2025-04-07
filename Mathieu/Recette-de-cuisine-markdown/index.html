@@ -45,9 +45,22 @@
 				padding: 2px 4px;
 				border-radius: 4px;
 			}
-
 			a {
-				color: #4dabf7;
+				text-decoration: none; /* Enlève le soulignement */
+				color: #4dabf7; /* Couleur bleue */
+				font-weight: bold; /* Met le texte en gras */
+				transition: color 0.3s ease, transform 0.3s ease; /* Transition pour effet au survol */
+			}
+
+			/* Effet au survol des liens */
+			a:hover {
+				color: #ffa94d; /* Change la couleur au survol */
+				transform: scale(1.1); /* Agrandit légèrement le lien */
+			}
+
+			/* Effet au survol avec un clic */
+			a:active {
+				color: #d94f9f; /* Change la couleur quand on clique */
 			}
 
 			blockquote {
