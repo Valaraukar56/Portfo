@@ -56,22 +56,50 @@
 				color: #ccc;
 				font-style: italic;
 			}
+
+			/* Styles pour les ancres */
+			.anchor-link {
+				position: absolute;
+				left: -1.2em;
+				top: 50%;
+				transform: translateY(-50%);
+				font-size: 1.2em;
+				color: #ffa94d;
+			}
 		</style>
 	</head>
 	<body>
 		<div id="content"></div>
 
 		<script src="https://cdn.jsdelivr.net/npm/marked@4.0.10/marked.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/marked-anchor@1.0.2/dist/marked-anchor.min.js"></script>
 		<script>
+			// Fonction pour ajouter des ancres aux titres
+			function addAnchorsToHeadings(markdownText) {
+				return markdownText.replace(
+					/^(#{1,6})\s+(.*)/gm,
+					(match, hash, heading) => {
+						// Créer un ID pour chaque titre à partir de son texte
+						const id = heading.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+						return `${hash} ${heading} <a id="${id}" href="#${id}" class="anchor-link"></a>`;
+					}
+				);
+			}
+
+			// Charger le fichier Markdown
 			fetch("exercice.md")
 				.then((response) => response.text())
 				.then((text) => {
-					// Activer le plugin pour les ancres
-					marked.use(markedAnchor);
+					// Ajouter les ancres aux titres
+					const textWithAnchors = addAnchorsToHeadings(text);
 
-					// Convertir le Markdown en HTML et insérer dans le div
-					document.getElementById("content").innerHTML = marked.parse(text);
+					// Convertir le Markdown en HTML
+					const html = marked.parse(textWithAnchors);
+
+					// Insérer le HTML dans le div
+					document.getElementById("content").innerHTML = html;
+				})
+				.catch((error) => {
+					console.error("Erreur de chargement du fichier Markdown:", error);
 				});
 		</script>
 	</body>
