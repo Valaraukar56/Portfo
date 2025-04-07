@@ -61,12 +61,16 @@
 	<body>
 		<div id="content"></div>
 
-		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-		<script src="script.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/marked@4.0.10/marked.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/marked-anchor@1.0.2/dist/marked-anchor.min.js"></script>
 		<script>
 			fetch("exercice.md")
 				.then((response) => response.text())
 				.then((text) => {
+					// Activer le plugin pour les ancres
+					marked.use(markedAnchor);
+
+					// Convertir le Markdown en HTML et insérer dans le div
 					document.getElementById("content").innerHTML = marked.parse(text);
 				});
 		</script>
