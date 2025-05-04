@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Pictos</title>
+		<style>
+			body {
+				background-color: #121212;
+				color: #e0e0e0;
+				max-width: 800px;
+				margin: auto;
+				font-family: Arial, sans-serif;
+				line-height: 1.6;
+				padding: 2rem;
+			}
+
+			h1 {
+				color: #ffa94d;
+			}
+			h2 {
+				color: #4dabf7;
+				font-size: 2rem;
+			}
+			h3 {
+				color: #973434;
+			}
+			table {
+				border-collapse: collapse;
+				width: 100%;
+				margin: 1rem 0;
+			}
+
+			th,
+			td {
+				border: 1px solid #333;
+				padding: 8px;
+			}
+
+			th {
+				background-color: #1e1e1e;
+				color: #ffa94d;
+				text-align: left;
+			}
+
+			code {
+				background: #1e1e1e;
+				color: #ffa94d;
+				padding: 2px 4px;
+				border-radius: 4px;
+			}
+
+			a {
+				color: #4dabf7;
+			}
+
+			blockquote {
+				border-left: 4px solid #ffa94d;
+				padding-left: 1rem;
+				color: #ccc;
+				font-style: italic;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="content"></div>
+
+		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+		<script src="script.js"></script>
+		<script>
+			fetch("pictos.md")
+				.then((response) => response.text())
+				.then((text) => {
+					document.getElementById("content").innerHTML = marked.parse(text);
+				});
+		</script>
+	</body>
+</html>
