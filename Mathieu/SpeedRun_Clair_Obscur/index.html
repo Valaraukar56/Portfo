@@ -3,7 +3,12 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<title>Pictos</title>
+		<link
+			rel="shortcut icon"
+			type="image/x-icon"
+			href="../../assets/images/logo_33.webp"
+		/>
+		<title>SpeedRun</title>
 		<style>
 			body {
 				background-color: #121212;
@@ -68,7 +73,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 		<script src="script.js"></script>
 		<script>
-			fetch("pictos.md")
+			fetch("speedrun.md")
 				.then((response) => response.text())
 				.then((text) => {
 					document.getElementById("content").innerHTML = marked.parse(text);
