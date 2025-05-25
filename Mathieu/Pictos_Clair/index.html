@@ -57,8 +57,11 @@
 
 			a {
 				color: #4dabf7;
+				text-decoration: none;
 			}
-
+			a:hover {
+				color: #ffa94d;
+			}
 			blockquote {
 				border-left: 4px solid #ffa94d;
 				padding-left: 1rem;
@@ -73,7 +76,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 		<script src="script.js"></script>
 		<script>
-			fetch("speedrun.md")
+			fetch("pictos.md")
 				.then((response) => response.text())
 				.then((text) => {
 					document.getElementById("content").innerHTML = marked.parse(text);
