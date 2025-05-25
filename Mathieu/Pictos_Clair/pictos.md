@@ -1,7 +1,7 @@
 # Pictos, emplacement, effet et coût en luminas
 
-> Mettez le jeu en anglais c'est plus simple pour les trouvez sur les sites <br>
-> Ils sont dans l'ordre alphabétique mais pas comme dans le jeu donc certain seront pas au même endroit
+> Mettez le jeu en anglais c'est plus simple pour les trouver sur les sites. <br>
+> Ils sont dans l'ordre alphabétique mais pas comme dans le jeu, donc certains ne seront pas au même endroit.
 
 | Nom                                                                                                                  | Effet                                                                                                                       | Coût |
 | -------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | ---- |
