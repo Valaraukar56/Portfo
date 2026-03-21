@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -174,7 +174,7 @@
 						<img src="../assets/images/HTML logo.png" alt="Logo HTML" />
 						<img src="../assets/images/css-3.png" alt="Logo CSS" />
 						<img src="../assets/images/jslogo.png" alt="Logo JavaScript" />
-						<a href="https://github.com/Valaraukar56">
+						<a href="https://github.com/Valaraukar56" target="_blank">
 							<img src="../assets/images/github-mark-white.svg" alt="Logo Github" />
 						</a>
 					</div>
@@ -269,19 +269,19 @@
 					// Check collisions with blocks and convert them
 					const rightBlockIdx = safeBlockIndex(
 						players[i].x + players[i].radius,
-						players[i].y
+						players[i].y,
 					);
 					const leftBlockIdx = safeBlockIndex(
 						players[i].x - players[i].radius,
-						players[i].y
+						players[i].y,
 					);
 					const bottomBlockIdx = safeBlockIndex(
 						players[i].x,
-						players[i].y + players[i].radius
+						players[i].y + players[i].radius,
 					);
 					const topBlockIdx = safeBlockIndex(
 						players[i].x,
-						players[i].y - players[i].radius
+						players[i].y - players[i].radius,
 					);
 
 					if (
@@ -337,7 +337,7 @@
 						const gradientColor = lerpColor(
 							color(COLORS.pink.light),
 							color(COLORS.pink.medium),
-							noise(x * 0.1, y * 0.1, frameCount * 0.01)
+							noise(x * 0.1, y * 0.1, frameCount * 0.01),
 						);
 						fill(gradientColor);
 					} else {
@@ -345,7 +345,7 @@
 						const gradientColor = lerpColor(
 							color(COLORS.blue.dark),
 							color(COLORS.blue.medium),
-							noise(x * 0.1, y * 0.1, frameCount * 0.01)
+							noise(x * 0.1, y * 0.1, frameCount * 0.01),
 						);
 						fill(gradientColor);
 					}
@@ -369,7 +369,7 @@
 						players[i].x,
 						players[i].y,
 						players[i].radius * 2,
-						players[i].radius * 2
+						players[i].radius * 2,
 					);
 				}
 				drawingContext.shadowBlur = 0;
@@ -450,21 +450,21 @@
 				// Player 1 (Pink) - random position in top half
 				const player1X = randomPosition(
 					padding.x + safeMargin,
-					width - padding.x - safeMargin
+					width - padding.x - safeMargin,
 				);
 				const player1Y = randomPosition(
 					padding.y + safeMargin,
-					height / 2 - safeMargin
+					height / 2 - safeMargin,
 				);
 
 				// Player 2 (Blue) - random position in bottom half
 				const player2X = randomPosition(
 					padding.x + safeMargin,
-					width - padding.x - safeMargin
+					width - padding.x - safeMargin,
 				);
 				const player2Y = randomPosition(
 					height / 2 + safeMargin,
-					height - padding.y - safeMargin
+					height - padding.y - safeMargin,
 				);
 
 				players = [
