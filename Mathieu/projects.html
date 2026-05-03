@@ -182,6 +182,35 @@
 				letter-spacing: 0.05em;
 			}
 
+			.test-skills-preview-grid {
+				flex-grow: 1;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: 1fr 1fr;
+				gap: 4px;
+				width: 100%;
+				margin: 10px 0;
+				overflow: hidden;
+				border-radius: 8px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+				transition: transform 0.4s ease;
+			}
+
+			.test-skills-preview-grid img:first-child {
+				grid-row: 1 / 3;
+			}
+
+			.test-skills-preview-grid img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				display: block;
+			}
+
+			.templates-card:hover .test-skills-preview-grid {
+				transform: scale(1.02);
+			}
+
 			/* Modal */
 			.templates-modal-overlay {
 				display: none;
@@ -372,6 +401,55 @@
 			<span></span>
 		</div>
 		<main>
+			<div class="container templates-card" onclick="openTestSkillsModal()">
+				<h2>Test Skills</h2>
+				<div class="test-skills-preview-grid">
+					<img src="../assets/images/test-skills-1.jpg" alt="Test Skills I" />
+					<img src="../assets/images/test-skills-2.jpg" alt="Test Skills II" />
+					<img src="../assets/images/test-skills-3.jpg" alt="Test Skills III" />
+				</div>
+				<h3 data-i18n="context">Contexte</h3>
+				<p>
+					Réalisés en mai 2026 dans le cadre d'une exploration des skills Claude Code,
+					ces trois projets sont le fruit d'expérimentations avec l'IA générative
+					appliquée au développement front-end, une technologie à laquelle je
+					m'intéresse de plus en plus activement.
+				</p>
+				<span class="templates-hint">Cliquer pour explorer →</span>
+			</div>
+
+			<!-- Modale Test Skills -->
+			<div id="test-skills-modal" class="templates-modal-overlay" onclick="handleTestSkillsModalClick(event)">
+				<div class="templates-modal-content">
+					<button class="templates-modal-close" onclick="closeTestSkillsModal()">×</button>
+					<h2>Test Skills</h2>
+					<p class="templates-modal-subtitle">3 esthétiques générées via les skills Claude Code — cliquez pour ouvrir</p>
+					<div class="templates-modal-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+						<a href="../Mathieu/test-skills/test-skills.html" target="_blank" class="template-item">
+							<img src="../assets/images/test-skills-1.jpg" alt="Test Skills I" />
+							<div class="template-item-info">
+								<h3>Test Skills I</h3>
+								<p>Esthétique luxe — tons or, cramoisi & bleu électrique</p>
+							</div>
+						</a>
+						<a href="../Mathieu/test-skills/test-skills-2.html" target="_blank" class="template-item">
+							<img src="../assets/images/test-skills-2.jpg" alt="Test Skills II" />
+							<div class="template-item-info">
+								<h3>Test Skills II</h3>
+								<p>Design brutaliste — typographie agressive, noir & jaune</p>
+							</div>
+						</a>
+						<a href="../Mathieu/test-skills/test-skills-3.html" target="_blank" class="template-item">
+							<img src="../assets/images/test-skills-3.jpg" alt="Test Skills III" />
+							<div class="template-item-info">
+								<h3>Test Skills III</h3>
+								<p>Futurisme glassmorphique — aurora, néon & effets de verre</p>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+
 			<div class="container templates-card" onclick="openTemplatesModal()">
 				<h2>Templates</h2>
 				<div class="templates-preview-grid">
@@ -582,8 +660,27 @@
 				}
 			}
 
+			function openTestSkillsModal() {
+				document.getElementById('test-skills-modal').classList.add('active');
+				document.body.style.overflow = 'hidden';
+			}
+
+			function closeTestSkillsModal() {
+				document.getElementById('test-skills-modal').classList.remove('active');
+				document.body.style.overflow = '';
+			}
+
+			function handleTestSkillsModalClick(event) {
+				if (event.target === document.getElementById('test-skills-modal')) {
+					closeTestSkillsModal();
+				}
+			}
+
 			document.addEventListener('keydown', function (e) {
-				if (e.key === 'Escape') closeTemplatesModal();
+				if (e.key === 'Escape') {
+					closeTemplatesModal();
+					closeTestSkillsModal();
+				}
 			});
 		</script>
 	</body>

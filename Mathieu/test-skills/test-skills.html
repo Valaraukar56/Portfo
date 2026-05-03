@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEST SKILLS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Cormorant:ital,wght@0,300;0,400;1,300;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:         #060608;
+      --gold:       #c8a96e;
+      --gold-dim:   rgba(200,169,110,0.15);
+      --crimson:    #e63f4a;
+      --electric:   #1a9fff;
+      --text:       #f0ede4;
+      --text-dim:   #6a6760;
+      --surface:    rgba(255,255,255,0.025);
+      --border:     rgba(200,169,110,0.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Mono', monospace;
+      cursor: none;
+      overflow-x: hidden;
+    }
+
+    /* ─── CURSOR ─────────────────────────────────────────── */
+    #cursor {
+      position: fixed; width: 8px; height: 8px;
+      background: var(--gold); border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: width .25s, height .25s, background .25s;
+      mix-blend-mode: difference;
+    }
+    #cursor-ring {
+      position: fixed; width: 36px; height: 36px;
+      border: 1px solid var(--gold); border-radius: 50%;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%,-50%);
+      transition: width .3s, height .3s, opacity .3s, border-color .3s;
+      opacity: .5;
+    }
+    body.hovering #cursor       { width: 5px; height: 5px; background: var(--crimson); }
+    body.hovering #cursor-ring  { width: 56px; height: 56px; opacity: .25; border-color: var(--crimson); }
+
+    /* ─── NOISE GRAIN ────────────────────────────────────── */
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 9997;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: .04;
+    }
+
+    /* ─── SCANLINES ─────────────────────────────────────── */
+    .scanlines {
+      position: fixed; inset: 0; pointer-events: none; z-index: 1;
+      background: repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.025) 2px,rgba(0,0,0,.025) 4px);
+    }
+
+    #canvas { position: fixed; inset: 0; z-index: 0; }
+
+    /* ─── NAV ────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.5rem 3rem;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(to bottom, rgba(6,6,8,.95), transparent);
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      font-family: 'Cinzel Decorative', serif; font-size: .8rem;
+      letter-spacing: .25em; color: var(--gold); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: .72rem; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--text-dim); text-decoration: none; transition: color .3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-badge {
+      font-size: .68rem; letter-spacing: .12em; color: var(--text-dim);
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .nav-badge::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: #2ecc71; animation: blink-dot 2s infinite;
+    }
+    @keyframes blink-dot { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    .hero {
+      position: relative; z-index: 2; height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden;
+    }
+
+    .hero-eyebrow {
+      font-size: .75rem; letter-spacing: .45em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 2rem;
+      opacity: 0; animation: fadeUp .9s ease .4s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(4.5rem, 13vw, 12rem);
+      font-weight: 900; line-height: .88; position: relative;
+      opacity: 0; animation: fadeUp .9s ease .7s forwards;
+    }
+    .line-solid { display: block; color: var(--text); }
+    .line-outline {
+      display: block; color: transparent;
+      -webkit-text-stroke: 1.5px var(--gold);
+    }
+
+    /* Glitch */
+    .glitch { position: relative; }
+    .glitch::before, .glitch::after {
+      content: attr(data-text);
+      position: absolute; top: 0; left: 0; right: 0;
+    }
+    .glitch::before {
+      color: var(--crimson);
+      clip-path: polygon(0 15%, 100% 15%, 100% 40%, 0 40%);
+      animation: glitch-a 5s infinite steps(1);
+    }
+    .glitch::after {
+      color: var(--electric);
+      clip-path: polygon(0 65%, 100% 65%, 100% 85%, 0 85%);
+      animation: glitch-b 5s infinite steps(1);
+    }
+    @keyframes glitch-a {
+      0%,88%,100%{transform:translate(0);opacity:0}
+      90%{transform:translate(-4px,2px);opacity:.85}
+      93%{transform:translate(4px,-2px);opacity:.85}
+      96%{transform:translate(-2px,1px);opacity:.85}
+    }
+    @keyframes glitch-b {
+      0%,86%,100%{transform:translate(0);opacity:0}
+      88%{transform:translate(4px,-3px);opacity:.85}
+      91%{transform:translate(-3px,2px);opacity:.85}
+      94%{transform:translate(3px,-1px);opacity:.85}
+    }
+
+    .hero-sub {
+      font-family: 'Cormorant', serif; font-style: italic; font-weight: 300;
+      font-size: clamp(1.15rem, 2.4vw, 1.6rem);
+      color: var(--text-dim); margin-top: 2.5rem; max-width: 480px; line-height: 1.65;
+      opacity: 0; animation: fadeUp .9s ease 1s forwards;
+    }
+
+    .hero-cta {
+      display: flex; gap: 1.5rem; margin-top: 3rem;
+      opacity: 0; animation: fadeUp .9s ease 1.3s forwards;
+    }
+
+    .btn {
+      padding: .85rem 2.5rem; font-family: 'Space Mono', monospace;
+      font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
+      text-decoration: none; cursor: none; position: relative; overflow: hidden;
+    }
+    .btn-fill {
+      background: var(--gold); color: var(--bg); border: none;
+      transition: transform .2s;
+    }
+    .btn-fill::after {
+      content: ''; position: absolute; inset: 0;
+      background: var(--crimson); transform: scaleX(0); transform-origin: left;
+      transition: transform .35s ease;
+    }
+    .btn-fill:hover::after { transform: scaleX(1); }
+    .btn-fill span { position: relative; z-index: 1; }
+    .btn-ghost {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+      transition: border-color .3s, color .3s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .6rem;
+      opacity: 0; animation: fadeIn 1s ease 2s forwards;
+    }
+    .scroll-word { font-size: .65rem; letter-spacing: .3em; text-transform: uppercase; color: var(--text-dim); }
+    .scroll-bar {
+      width: 1px; height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scroll-pulse 2s ease infinite;
+    }
+    @keyframes scroll-pulse {
+      0%  { transform: scaleY(0); transform-origin: top; }
+      49% { transform: scaleY(1); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: bottom; }
+      100%{ transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ─── MARQUEE ─────────────────────────────────────────── */
+    .marquee-wrap {
+      position: relative; z-index: 2;
+      padding: 1.2rem 0; overflow: hidden;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      background: rgba(200,169,110,.035);
+    }
+    .marquee-track {
+      display: inline-flex; white-space: nowrap;
+      animation: marquee 22s linear infinite;
+    }
+    .m-item {
+      display: inline-flex; align-items: center; gap: 1.8rem; padding: 0 1.8rem;
+      font-family: 'Cinzel Decorative', serif; font-size: .78rem;
+      letter-spacing: .2em; color: var(--text-dim);
+    }
+    .m-dot { display: inline-block; width: 3px; height: 3px; border-radius: 50%; background: var(--gold); }
+    @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    /* ─── SKILLS ──────────────────────────────────────────── */
+    .skills-section {
+      position: relative; z-index: 2;
+      padding: 9rem 3rem; max-width: 1400px; margin: 0 auto;
+    }
+
+    .s-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 4rem;
+    }
+    .s-label { font-size: .72rem; letter-spacing: .35em; text-transform: uppercase; color: var(--gold); margin-bottom: .75rem; }
+    .s-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 700; line-height: 1;
+    }
+    .s-count {
+      font-family: 'Cormorant', serif; font-size: 4.5rem; font-weight: 300;
+      color: rgba(200,169,110,.15); line-height: 1;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5px;
+    }
+
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 2.8rem 2.5rem; position: relative; overflow: hidden; cursor: none;
+      transition: border-color .4s, transform .4s;
+    }
+    .card:hover { border-color: var(--gold); }
+    .card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg,rgba(200,169,110,.07) 0%,transparent 55%);
+      opacity: 0; transition: opacity .4s;
+    }
+    .card:hover::before { opacity: 1; }
+
+    .c7  { grid-column: span 7; }
+    .c5  { grid-column: span 5; }
+    .c4  { grid-column: span 4; }
+    .c12 { grid-column: span 12; }
+
+    .card-hero { min-height: 420px; display: flex; flex-direction: column; justify-content: space-between; }
+    .ghost-num {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(5rem, 10vw, 9rem); font-weight: 900;
+      color: transparent; -webkit-text-stroke: 1px rgba(200,169,110,.18);
+      line-height: 1; position: absolute; bottom: 1.5rem; right: 2rem;
+      pointer-events: none;
+    }
+
+    .c-num  { font-size: .65rem; letter-spacing: .3em; color: var(--text-dim); margin-bottom: 2.5rem; }
+    .c-icon { font-size: 2.2rem; line-height: 1; margin-bottom: 1.4rem; display: block; }
+    .c-name {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.4rem, 3vw, 2.3rem); font-weight: 700; line-height: 1; margin-bottom: 1rem;
+    }
+    .c-desc {
+      font-family: 'Cormorant', serif; font-size: 1.2rem; font-weight: 300;
+      color: var(--text-dim); line-height: 1.65; max-width: 380px;
+    }
+    .c-bar {
+      margin-top: 2rem; height: 1px; background: var(--border);
+      position: relative; overflow: hidden;
+    }
+    .c-bar-fill {
+      position: absolute; left: 0; top: 0; height: 100%;
+      background: linear-gradient(to right, var(--gold), var(--crimson));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 1s ease;
+    }
+    .card:hover .c-bar-fill { transform: scaleX(1); }
+    .c-tag {
+      display: inline-block; margin-top: 1.5rem;
+      padding: .3rem .9rem; border: 1px solid var(--border);
+      font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; color: var(--text-dim);
+      transition: border-color .3s, color .3s;
+    }
+    .card:hover .c-tag { border-color: var(--gold); color: var(--gold); }
+
+    /* ─── STATS ──────────────────────────────────────────── */
+    .stats-section {
+      position: relative; z-index: 2;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 6rem 3rem;
+    }
+    .stats-inner {
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem;
+    }
+    .stat-number {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2.5rem,5vw,4rem); font-weight: 700;
+      color: var(--gold); line-height: 1;
+      display: flex; align-items: baseline; gap: .2rem;
+    }
+    .stat-suf { font-size: 1.4rem; color: var(--crimson); }
+    .stat-lbl { margin-top: .75rem; font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--text-dim); }
+    .stat-dsc { margin-top: .4rem; font-family: 'Cormorant', serif; font-size: 1.1rem; color: var(--text-dim); line-height: 1.5; }
+
+    /* ─── MANIFESTO ─────────────────────────────────────── */
+    .manifesto {
+      position: relative; z-index: 2;
+      padding: 10rem 3rem; max-width: 960px; margin: 0 auto; text-align: center;
+    }
+    .m-quote {
+      font-family: 'Cormorant', serif; font-style: italic; font-weight: 300;
+      font-size: clamp(1.8rem,4vw,3.2rem); line-height: 1.45; color: var(--text);
+    }
+    .m-quote em { color: var(--gold); font-style: normal; }
+    .m-rule { width: 70px; height: 1px; background: var(--gold); margin: 3rem auto; }
+    .m-sig { font-size: .72rem; letter-spacing: .3em; text-transform: uppercase; color: var(--text-dim); }
+
+    /* ─── TERMINAL ──────────────────────────────────────── */
+    .term-wrap {
+      position: relative; z-index: 2;
+      padding: 0 3rem 9rem; max-width: 1400px; margin: 0 auto;
+    }
+    .terminal {
+      background: rgba(4,4,6,.95); border: 1px solid var(--border); border-radius: 2px;
+      overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,.5);
+    }
+    .term-head {
+      display: flex; align-items: center; gap: .5rem;
+      padding: .9rem 1.5rem; border-bottom: 1px solid var(--border);
+    }
+    .tdot { width: 10px; height: 10px; border-radius: 50%; }
+    .tr { background: #e74c3c; } .ty { background: #f39c12; } .tg { background: #2ecc71; }
+    .term-lbl { margin-left: .5rem; font-size: .72rem; letter-spacing: .15em; color: var(--text-dim); }
+    .term-body { padding: 2rem 1.5rem; font-size: .85rem; line-height: 2.1; }
+    .tp { color: var(--gold); } .tc { color: var(--text); } .to { color: var(--text-dim); }
+    .ts { color: #2ecc71; } .te { color: var(--crimson); } .th { color: var(--electric); }
+    .tcursor {
+      display: inline-block; width: 7px; height: 14px;
+      background: var(--gold); vertical-align: middle;
+      animation: blink .95s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* ─── FOOTER ────────────────────────────────────────── */
+    footer {
+      position: relative; z-index: 2;
+      border-top: 1px solid var(--border); padding: 2.5rem 3rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .f-logo { font-family: 'Cinzel Decorative', serif; font-size: 1rem; color: var(--gold); }
+    .f-copy { font-size: .68rem; letter-spacing: .15em; color: var(--text-dim); }
+    .f-links { display: flex; gap: 2rem; list-style: none; }
+    .f-links a { font-size: .68rem; letter-spacing: .1em; color: var(--text-dim); text-decoration: none; transition: color .3s; }
+    .f-links a:hover { color: var(--gold); }
+
+    /* ─── REVEAL ────────────────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .85s ease, transform .85s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    @keyframes fadeUp  { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn  { from{opacity:0} to{opacity:1} }
+
+    /* ─── RESPONSIVE ────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 1.5rem; }
+      .nav-links { display: none; }
+      .skills-section, .term-wrap { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .c7,.c5,.c4,.c12 { grid-column: span 12; }
+      .stats-inner { grid-template-columns: repeat(2,1fr); }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+  <canvas id="canvas"></canvas>
+  <div class="scanlines"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">TS</a>
+    <ul class="nav-links">
+      <li><a href="#skills">Compétences</a></li>
+      <li><a href="#stats">Métriques</a></li>
+      <li><a href="#manifesto">Manifeste</a></li>
+    </ul>
+    <div class="nav-badge">SYSTÈME ACTIF</div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">— Démonstration des Capacités —</p>
+    <h1 class="hero-title">
+      <span class="line-solid glitch" data-text="TEST">TEST</span>
+      <span class="line-outline glitch" data-text="SKILLS">SKILLS</span>
+    </h1>
+    <p class="hero-sub">Une démonstration de design front-end de haute qualité — où chaque pixel est intentionnel.</p>
+    <div class="hero-cta">
+      <a href="#skills" class="btn btn-fill"><span>Explorer</span></a>
+      <a href="#manifesto" class="btn btn-ghost">Manifeste</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-bar"></div>
+      <span class="scroll-word">Défiler</span>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track" aria-hidden="true">
+      <span class="m-item">Design <span class="m-dot"></span></span>
+      <span class="m-item">Code <span class="m-dot"></span></span>
+      <span class="m-item">Motion <span class="m-dot"></span></span>
+      <span class="m-item">Vision <span class="m-dot"></span></span>
+      <span class="m-item">Craft <span class="m-dot"></span></span>
+      <span class="m-item">Typographie <span class="m-dot"></span></span>
+      <span class="m-item">Couleur <span class="m-dot"></span></span>
+      <span class="m-item">Espace <span class="m-dot"></span></span>
+      <span class="m-item">Animation <span class="m-dot"></span></span>
+      <span class="m-item">Interface <span class="m-dot"></span></span>
+      <!-- duplicate for seamless loop -->
+      <span class="m-item">Design <span class="m-dot"></span></span>
+      <span class="m-item">Code <span class="m-dot"></span></span>
+      <span class="m-item">Motion <span class="m-dot"></span></span>
+      <span class="m-item">Vision <span class="m-dot"></span></span>
+      <span class="m-item">Craft <span class="m-dot"></span></span>
+      <span class="m-item">Typographie <span class="m-dot"></span></span>
+      <span class="m-item">Couleur <span class="m-dot"></span></span>
+      <span class="m-item">Espace <span class="m-dot"></span></span>
+      <span class="m-item">Animation <span class="m-dot"></span></span>
+      <span class="m-item">Interface <span class="m-dot"></span></span>
+    </div>
+  </div>
+
+  <!-- SKILLS GRID -->
+  <section class="skills-section" id="skills">
+    <div class="s-header reveal">
+      <div>
+        <p class="s-label">01 — Compétences</p>
+        <h2 class="s-title">Domaines<br>d'Excellence</h2>
+      </div>
+      <span class="s-count">05</span>
+    </div>
+
+    <div class="grid">
+
+      <!-- Card 1 — Hero -->
+      <div class="card c7 card-hero reveal">
+        <div>
+          <p class="c-num">01 / 05</p>
+          <span class="c-icon">◈</span>
+          <h3 class="c-name">Design</h3>
+          <p class="c-desc">Composition visuelle intentionnelle. Chaque élément placé avec précision — typographie, couleur, espace négatif. Le beau n'est pas un accident.</p>
+          <span class="c-tag">Visual Design</span>
+          <div class="c-bar"><div class="c-bar-fill" style="width:95%"></div></div>
+        </div>
+        <span class="ghost-num">01</span>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card c5 reveal" style="transition-delay:.1s">
+        <p class="c-num">02 / 05</p>
+        <span class="c-icon">⟨/⟩</span>
+        <h3 class="c-name">Code</h3>
+        <p class="c-desc">HTML, CSS, JavaScript — écrits avec élégance et performants par conception. La structure soutient le style.</p>
+        <span class="c-tag">Frontend Dev</span>
+        <div class="c-bar"><div class="c-bar-fill" style="width:90%"></div></div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card c4 reveal" style="transition-delay:.2s">
+        <p class="c-num">03 / 05</p>
+        <span class="c-icon">◎</span>
+        <h3 class="c-name">Motion</h3>
+        <p class="c-desc">Animation fluide et significative. Le mouvement porte le sens, jamais le bruit.</p>
+        <span class="c-tag">Animation</span>
+        <div class="c-bar"><div class="c-bar-fill" style="width:88%"></div></div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card c4 reveal" style="transition-delay:.3s">
+        <p class="c-num">04 / 05</p>
+        <span class="c-icon">✦</span>
+        <h3 class="c-name">Vision</h3>
+        <p class="c-desc">Direction artistique cohérente. Un point de vue clair et défendu sur chaque décision.</p>
+        <span class="c-tag">Art Direction</span>
+        <div class="c-bar"><div class="c-bar-fill" style="width:92%"></div></div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card c4 reveal" style="transition-delay:.4s">
+        <p class="c-num">05 / 05</p>
+        <span class="c-icon">⬡</span>
+        <h3 class="c-name">Craft</h3>
+        <p class="c-desc">L'excellence dans les détails — micro-interactions, transitions, finitions impeccables.</p>
+        <span class="c-tag">Execution</span>
+        <div class="c-bar"><div class="c-bar-fill" style="width:96%"></div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-section" id="stats">
+    <div class="stats-inner">
+      <div class="reveal">
+        <div class="stat-number"><span class="sval" data-target="100">0</span><span class="stat-suf">%</span></div>
+        <p class="stat-lbl">Précision</p>
+        <p class="stat-dsc">Chaque pixel est intentionnel. Rien n'est laissé au hasard.</p>
+      </div>
+      <div class="reveal" style="transition-delay:.1s">
+        <div class="stat-number"><span class="sval" data-target="60">0</span><span class="stat-suf">fps</span></div>
+        <p class="stat-lbl">Fluidité</p>
+        <p class="stat-dsc">Animations optimisées pour une expérience sans friction.</p>
+      </div>
+      <div class="reveal" style="transition-delay:.2s">
+        <div class="stat-number"><span class="sval" data-target="INF">0</span></div>
+        <p class="stat-lbl">Créativité</p>
+        <p class="stat-dsc">Pas de limites aux possibilités expressives du design.</p>
+      </div>
+      <div class="reveal" style="transition-delay:.3s">
+        <div class="stat-number"><span class="sval" data-target="1" data-pad="2">00</span></div>
+        <p class="stat-lbl">Direction</p>
+        <p class="stat-dsc">Un point de vue précis et cohérent sur chaque décision.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section class="manifesto" id="manifesto">
+    <blockquote class="m-quote reveal">
+      "Le design n'est pas ce qu'il <em>ressemble</em> —<br>c'est ce qu'il <em>accomplit</em>.<br>Chaque interface est une <em>conversation</em><br>entre l'humain et le système."
+    </blockquote>
+    <div class="m-rule reveal"></div>
+    <p class="m-sig reveal">— Philosophie du Design · Test Skills · 2026</p>
+  </section>
+
+  <!-- TERMINAL -->
+  <section class="term-wrap">
+    <div class="terminal reveal">
+      <div class="term-head">
+        <div class="tdot tr"></div>
+        <div class="tdot ty"></div>
+        <div class="tdot tg"></div>
+        <span class="term-lbl">claude@test-skills ~ zsh</span>
+      </div>
+      <div class="term-body" id="term-out"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="f-logo">TEST SKILLS</div>
+    <p class="f-copy">© 2026 — Généré par Claude · Anthropic</p>
+    <ul class="f-links">
+      <li><a href="#">GitHub</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    /* ─── CURSOR ─────────────────────────────────── */
+    const cur = document.getElementById('cursor');
+    const ring = document.getElementById('cursor-ring');
+    let mx=0,my=0,rx=0,ry=0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cur.style.left = mx+'px'; cur.style.top = my+'px';
+    });
+    (function animRing() {
+      rx += (mx-rx)*.11; ry += (my-ry)*.11;
+      ring.style.left = rx+'px'; ring.style.top = ry+'px';
+      requestAnimationFrame(animRing);
+    })();
+
+    document.querySelectorAll('a,button,.card').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+    });
+
+    /* ─── PARTICLE CANVAS ──────────────────────── */
+    const cvs = document.getElementById('canvas');
+    const ctx = cvs.getContext('2d');
+    let W, H, pts = [];
+    let pmx=-9999, pmy=-9999;
+
+    function resize() { W = cvs.width = innerWidth; H = cvs.height = innerHeight; }
+    resize(); addEventListener('resize', resize);
+    document.addEventListener('mousemove', e => { pmx=e.clientX; pmy=e.clientY; });
+
+    class Pt {
+      constructor() { this.init(); }
+      init() {
+        this.x = Math.random()*W; this.y = Math.random()*H;
+        this.vx = (Math.random()-.5)*.25; this.vy = (Math.random()-.5)*.25;
+        this.r = Math.random()*1.3+.3; this.a = Math.random()*.45+.08;
+      }
+      tick() {
+        const dx=pmx-this.x, dy=pmy-this.y, d=Math.hypot(dx,dy);
+        if (d < 110) { this.vx -= dx/d*.07; this.vy -= dy/d*.07; }
+        this.x += this.vx; this.y += this.vy;
+        this.vx *= .992; this.vy *= .992;
+        if (this.x<0||this.x>W) this.vx*=-1;
+        if (this.y<0||this.y>H) this.vy*=-1;
+      }
+      draw() {
+        ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+        ctx.fillStyle = `rgba(200,169,110,${this.a})`; ctx.fill();
+      }
+    }
+
+    for (let i=0;i<90;i++) pts.push(new Pt());
+
+    (function loop() {
+      ctx.clearRect(0,0,W,H);
+      for (let i=0;i<pts.length;i++) {
+        pts[i].tick(); pts[i].draw();
+        for (let j=i+1;j<pts.length;j++) {
+          const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y, d=Math.hypot(dx,dy);
+          if (d<115) {
+            ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y);
+            ctx.strokeStyle=`rgba(200,169,110,${(1-d/115)*.1})`; ctx.lineWidth=.5; ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(loop);
+    })();
+
+    /* ─── SCROLL REVEAL ────────────────────────── */
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        e.target.querySelectorAll('.sval').forEach(animCounter);
+      });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    /* ─── COUNTER ──────────────────────────────── */
+    function animCounter(el) {
+      if (el.dataset.animated) return;
+      el.dataset.animated = '1';
+      const t = el.dataset.target;
+      if (t === 'INF') { el.textContent = '∞'; return; }
+      const end = parseInt(t), pad = parseInt(el.dataset.pad||1);
+      let v = 0;
+      const step = end/60;
+      const id = setInterval(() => {
+        v += step;
+        if (v >= end) { clearInterval(id); el.textContent = String(end).padStart(pad,'0'); }
+        else el.textContent = String(Math.floor(v)).padStart(pad,'0');
+      }, 16);
+    }
+
+    /* ─── TERMINAL ─────────────────────────────── */
+    const termLines = [
+      { k:'p', cmd:'skill analyze --all --verbose' },
+      { k:'o', t:'Initializing skill analysis engine...', d:700 },
+      { k:'s', t:'✓ Design module loaded           [95/100]', d:350 },
+      { k:'s', t:'✓ Code synthesis active          [90/100]', d:280 },
+      { k:'s', t:'✓ Motion renderer engaged        [88/100]', d:280 },
+      { k:'s', t:'✓ Vision core calibrated         [92/100]', d:280 },
+      { k:'s', t:'✓ Craft engine initialized       [96/100]', d:280 },
+      { k:'o', t:'', d:150 },
+      { k:'h', t:'→  Overall score: EXTRAORDINARY', d:450 },
+      { k:'o', t:'   Status: All systems nominal', d:150 },
+      { k:'o', t:'   Runtime: 0.047ms', d:150 },
+      { k:'o', t:'', d:350 },
+      { k:'p', cmd:'echo "Le design est un pouvoir."', d:250 },
+      { k:'s', t:'Le design est un pouvoir.', d:180 },
+      { k:'c' },
+    ];
+
+    const tOut = document.getElementById('term-out');
+    let tIdx = 0;
+
+    function runTerminal() {
+      if (tIdx >= termLines.length) return;
+      const l = termLines[tIdx++];
+      const div = document.createElement('div');
+      tOut.appendChild(div);
+
+      if (l.k === 'c') {
+        div.innerHTML = `<span class="tp">$ </span><span class="tcursor"></span>`;
+        return;
+      }
+      if (l.k === 'p') {
+        div.innerHTML = `<span class="tp">$ </span>`;
+        let i = 0; const cmd = l.cmd||'';
+        const type = () => {
+          if (i < cmd.length) {
+            div.innerHTML = `<span class="tp">$ </span><span class="tc">${cmd.slice(0,++i)}</span>`;
+            setTimeout(type, 32+Math.random()*25);
+          } else { setTimeout(runTerminal, 280); }
+        };
+        setTimeout(type, l.d||0);
+        return;
+      }
+      const cls = { o:'to', s:'ts', e:'te', h:'th' }[l.k] || 'to';
+      setTimeout(() => {
+        div.innerHTML = `<span class="${cls}">${l.t||''}</span>`;
+        tOut.scrollTop = tOut.scrollHeight;
+        runTerminal();
+      }, l.d||80);
+    }
+
+    const termObs = new IntersectionObserver(e => {
+      if (e[0].isIntersecting) { runTerminal(); termObs.disconnect(); }
+    }, { threshold:.25 });
+    termObs.observe(tOut);
+
+    /* ─── 3D TILT ──────────────────────────────── */
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const rx = ((e.clientY-r.top)/r.height-.5)*-8;
+        const ry = ((e.clientX-r.left)/r.width-.5)*8;
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(6px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transition = 'transform .55s ease, border-color .4s';
+        card.style.transform = '';
+        setTimeout(() => card.style.transition = '', 600);
+      });
+    });
+  </script>
+</body>
+</html>

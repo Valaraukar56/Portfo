@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEST SKILLS III</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:      #060d1a;
+      --green:   #00ff88;
+      --violet:  #9945ff;
+      --cyan:    #00d4ff;
+      --text:    #e8eeff;
+      --dim:     rgba(232,238,255,0.42);
+      --glass:   rgba(255,255,255,0.04);
+      --glass-h: rgba(255,255,255,0.07);
+      --line:    rgba(255,255,255,0.07);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      cursor: none; overflow-x: hidden;
+    }
+
+    /* ─── AURORA BG ──────────────────────────────────────── */
+    .aurora {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+    }
+    .blob {
+      position: absolute; border-radius: 50%; filter: blur(90px);
+    }
+    .b1 {
+      width: 75vw; height: 65vh; top: -20%; left: -12%;
+      background: radial-gradient(ellipse, rgba(0,255,136,.16) 0%, transparent 70%);
+      animation: f1 16s ease infinite alternate;
+    }
+    .b2 {
+      width: 65vw; height: 70vh; bottom: -25%; right: -8%;
+      background: radial-gradient(ellipse, rgba(153,69,255,.2) 0%, transparent 70%);
+      animation: f2 20s ease infinite alternate;
+    }
+    .b3 {
+      width: 45vw; height: 45vh; top: 25%; left: 40%;
+      background: radial-gradient(ellipse, rgba(0,212,255,.09) 0%, transparent 70%);
+      animation: f3 24s ease infinite alternate;
+    }
+    .b4 {
+      width: 30vw; height: 30vh; top: 60%; left: 20%;
+      background: radial-gradient(ellipse, rgba(153,69,255,.08) 0%, transparent 70%);
+      animation: f1 30s ease infinite alternate-reverse;
+    }
+    @keyframes f1 { to { transform: translate(8%, 6%) scale(1.15); } }
+    @keyframes f2 { to { transform: translate(-7%, -9%) scale(1.2); } }
+    @keyframes f3 { to { transform: translate(-12%, 6%) scale(0.88); } }
+
+    /* ─── CURSOR ─────────────────────────────────────────── */
+    #cur {
+      position: fixed; z-index: 9999; pointer-events: none;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px var(--green), 0 0 28px rgba(0,255,136,.5);
+      transform: translate(-50%,-50%);
+      transition: width .3s, height .3s, background .3s, box-shadow .3s;
+      mix-blend-mode: screen;
+    }
+    #cur-ring {
+      position: fixed; z-index: 9998; pointer-events: none;
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 1px solid rgba(0,255,136,.4);
+      transform: translate(-50%,-50%);
+      transition: width .35s, height .35s, opacity .3s, border-color .3s;
+      opacity: .55;
+    }
+    body.hov #cur {
+      width: 9px; height: 9px;
+      background: var(--violet);
+      box-shadow: 0 0 14px var(--violet), 0 0 35px rgba(153,69,255,.5);
+    }
+    body.hov #cur-ring { width: 52px; height: 52px; opacity: .28; border-color: rgba(153,69,255,.45); }
+
+    /* ─── NAV ────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(6,13,26,.82); border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(22px);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: .95rem;
+      letter-spacing: .18em; color: var(--green); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: .78rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--dim); text-decoration: none; transition: color .3s;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-pill {
+      display: flex; align-items: center; gap: .55rem;
+      padding: .35rem 1rem; border-radius: 20px;
+      background: rgba(0,255,136,.07); border: 1px solid rgba(0,255,136,.22);
+      font-family: 'DM Mono', monospace; font-size: .6rem;
+      letter-spacing: .12em; color: var(--green);
+    }
+    .pdot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green); box-shadow: 0 0 8px var(--green);
+      animation: gpulse 2s ease infinite;
+    }
+    @keyframes gpulse { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    .hero {
+      position: relative; z-index: 2; min-height: 100vh; padding-top: 80px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .7rem;
+      padding: .4rem 1.3rem; margin-bottom: 2.5rem;
+      border: 1px solid rgba(0,255,136,.22);
+      background: rgba(0,255,136,.06); border-radius: 2px;
+      font-family: 'DM Mono', monospace; font-size: .62rem;
+      letter-spacing: .22em; color: var(--green); text-transform: uppercase;
+      opacity: 0; animation: fadeUp .85s ease .3s forwards;
+    }
+    .badge-bar { width: 22px; height: 1px; background: currentColor; }
+
+    .hero-title {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(5.5rem, 15vw, 14rem);
+      line-height: .86; letter-spacing: -.025em;
+      opacity: 0; animation: fadeUp .9s ease .55s forwards;
+    }
+    .ht-solid { display: block; color: var(--text); }
+    .ht-grad {
+      display: block;
+      background: linear-gradient(90deg, var(--green) 0%, var(--cyan) 45%, var(--violet) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      filter: drop-shadow(0 0 35px rgba(0,255,136,.28));
+    }
+
+    .hero-sub {
+      font-family: 'DM Mono', monospace; font-size: clamp(.78rem, 1.4vw, .98rem);
+      color: var(--dim); margin-top: 2.2rem; max-width: 520px; line-height: 1.75;
+      opacity: 0; animation: fadeUp .9s ease .8s forwards;
+    }
+    .hero-sub .hl { color: var(--green); }
+
+    .hero-cta {
+      display: flex; gap: 1.2rem; margin-top: 3rem;
+      opacity: 0; animation: fadeUp .9s ease 1.05s forwards;
+    }
+    .btn {
+      padding: .82rem 2.2rem; font-family: 'Syne', sans-serif;
+      font-size: .78rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; text-decoration: none; cursor: none;
+      border-radius: 2px; transition: transform .22s, box-shadow .22s;
+    }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-glow {
+      background: var(--green); color: var(--bg);
+      box-shadow: 0 0 22px rgba(0,255,136,.45), 0 0 50px rgba(0,255,136,.2);
+    }
+    .btn-glow:hover { box-shadow: 0 0 32px rgba(0,255,136,.65), 0 0 70px rgba(0,255,136,.3); }
+    .btn-ghost {
+      background: rgba(255,255,255,.05); color: var(--text);
+      border: 1px solid var(--line); backdrop-filter: blur(12px);
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,.28); background: rgba(255,255,255,.08); }
+
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      opacity: 0; animation: fadeIn 1s ease 1.9s forwards;
+    }
+    .sc-bar {
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, var(--green), transparent);
+      animation: scr 2.1s ease infinite;
+    }
+    @keyframes scr {
+      0%  { transform:scaleY(0); transform-origin:top; }
+      49% { transform:scaleY(1); transform-origin:top; }
+      50% { transform:scaleY(1); transform-origin:bottom; }
+      100%{ transform:scaleY(0); transform-origin:bottom; }
+    }
+    .sc-lbl {
+      font-family: 'DM Mono', monospace; font-size: .52rem;
+      letter-spacing: .3em; text-transform: uppercase; color: var(--dim);
+    }
+
+    /* ─── GRADIENT DIVIDER ───────────────────────────────── */
+    .grad-line {
+      position: relative; z-index: 2; height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--green) 30%, var(--cyan) 60%, var(--violet) 85%, transparent 100%);
+    }
+
+    /* ─── MARQUEE ─────────────────────────────────────────── */
+    .marquee {
+      position: relative; z-index: 2; padding: 1rem 0; overflow: hidden;
+      background: rgba(255,255,255,.018);
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    }
+    .m-track {
+      display: inline-flex; white-space: nowrap;
+      animation: mq 24s linear infinite;
+      font-family: 'Syne', sans-serif; font-size: .68rem;
+      font-weight: 600; letter-spacing: .28em; text-transform: uppercase;
+    }
+    .mi { padding: 0 2rem; color: var(--dim); }
+    .md { color: var(--green); padding: 0 .3rem; }
+    @keyframes mq { to { transform: translateX(-50%); } }
+
+    /* ─── SKILLS ──────────────────────────────────────────── */
+    .skills {
+      position: relative; z-index: 2;
+      padding: 8rem 3rem; max-width: 1380px; margin: 0 auto;
+    }
+    .s-hd {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 4rem; padding-bottom: 2rem; border-bottom: 1px solid var(--line);
+    }
+    .s-lbl {
+      font-family: 'DM Mono', monospace; font-size: .62rem;
+      letter-spacing: .28em; text-transform: uppercase; color: var(--green); margin-bottom: .75rem;
+    }
+    .s-ttl {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(2rem, 5vw, 4rem); line-height: 1;
+    }
+    .s-cnt {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(3rem, 7vw, 6.5rem); line-height: 1;
+      color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.08);
+    }
+
+    .cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .card {
+      position: relative; padding: 2.5rem 2.5rem 3rem;
+      background: var(--glass); border: 1px solid var(--line);
+      backdrop-filter: blur(24px); cursor: none;
+      transition: transform .4s ease, border-color .4s, background .4s, box-shadow .4s;
+      overflow: hidden;
+    }
+    .card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(0,255,136,.18);
+      background: var(--glass-h);
+      box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 40px rgba(0,255,136,.06);
+    }
+    /* Gradient tint on hover */
+    .card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(0,255,136,.055) 0%, rgba(153,69,255,.035) 100%);
+      opacity: 0; transition: opacity .4s;
+    }
+    .card:hover::before { opacity: 1; }
+    /* Glow border */
+    .card::after {
+      content: ''; position: absolute; inset: 0;
+      border-radius: inherit;
+      box-shadow: inset 0 0 0 1px rgba(0,255,136,.35);
+      opacity: 0; transition: opacity .4s;
+    }
+    .card:hover::after { opacity: 1; }
+
+    .card-wide { grid-column: span 2; }
+
+    .c-tag {
+      font-family: 'DM Mono', monospace; font-size: .6rem;
+      letter-spacing: .22em; text-transform: uppercase; color: var(--dim);
+      margin-bottom: 2.5rem;
+    }
+    .c-icon { font-size: 2.2rem; line-height: 1; margin-bottom: 1.5rem; display: block; }
+    .c-name {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(1.5rem, 3vw, 2.3rem); line-height: 1; margin-bottom: 1rem;
+    }
+    .c-desc {
+      font-size: .95rem; font-weight: 300; color: var(--dim); line-height: 1.72;
+    }
+    .c-score {
+      margin-top: 2rem; font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 3.8rem; line-height: 1;
+      background: linear-gradient(90deg, var(--green), var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      filter: drop-shadow(0 0 12px rgba(0,255,136,.35));
+      opacity: 0; transition: opacity .45s;
+    }
+    .card:hover .c-score { opacity: 1; }
+    .c-bar { margin-top: 1.5rem; height: 1px; background: var(--line); position: relative; overflow: hidden; }
+    .c-bar-fill {
+      position: absolute; left: 0; top: 0; height: 100%;
+      background: linear-gradient(to right, var(--green), var(--cyan));
+      box-shadow: 0 0 8px var(--green);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 1.1s ease;
+    }
+    .card:hover .c-bar-fill { transform: scaleX(1); }
+
+    /* ─── STATS ──────────────────────────────────────────── */
+    .stats {
+      position: relative; z-index: 2;
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+      padding: 6rem 3rem;
+    }
+    .stats-in {
+      max-width: 1380px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 3rem;
+    }
+    .sn {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1;
+      display: flex; align-items: baseline; gap: .15rem;
+    }
+    .g-grad {
+      background: linear-gradient(90deg, var(--green), var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      filter: drop-shadow(0 0 18px rgba(0,255,136,.4));
+    }
+    .v-grad {
+      background: linear-gradient(90deg, var(--violet), var(--cyan));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      filter: drop-shadow(0 0 18px rgba(153,69,255,.4));
+    }
+    .ss { font-size: 1.5rem; }
+    .sl {
+      margin-top: .75rem; font-family: 'DM Mono', monospace;
+      font-size: .6rem; letter-spacing: .22em; text-transform: uppercase; color: var(--dim);
+    }
+    .sd { margin-top: .4rem; font-size: .9rem; font-weight: 300; color: var(--dim); line-height: 1.6; }
+
+    /* ─── MANIFESTO ─────────────────────────────────────── */
+    .manifesto {
+      position: relative; z-index: 2;
+      padding: 10rem 3rem; max-width: 920px; margin: 0 auto; text-align: center;
+    }
+    .mq {
+      font-family: 'Syne', sans-serif; font-weight: 400;
+      font-size: clamp(1.8rem, 4vw, 3.3rem); line-height: 1.42; color: var(--text);
+    }
+    .mq .g { color: var(--green); }
+    .mq .c { color: var(--cyan); }
+    .mq .v { color: var(--violet); }
+    .m-rule {
+      width: 80px; height: 1px; margin: 3rem auto;
+      background: linear-gradient(90deg, var(--green), var(--violet));
+    }
+    .m-sig {
+      font-family: 'DM Mono', monospace; font-size: .6rem;
+      letter-spacing: .3em; text-transform: uppercase; color: var(--dim);
+    }
+
+    /* ─── TERMINAL ──────────────────────────────────────── */
+    .term-wrap {
+      position: relative; z-index: 2; padding: 0 3rem 8rem;
+      max-width: 1380px; margin: 0 auto;
+    }
+    .terminal {
+      background: rgba(2,6,14,.75); backdrop-filter: blur(30px);
+      border: 1px solid var(--line); overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0,0,0,.55), 0 0 80px rgba(0,255,136,.04);
+    }
+    .term-hd {
+      display: flex; align-items: center; gap: .5rem;
+      padding: .9rem 1.5rem; border-bottom: 1px solid var(--line);
+      background: rgba(0,0,0,.35);
+    }
+    .td { width: 11px; height: 11px; border-radius: 50%; }
+    .td-r{background:#e74c3c} .td-y{background:#f39c12} .td-g{background:var(--green);box-shadow:0 0 6px var(--green)}
+    .t-lbl {
+      margin-left: .5rem; font-family: 'DM Mono', monospace;
+      font-size: .65rem; color: var(--dim); letter-spacing: .1em;
+    }
+    .term-body {
+      padding: 2rem 1.5rem; font-family: 'DM Mono', monospace;
+      font-size: .82rem; line-height: 2.15;
+    }
+    .tp { color: var(--green); }
+    .tc { color: var(--text); }
+    .to { color: var(--dim); }
+    .ts { color: var(--green); text-shadow: 0 0 10px rgba(0,255,136,.4); }
+    .th { color: var(--cyan); text-shadow: 0 0 12px rgba(0,212,255,.4); font-weight: 500; }
+    .tcur {
+      display: inline-block; width: 8px; height: 16px;
+      background: var(--green); box-shadow: 0 0 8px var(--green);
+      vertical-align: middle; animation: blink .9s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      position: relative; z-index: 2;
+      border-top: 1px solid var(--line); padding: 2.5rem 3rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(6,13,26,.92); backdrop-filter: blur(20px);
+    }
+    .f-logo {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: .95rem; letter-spacing: .1em; color: var(--green);
+    }
+    .f-copy {
+      font-family: 'DM Mono', monospace; font-size: .6rem;
+      letter-spacing: .12em; color: var(--dim);
+    }
+    .f-links { display: flex; gap: 2rem; list-style: none; }
+    .f-links a {
+      font-family: 'DM Mono', monospace; font-size: .6rem;
+      letter-spacing: .1em; color: var(--dim); text-decoration: none; transition: color .3s;
+    }
+    .f-links a:hover { color: var(--green); }
+
+    /* ─── REVEAL ────────────────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s ease, transform .9s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      .cards { grid-template-columns: 1fr; }
+      .card-wide { grid-column: span 1; }
+      .stats-in { grid-template-columns: repeat(2,1fr); }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+      .skills, .term-wrap { padding-left: 1.5rem; padding-right: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="cur"></div>
+  <div id="cur-ring"></div>
+
+  <!-- Aurora -->
+  <div class="aurora">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+    <div class="blob b4"></div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">TS ///</a>
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#stats">Stats</a></li>
+      <li><a href="#manifesto">Manifeste</a></li>
+    </ul>
+    <div class="nav-pill">
+      <div class="pdot"></div>
+      ACTIF
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">
+      <div class="badge-bar"></div>
+      Démonstration III
+      <div class="badge-bar"></div>
+    </div>
+    <h1 class="hero-title">
+      <span class="ht-solid">TEST</span>
+      <span class="ht-grad">SKILLS</span>
+    </h1>
+    <p class="hero-sub">
+      Design <span class="hl">futuriste</span>. Aurora. Glassmorphisme.<br>
+      Une interface comme une fenêtre sur un autre monde.
+    </p>
+    <div class="hero-cta">
+      <a href="#skills" class="btn btn-glow">Explorer</a>
+      <a href="#manifesto" class="btn btn-ghost">Manifeste</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="sc-bar"></div>
+      <span class="sc-lbl">Défiler</span>
+    </div>
+  </section>
+
+  <div class="grad-line"></div>
+
+  <!-- MARQUEE -->
+  <div class="marquee">
+    <div class="m-track" aria-hidden="true">
+      <span class="mi">Design</span><span class="md">◈</span>
+      <span class="mi">Code</span><span class="md">◈</span>
+      <span class="mi">Motion</span><span class="md">◈</span>
+      <span class="mi">Vision</span><span class="md">◈</span>
+      <span class="mi">Craft</span><span class="md">◈</span>
+      <span class="mi">Typographie</span><span class="md">◈</span>
+      <span class="mi">Couleur</span><span class="md">◈</span>
+      <span class="mi">Espace</span><span class="md">◈</span>
+      <span class="mi">Design</span><span class="md">◈</span>
+      <span class="mi">Code</span><span class="md">◈</span>
+      <span class="mi">Motion</span><span class="md">◈</span>
+      <span class="mi">Vision</span><span class="md">◈</span>
+      <span class="mi">Craft</span><span class="md">◈</span>
+      <span class="mi">Typographie</span><span class="md">◈</span>
+      <span class="mi">Couleur</span><span class="md">◈</span>
+      <span class="mi">Espace</span><span class="md">◈</span>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <section class="skills" id="skills">
+    <div class="s-hd reveal">
+      <div>
+        <p class="s-lbl">01 — Compétences</p>
+        <h2 class="s-ttl">Domaines<br>d'Excellence</h2>
+      </div>
+      <span class="s-cnt">05</span>
+    </div>
+
+    <div class="cards">
+      <div class="card card-wide reveal">
+        <p class="c-tag">01/05 · Featured</p>
+        <span class="c-icon">◈</span>
+        <h3 class="c-name">Design</h3>
+        <p class="c-desc">Composition visuelle intentionnelle. Chaque élément placé avec précision — typographie, couleur, espace négatif. Le beau n'est pas un accident, c'est une décision mûrement réfléchie.</p>
+        <div class="c-bar"><div class="c-bar-fill" style="width:95%"></div></div>
+        <div class="c-score">95</div>
+      </div>
+      <div class="card reveal" style="transition-delay:.1s">
+        <p class="c-tag">02/05</p>
+        <span class="c-icon">⟨/⟩</span>
+        <h3 class="c-name">Code</h3>
+        <p class="c-desc">HTML, CSS, JavaScript — écrits avec élégance et performance par conception.</p>
+        <div class="c-bar"><div class="c-bar-fill" style="width:90%"></div></div>
+        <div class="c-score">90</div>
+      </div>
+      <div class="card reveal" style="transition-delay:.15s">
+        <p class="c-tag">03/05</p>
+        <span class="c-icon">◎</span>
+        <h3 class="c-name">Motion</h3>
+        <p class="c-desc">Animation fluide et significative. Le mouvement porte le sens, jamais le bruit.</p>
+        <div class="c-bar"><div class="c-bar-fill" style="width:88%"></div></div>
+        <div class="c-score">88</div>
+      </div>
+      <div class="card reveal" style="transition-delay:.2s">
+        <p class="c-tag">04/05</p>
+        <span class="c-icon">✦</span>
+        <h3 class="c-name">Vision</h3>
+        <p class="c-desc">Direction artistique cohérente. Un point de vue clair et défendu sur chaque décision.</p>
+        <div class="c-bar"><div class="c-bar-fill" style="width:92%"></div></div>
+        <div class="c-score">92</div>
+      </div>
+      <div class="card reveal" style="transition-delay:.25s">
+        <p class="c-tag">05/05</p>
+        <span class="c-icon">⬡</span>
+        <h3 class="c-name">Craft</h3>
+        <p class="c-desc">L'excellence dans les détails — micro-interactions, transitions, finitions impeccables.</p>
+        <div class="c-bar"><div class="c-bar-fill" style="width:96%"></div></div>
+        <div class="c-score">96</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats" id="stats">
+    <div class="stats-in">
+      <div class="reveal">
+        <div class="sn g-grad"><span class="sv" data-target="100">0</span><span class="ss">%</span></div>
+        <p class="sl">Précision</p>
+        <p class="sd">Chaque pixel est intentionnel. Rien n'est laissé au hasard.</p>
+      </div>
+      <div class="reveal" style="transition-delay:.1s">
+        <div class="sn g-grad"><span class="sv" data-target="60">0</span><span class="ss">fps</span></div>
+        <p class="sl">Fluidité</p>
+        <p class="sd">Animations optimisées pour une expérience sans friction.</p>
+      </div>
+      <div class="reveal" style="transition-delay:.2s">
+        <div class="sn v-grad"><span class="sv" data-target="INF">0</span></div>
+        <p class="sl">Créativité</p>
+        <p class="sd">Pas de limites aux possibilités expressives du design.</p>
+      </div>
+      <div class="reveal" style="transition-delay:.3s">
+        <div class="sn v-grad"><span class="sv" data-target="1" data-pad="2">00</span></div>
+        <p class="sl">Direction</p>
+        <p class="sd">Un point de vue précis et cohérent sur chaque décision.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section class="manifesto" id="manifesto">
+    <blockquote class="mq reveal">
+      "Le design n'est pas ce qu'il <span class="g">ressemble</span> —<br>
+      c'est ce qu'il <span class="c">accomplit</span>.<br>
+      Chaque interface est une <span class="v">conversation</span><br>
+      entre l'humain et le système."
+    </blockquote>
+    <div class="m-rule reveal"></div>
+    <p class="m-sig reveal">— Philosophie · Test Skills III · 2026</p>
+  </section>
+
+  <!-- TERMINAL -->
+  <section class="term-wrap">
+    <div class="terminal reveal">
+      <div class="term-hd">
+        <div class="td td-r"></div>
+        <div class="td td-y"></div>
+        <div class="td td-g"></div>
+        <span class="t-lbl">claude@test-skills-iii ~ zsh</span>
+      </div>
+      <div class="term-body" id="term-out3"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="f-logo">TEST SKILLS III</div>
+    <p class="f-copy">© 2026 — Généré par Claude · Anthropic</p>
+    <ul class="f-links">
+      <li><a href="#">GitHub</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    /* ─── CURSOR ──────────────────────────────────── */
+    const cur = document.getElementById('cur');
+    const ring = document.getElementById('cur-ring');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove', e => {
+      mx=e.clientX; my=e.clientY;
+      cur.style.left=mx+'px'; cur.style.top=my+'px';
+    });
+    (function loop() {
+      rx+=(mx-rx)*.11; ry+=(my-ry)*.11;
+      ring.style.left=rx+'px'; ring.style.top=ry+'px';
+      requestAnimationFrame(loop);
+    })();
+    document.querySelectorAll('a,button,.card').forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('hov'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('hov'));
+    });
+
+    /* ─── REVEAL ──────────────────────────────────── */
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        e.target.querySelectorAll('.sv').forEach(animCounter);
+      });
+    }, { threshold: .1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    /* ─── COUNTER ─────────────────────────────────── */
+    function animCounter(el) {
+      if (el.dataset.animated) return;
+      el.dataset.animated = '1';
+      const t = el.dataset.target;
+      if (t === 'INF') { el.textContent = '∞'; return; }
+      const end = parseInt(t), pad = parseInt(el.dataset.pad || 1);
+      let v = 0; const step = end / 60;
+      const id = setInterval(() => {
+        v += step;
+        if (v >= end) { clearInterval(id); el.textContent = String(end).padStart(pad, '0'); }
+        else el.textContent = String(Math.floor(v)).padStart(pad, '0');
+      }, 16);
+    }
+
+    /* ─── TERMINAL ────────────────────────────────── */
+    const lines = [
+      { k:'p', cmd:'skill analyze --mode=aurora --all' },
+      { k:'o', t:'[INIT] Aurora analysis engine v3.0...', d:700 },
+      { k:'s', t:'[✓]  Design  ━━━━━━━━━━━━━━━━━━━━━  95/100', d:340 },
+      { k:'s', t:'[✓]  Code    ━━━━━━━━━━━━━━━━━━━━   90/100', d:275 },
+      { k:'s', t:'[✓]  Motion  ━━━━━━━━━━━━━━━━━━━    88/100', d:275 },
+      { k:'s', t:'[✓]  Vision  ━━━━━━━━━━━━━━━━━━━━   92/100', d:275 },
+      { k:'s', t:'[✓]  Craft   ━━━━━━━━━━━━━━━━━━━━━  96/100', d:275 },
+      { k:'o', t:'', d:150 },
+      { k:'h', t:'[→]  RÉSULTAT : EXTRAORDINAIRE', d:460 },
+      { k:'o', t:'     Statut  : Tous systèmes nominaux', d:150 },
+      { k:'o', t:'     Durée   : 0.019ms', d:150 },
+      { k:'o', t:'', d:300 },
+      { k:'p', cmd:"echo \"L'aurora, c'est la direction.\"", d:250 },
+      { k:'s', t:"L'aurora, c'est la direction.", d:185 },
+      { k:'c' },
+    ];
+    const tOut = document.getElementById('term-out3');
+    let idx = 0;
+
+    function runTerm() {
+      if (idx >= lines.length) return;
+      const l = lines[idx++];
+      const div = document.createElement('div');
+      tOut.appendChild(div);
+      if (l.k === 'c') {
+        div.innerHTML = `<span class="tp">$ </span><span class="tcur"></span>`;
+        return;
+      }
+      if (l.k === 'p') {
+        div.innerHTML = `<span class="tp">$ </span>`;
+        let i = 0; const cmd = l.cmd || '';
+        const type = () => {
+          if (i < cmd.length) {
+            div.innerHTML = `<span class="tp">$ </span><span class="tc">${cmd.slice(0, ++i)}</span>`;
+            setTimeout(type, 26 + Math.random() * 20);
+          } else { setTimeout(runTerm, 265); }
+        };
+        setTimeout(type, l.d || 0);
+        return;
+      }
+      const cls = { o:'to', s:'ts', h:'th' }[l.k] || 'to';
+      setTimeout(() => {
+        div.innerHTML = `<span class="${cls}">${l.t || ''}</span>`;
+        tOut.scrollTop = tOut.scrollHeight;
+        runTerm();
+      }, l.d || 80);
+    }
+
+    const tObs = new IntersectionObserver(e => {
+      if (e[0].isIntersecting) { runTerm(); tObs.disconnect(); }
+    }, { threshold: .2 });
+    tObs.observe(tOut);
+  </script>
+</body>
+</html>
