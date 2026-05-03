@@ -35,6 +35,27 @@ document.addEventListener("DOMContentLoaded", () => {
 				"Version améliorée du premier Blind Test, ce projet propose de nouvelles fonctionnalités et une interface plus intuitive pour enrichir l'expérience utilisateur. ",
 			"projet-skulltulas":
 				"Outil interactif développé en mars 2025 permettant de suivre la progression dans la quête des Skulltulas d'Or dans Zelda: Ocarina of Time. ",
+			"projet-wow":
+				"Outil développé en mars 2025 pour trouver rapidement les meilleurs guides de build pour chaque spécialisation de World of Warcraft. Propose des liens directs vers Icy Veins, Wowhead et Maxroll.",
+			"projet-recette":
+				"Projet réalisé en avril 2025 pour m'entraîner au markdown.",
+			"projet-pictos-clair":
+				"Projet réalisé en mai 2025 pour m'entraîner au markdown. <i>Surtout un coup de coeur pour le jeu</i>",
+			"projet-templates":
+				"Série de 4 templates de sites web réalisés en avril 2026 pour différents secteurs d'activité : fleuriste, auto-école, restaurant et artisan.",
+			"templates-subtitle": "Cliquez sur un template pour l'ouvrir",
+			"template-fleuriste-desc": "Flora & Co — Fleuriste artisanal",
+			"template-auto-ecole-desc": "Drive Academy — Auto-école moderne",
+			"template-restaurant-desc": "Maison Lartigue — Bistrot & Cave",
+			"template-artisan-desc": "Bernard Plomberie — Plombier chauffagiste",
+			"projet-test-skills":
+				"Réalisés en mai 2026 dans le cadre d'une exploration des skills Claude Code, ces trois projets sont le fruit d'expérimentations avec l'IA générative appliquée au développement front-end, une technologie à laquelle je m'intéresse de plus en plus activement.",
+			"test-skills-subtitle":
+				"3 esthétiques générées via les skills Claude Code — cliquez pour ouvrir",
+			"test-skills-1-desc": "Esthétique luxe — tons or, cramoisi & bleu électrique",
+			"test-skills-2-desc": "Design brutaliste — typographie agressive, noir & jaune",
+			"test-skills-3-desc": "Futurisme glassmorphique — aurora, néon & effets de verre",
+			"explore-hint": "Cliquer pour explorer →",
 			context: "Contexte",
 		},
 		en: {
@@ -69,6 +90,27 @@ document.addEventListener("DOMContentLoaded", () => {
 				"Improved version of the first Blind Test, this project offers new features and a more intuitive interface to enrich the user experience",
 			"projet-skulltulas":
 				"Interactive tool developed in March 2025 to track progress in the quest for the Gold Skulltulas in Zelda: Ocarina of Time.",
+			"projet-wow":
+				"Tool developed in March 2025 to quickly find the best build guides for each World of Warcraft specialization. Provides direct links to Icy Veins, Wowhead and Maxroll.",
+			"projet-recette":
+				"Project created in April 2025 to practice markdown.",
+			"projet-pictos-clair":
+				"Project created in May 2025 to practice markdown. <i>Mostly a love letter to the game</i>",
+			"projet-templates":
+				"A series of 4 web page templates created in April 2026 for various business sectors: florist, driving school, restaurant and tradesman.",
+			"templates-subtitle": "Click on a template to open it",
+			"template-fleuriste-desc": "Flora & Co — Artisan florist",
+			"template-auto-ecole-desc": "Drive Academy — Modern driving school",
+			"template-restaurant-desc": "Maison Lartigue — Bistro & Wine bar",
+			"template-artisan-desc": "Bernard Plomberie — Plumber & heating engineer",
+			"projet-test-skills":
+				"Created in May 2026 as part of an in-depth exploration of Claude Code skills, these three projects are the result of experiments with generative AI applied to front-end development — a technology I am increasingly passionate about.",
+			"test-skills-subtitle":
+				"3 aesthetics generated via Claude Code skills — click to open",
+			"test-skills-1-desc": "Luxury aesthetic — gold, crimson & electric blue tones",
+			"test-skills-2-desc": "Brutalist design — aggressive typography, black & yellow",
+			"test-skills-3-desc": "Glassmorphic futurism — aurora, neon & glass effects",
+			"explore-hint": "Click to explore →",
 			context: "Context",
 		},
 	};
