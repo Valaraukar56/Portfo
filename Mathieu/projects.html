@@ -328,6 +328,104 @@
 					grid-template-columns: 1fr;
 				}
 			}
+
+			/* Combo modal */
+			.combo-modal-header {
+				text-align: center;
+				margin-bottom: 20px;
+			}
+
+			.combo-status {
+				display: inline-block;
+				padding: 4px 14px;
+				border-radius: 20px;
+				font-size: 13px;
+				background: rgba(50, 205, 50, 0.12);
+				color: #4cde4c;
+				border: 1px solid rgba(50, 205, 50, 0.3);
+				margin-top: 8px;
+			}
+
+			.combo-section-title {
+				font-size: 11px;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				color: #555;
+				font-weight: 700;
+				margin: 24px 0 10px;
+				border-bottom: 1px solid #2a2a2a;
+				padding-bottom: 6px;
+			}
+
+			.combo-stack-group {
+				display: flex;
+				align-items: flex-start;
+				gap: 14px;
+				margin-bottom: 12px;
+			}
+
+			.combo-stack-label {
+				font-size: 12px;
+				color: #666;
+				min-width: 80px;
+				padding-top: 5px;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+			}
+
+			.combo-badges {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 8px;
+			}
+
+			.combo-badge {
+				padding: 4px 13px;
+				border-radius: 20px;
+				font-size: 12px;
+				font-weight: 600;
+				border: 1px solid currentColor;
+				opacity: 0.9;
+			}
+
+			.badge-react    { color: #61DAFB; }
+			.badge-ts       { color: #4a8fd1; }
+			.badge-vite     { color: #a78bfa; }
+			.badge-electron { color: #47B0BF; }
+			.badge-node     { color: #68C250; }
+			.badge-express  { color: #aaa; }
+			.badge-socket   { color: #ddd; }
+			.badge-sqlite   { color: #0099cc; }
+			.badge-jwt      { color: #D63AFF; }
+
+			.combo-features {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 10px;
+			}
+
+			.combo-features li {
+				display: flex;
+				align-items: flex-start;
+				gap: 8px;
+				color: #a0a0a0;
+				font-size: 14px;
+			}
+
+			.combo-features li::before {
+				content: "→";
+				color: #484848;
+				flex-shrink: 0;
+			}
+
+			@media (max-width: 600px) {
+				.combo-features { grid-template-columns: 1fr; }
+				.combo-stack-group { flex-direction: column; gap: 6px; }
+			}
 		</style>
 	</head>
 	<body>
@@ -447,6 +545,68 @@
 							</div>
 						</a>
 					</div>
+				</div>
+			</div>
+
+			<div class="container templates-card" onclick="openComboModal()">
+				<h2>Combo</h2>
+				<div class="image-wrapper">
+					<img src="../assets/images/combo-wireframe.jpg" alt="Combo wireframe" />
+				</div>
+				<h3 data-i18n="context">Contexte</h3>
+				<p data-i18n="projet-combo">
+					Jeu de cartes multijoueur en temps réel, distribué en application
+					desktop Windows. Développé de A à Z avec une architecture full-stack TypeScript.
+				</p>
+				<span class="templates-hint" data-i18n="explore-hint">Cliquer pour explorer →</span>
+			</div>
+
+			<!-- Modale Combo -->
+			<div id="combo-modal" class="templates-modal-overlay" onclick="handleComboModalClick(event)">
+				<div class="templates-modal-content">
+					<button class="templates-modal-close" onclick="closeComboModal()">×</button>
+					<div class="combo-modal-header">
+						<h2>Combo</h2>
+						<span class="combo-status" data-i18n="combo-status">En développement actif · v0.1.20</span>
+					</div>
+					<p data-i18n="combo-desc">
+						Combo est un jeu de cartes multijoueur en temps réel développé de A à Z.
+						Les joueurs s'affrontent dans des manches de mémoire et de rapidité, avec
+						des mécaniques de snap, de pouvoirs spéciaux et d'appel de combo.
+						L'application est distribuée exclusivement en version desktop Windows
+						via un installeur Electron avec mise à jour automatique.
+					</p>
+					<p class="combo-section-title" data-i18n="combo-stack-title">Stack technique</p>
+					<div class="combo-stack-group">
+						<span class="combo-stack-label" data-i18n="combo-frontend">Frontend</span>
+						<div class="combo-badges">
+							<span class="combo-badge badge-react">React 18</span>
+							<span class="combo-badge badge-ts">TypeScript</span>
+							<span class="combo-badge badge-vite">Vite</span>
+							<span class="combo-badge badge-electron">Electron</span>
+						</div>
+					</div>
+					<div class="combo-stack-group">
+						<span class="combo-stack-label" data-i18n="combo-backend">Backend</span>
+						<div class="combo-badges">
+							<span class="combo-badge badge-node">Node.js</span>
+							<span class="combo-badge badge-express">Express</span>
+							<span class="combo-badge badge-socket">Socket.IO</span>
+							<span class="combo-badge badge-sqlite">SQLite</span>
+							<span class="combo-badge badge-jwt">JWT</span>
+						</div>
+					</div>
+					<p class="combo-section-title" data-i18n="combo-features-title">Fonctionnalités</p>
+					<ul class="combo-features">
+						<li data-i18n="combo-f1">Multijoueur temps réel (WebSocket)</li>
+						<li data-i18n="combo-f2">Architecture serveur-autoritaire (anti-triche)</li>
+						<li data-i18n="combo-f3">Application desktop Windows via Electron</li>
+						<li data-i18n="combo-f4">Authentification JWT + classements</li>
+						<li data-i18n="combo-f5">Bots IA adversaires</li>
+						<li data-i18n="combo-f6">Mise à jour automatique (GitHub Releases)</li>
+						<li data-i18n="combo-f7">Rooms publiques & privées</li>
+						<li data-i18n="combo-f8">Persistance SQLite (stats & parties)</li>
+					</ul>
 				</div>
 			</div>
 
@@ -660,6 +820,22 @@
 				}
 			}
 
+			function openComboModal() {
+				document.getElementById('combo-modal').classList.add('active');
+				document.body.style.overflow = 'hidden';
+			}
+
+			function closeComboModal() {
+				document.getElementById('combo-modal').classList.remove('active');
+				document.body.style.overflow = '';
+			}
+
+			function handleComboModalClick(event) {
+				if (event.target === document.getElementById('combo-modal')) {
+					closeComboModal();
+				}
+			}
+
 			function openTestSkillsModal() {
 				document.getElementById('test-skills-modal').classList.add('active');
 				document.body.style.overflow = 'hidden';
@@ -680,6 +856,7 @@
 				if (e.key === 'Escape') {
 					closeTemplatesModal();
 					closeTestSkillsModal();
+					closeComboModal();
 				}
 			});
 		</script>
