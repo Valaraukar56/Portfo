@@ -49,12 +49,13 @@ document.addEventListener("DOMContentLoaded", () => {
 			"template-restaurant-desc": "Maison Lartigue — Bistrot & Cave",
 			"template-artisan-desc": "Bernard Plomberie — Plombier chauffagiste",
 			"projet-test-skills":
-				"Réalisés en mai 2026 dans le cadre d'une exploration des skills Claude Code, ces trois projets sont le fruit d'expérimentations avec l'IA générative appliquée au développement front-end, une technologie à laquelle je m'intéresse de plus en plus activement.",
+				"Réalisés en mai 2026 dans le cadre d'une exploration des skills Claude Code, ces quatre projets sont le fruit d'expérimentations avec l'IA générative appliquée au développement front-end, une technologie à laquelle je m'intéresse de plus en plus activement.",
 			"test-skills-subtitle":
-				"3 esthétiques générées via les skills Claude Code — cliquez pour ouvrir",
+				"4 esthétiques générées via les skills Claude Code — cliquez pour ouvrir",
 			"test-skills-1-desc": "Esthétique luxe — tons or, cramoisi & bleu électrique",
 			"test-skills-2-desc": "Design brutaliste — typographie agressive, noir & jaune",
 			"test-skills-3-desc": "Futurisme glassmorphique — aurora, néon & effets de verre",
+			"test-skills-4-desc": "Brutalist editorial animé — split intro, scroll-pin, particles",
 			"explore-hint": "Cliquer pour explorer →",
 			"projet-combo":
 				"Jeu de cartes multijoueur en temps réel, distribué en application desktop Windows. Développé de A à Z avec une architecture full-stack TypeScript.",
@@ -121,12 +122,13 @@ document.addEventListener("DOMContentLoaded", () => {
 			"template-restaurant-desc": "Maison Lartigue — Bistro & Wine bar",
 			"template-artisan-desc": "Bernard Plomberie — Plumber & heating engineer",
 			"projet-test-skills":
-				"Created in May 2026 as part of an in-depth exploration of Claude Code skills, these three projects are the result of experiments with generative AI applied to front-end development — a technology I am increasingly passionate about.",
+				"Created in May 2026 as part of an in-depth exploration of Claude Code skills, these four projects are the result of experiments with generative AI applied to front-end development — a technology I am increasingly passionate about.",
 			"test-skills-subtitle":
-				"3 aesthetics generated via Claude Code skills — click to open",
+				"4 aesthetics generated via Claude Code skills — click to open",
 			"test-skills-1-desc": "Luxury aesthetic — gold, crimson & electric blue tones",
 			"test-skills-2-desc": "Brutalist design — aggressive typography, black & yellow",
 			"test-skills-3-desc": "Glassmorphic futurism — aurora, neon & glass effects",
+			"test-skills-4-desc": "Animated brutalist editorial — split intro, scroll-pin, particles",
 			"explore-hint": "Click to explore →",
 			"projet-combo":
 				"Real-time multiplayer card game distributed as a Windows desktop application. Built from scratch with a full-stack TypeScript architecture.",
