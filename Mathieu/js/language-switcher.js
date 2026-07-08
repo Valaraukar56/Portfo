@@ -9,12 +9,14 @@ document.addEventListener("DOMContentLoaded", () => {
 			"nav.contact": "Contact",
 			"about.greeting": "👋 Bonjour",
 			"about.intro":
-				'Je suis Mathieu, étudiant en BTS à L\'<strong><a href="https://www.aftec.fr/ecole-commerce-vannes" target="_blank">AFTEC</a></strong> Vannes',
+				"Je suis <strong>Mathieu</strong>, jeune développeur front-end. Après avoir obtenu mon BTS, je suis aujourd'hui à la recherche d'une <strong>alternance ou d'un poste</strong> où continuer à progresser.",
 			"about.portfolio":
-				"Ce portfolio est une réalisation personnelle. En haut à droite, vous trouverez mes <strong><a href=\"projects.html\">projets</a></strong>, qu'ils soient terminés ou en cours, créés au fur et à mesure que je continuais à m'améliorer.",
+				"Ce portfolio est une réalisation personnelle qui grandit avec moi. En haut à droite, vous trouverez mes <strong><a href=\"projects.html\">projets</a></strong>, terminés ou en cours, que j'enrichis au fil de mon apprentissage.",
 			"about.projectsLink": "projets",
 			"about.skills":
-				"J'ai mis à profit mes compétences en JavaScript pour développer mon projet Shoot 'em up",
+				"Je m'intéresse de plus en plus à l'<strong>IA générative appliquée au développement front-end</strong> : j'explore des outils comme Claude Code pour concevoir des interfaces et repousser ce que je sais faire.",
+			"about.cta":
+				"Ouvert aux opportunités, n'hésitez pas à me <strong><a href=\"contact.html\">contacter</a></strong>.",
 			"contact.h2": "Contactez-moi",
 			"contact.p":
 				"N'hésitez pas à me contacter via ce formulaire ou directement par email",
@@ -83,12 +85,14 @@ document.addEventListener("DOMContentLoaded", () => {
 			"nav.contact": "Contact",
 			"about.greeting": "👋 Hello there",
 			"about.intro":
-				'I\'m Mathieu, a student in BTS at <strong><a href="https://www.aftec.fr/ecole-commerce-vannes" target="_blank">AFTEC</a></strong> Vannes',
+				"I'm <strong>Mathieu</strong>, a junior front-end developer. Having earned my degree, I'm now looking for a <strong>work-study contract or a position</strong> where I can keep growing.",
 			"about.portfolio":
-				'This portfolio is a personal achievement. In the top right, you\'ll find my <strong><a href="projects.html">projects</a></strong>, whether completed or in progress, created as I continued to improve.',
+				'This portfolio is a personal project that grows with me. In the top right, you\'ll find my <strong><a href="projects.html">projects</a></strong>, completed or in progress, which I expand as I keep learning.',
 			"about.projectsLink": "projects",
 			"about.skills":
-				"I leveraged my JavaScript skills to develop my Shoot 'em up project",
+				"I'm increasingly drawn to <strong>generative AI applied to front-end development</strong>: I explore tools like Claude Code to design interfaces and push what I'm capable of.",
+			"about.cta":
+				'Open to opportunities, feel free to <strong><a href="contact.html">get in touch</a></strong>.',
 			"contact.h2": "Contact me",
 			"contact.p": "Feel free to contact me via this form or directly by email",
 			"contact.name_placeholder": "Name and first name *",
