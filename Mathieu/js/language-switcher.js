@@ -76,6 +76,10 @@ document.addEventListener("DOMContentLoaded", () => {
 			"combo-f6": "Mise à jour automatique (GitHub Releases)",
 			"combo-f7": "Rooms publiques & privées",
 			"combo-f8": "Persistance SQLite (stats & parties)",
+			"projet-acp56":
+				"Site vitrine professionnel conçu et développé sur mesure pour Perle Hugot, infirmière diplômée d'État et accompagnante périnatale dans le Morbihan. Présentation des services (accompagnement anténatal et postnatal, allaitement, portage, présence jour & nuit), formations, témoignages, prise de rendez-vous en ligne (Cal.com) et gestion du consentement cookies. Design responsive et identité visuelle douce, pensée pour les jeunes parents.",
+			"projet-doudream":
+				"Portfolio conçu et développé pour DouDream, artiste peintre numérique. Galerie de créations (portraits, paysages, fan-arts) optimisée en WebP, section « À propos », formulaire de contact et lien Instagram, le tout dans une ambiance sombre et dorée mettant les œuvres en valeur. Site statique HTML/CSS/JS avec animation d'introduction.",
 			context: "Contexte",
 		},
 		en: {
@@ -151,6 +155,10 @@ document.addEventListener("DOMContentLoaded", () => {
 			"combo-f6": "Auto-update system (GitHub Releases)",
 			"combo-f7": "Public & private rooms",
 			"combo-f8": "SQLite persistence (stats & matches)",
+			"projet-acp56":
+				"Professional showcase website designed and built from scratch for Perle Hugot, a state-registered nurse and perinatal support practitioner in Morbihan (Brittany). Features services (antenatal and postnatal support, breastfeeding, babywearing, day & night care), training courses, testimonials, online booking (Cal.com) and cookie consent management. Responsive design with a soft visual identity tailored to new parents.",
+			"projet-doudream":
+				"Portfolio designed and built for DouDream, a digital painter. Artwork gallery (portraits, landscapes, fan art) optimised in WebP, an About section, a contact form and an Instagram link, all in a dark and golden atmosphere that showcases the artwork. Static HTML/CSS/JS site with an intro animation.",
 			context: "Context",
 		},
 	};
