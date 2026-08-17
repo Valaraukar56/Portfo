@@ -3,6 +3,10 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="Contactez Mathieu Piris — étudiant développeur web à Vannes. Formulaire de contact, email et téléphone." />
+		<meta property="og:title" content="Contact — Mathieu Piris" />
+		<meta property="og:description" content="Contactez Mathieu Piris — étudiant développeur web à Vannes." />
+		<meta property="og:type" content="website" />
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -12,7 +16,7 @@
 			type="image/x-icon"
 			href="../assets/images/LOGO twitch.jpg"
 		/>
-		<title>Contact</title>
+		<title>Contact — Mathieu Piris</title>
 		<link rel="stylesheet" href="../sizing.css" type="text/css" />
 		<link rel="stylesheet" href="../global.css" />
 		<link rel="stylesheet" href="style.css" />
@@ -225,7 +229,7 @@
 	</head>
 	<body>
 		<div class="menu-toggle-container">
-			<button class="menu-toggle" id="menuToggle">
+			<button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="header">
 				<span></span>
 				<span></span>
 				<span></span>
@@ -264,6 +268,7 @@
 					action="https://formspree.io/f/mldjdlja"
 					method="POST"
 				>
+					<label for="name" class="sr-only">Nom et prénom</label>
 					<input
 						data-i18n-placeholder="contact.name_placeholder"
 						type="text"
@@ -272,6 +277,7 @@
 						placeholder="Nom et prénom *"
 						required
 					/>
+					<label for="email" class="sr-only">Adresse e-mail</label>
 					<input
 						data-i18n-placeholder="contact.email_placeholder"
 						type="email"
@@ -280,6 +286,7 @@
 						placeholder="Adresse e-mail *"
 						required
 					/>
+					<label for="message" class="sr-only">Votre message</label>
 					<textarea
 						data-i18n-placeholder="contact.message_placeholder"
 						id="message"

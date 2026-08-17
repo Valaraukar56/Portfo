@@ -45,5 +45,4 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	});
 
-	console.log("Script sidebar.js chargé avec succès");
 });
