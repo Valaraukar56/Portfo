@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="description" content="Portfolio de Mathieu Piris, étudiant en BTS à l'AFTEC Vannes. Découvrez mes projets JavaScript, jeux, et outils web." />
+		<meta name="description" content="Portfolio de Mathieu Piris, développeur web junior diplômé BTS SIO SLAM, un an d'expérience Salesforce, disponible pour un poste en développement web." />
 		<meta property="og:title" content="Mathieu Piris — Portfolio" />
-		<meta property="og:description" content="Portfolio de Mathieu Piris, étudiant en BTS à l'AFTEC Vannes. Projets JavaScript, jeux et outils web." />
+		<meta property="og:description" content="Portfolio de Mathieu Piris, développeur web junior disponible pour un poste." />
 		<meta property="og:type" content="website" />
 		<link
 			rel="shortcut icon"
@@ -51,10 +51,58 @@
 				position: relative; /* Assure que la carte est au-dessus du fond */
 			}
 
-			#about-me h1 {
+			#about-me h2 {
 				margin: 0 0 10px;
 				font-size: 24px;
 				text-align: center;
+			}
+
+			#experience {
+				margin: 1.5rem 0;
+				border-top: 1px solid #3a3a3a;
+				padding-top: 1.2rem;
+			}
+
+			#experience h3 {
+				font-size: 13px;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				color: #666;
+				font-weight: 700;
+				margin: 0 0 14px;
+			}
+
+			.experience-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: baseline;
+				flex-wrap: wrap;
+				gap: 6px;
+				margin-bottom: 2px;
+			}
+
+			.experience-header strong {
+				color: #e0d8c8;
+				font-size: 17px;
+			}
+
+			.experience-header time {
+				color: #606060;
+				font-size: 14px;
+			}
+
+			.experience-company {
+				color: #808080;
+				font-size: 15px;
+				margin: 0 0 8px !important;
+			}
+
+			.experience-tasks {
+				margin: 0;
+				padding-left: 1.4em;
+				color: #9a9a9a;
+				font-size: 16px;
+				line-height: 1.8;
 			}
 
 			#about-me p {
@@ -109,11 +157,12 @@
 
 		<main>
 			<div id="about-me">
-				<h1 data-i18n="about.greeting">👋 Bonjour</h1>
+				<h2 data-i18n="about.greeting">👋 Bonjour</h2>
 				<p data-i18n="about.intro">
-					Je suis <strong>Mathieu</strong>, jeune développeur front-end. Après
-					avoir obtenu mon BTS, je suis aujourd'hui à la recherche d'une
-					<strong>alternance ou d'un poste</strong> où continuer à progresser.
+					Je suis <strong>Mathieu</strong>, développeur web junior, diplômé d'un
+					BTS SIO option SLAM. J'ai exercé pendant un an en entreprise comme
+					administrateur et développeur Salesforce et je suis aujourd'hui à la
+					recherche d'un <strong>poste en développement web</strong>.
 				</p>
 				<p data-i18n="about.portfolio">
 					Ce portfolio est une réalisation personnelle qui grandit avec moi. En
@@ -124,10 +173,23 @@
 					, terminés ou en cours, que j'enrichis au fil de mon apprentissage.
 				</p>
 				<p data-i18n="about.skills">
-					Je m'intéresse de plus en plus à l'<strong>IA générative appliquée au
-					développement front-end</strong> : j'explore des outils comme Claude
-					Code pour concevoir des interfaces et repousser ce que je sais faire.
+					Je travaille avec les outils d'IA générative au quotidien. Cette pratique
+					m'a surtout appris ce qu'ils produisent de mauvais : accessibilité,
+					performance, référencement, maintenabilité.
 				</p>
+				<section id="experience" aria-label="Expérience professionnelle">
+					<h3 data-i18n="experience.title">Expérience</h3>
+					<div class="experience-header">
+						<strong data-i18n="experience.role">Administrateur et développeur Salesforce</strong>
+						<time datetime="2025-09/2026-09" data-i18n="experience.period">Sept. 2025 - Sept. 2026</time>
+					</div>
+					<p class="experience-company" data-i18n="experience.company">CMA Bretagne</p>
+					<ul class="experience-tasks">
+						<li data-i18n="experience.task1">Création de flux automatisés</li>
+						<li data-i18n="experience.task2">Modifications de pages Lightning</li>
+						<li data-i18n="experience.task3">Création d'un objet Salesforce de A à Z</li>
+					</ul>
+				</section>
 				<p data-i18n="about.cta">
 					Ouvert aux opportunités, n'hésitez pas à me
 					<strong>
